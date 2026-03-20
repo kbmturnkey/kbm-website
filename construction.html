@@ -12,12 +12,79 @@ body {
     background: #f5f5f5;
 }
 
-/* HEADER */
-header {
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.menu a {
+    margin: 0 18px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+}
+
+/* Underline animation */
+.menu a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #5d7f25;
+    transition: 0.3s;
+    margin: auto;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+    width: 100%;
+}
+
+/* Right side */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.phone {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.cta {
+    background: #5d7f25;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cta:hover {
+    background: #4a671d;
+}
+
+/* PAGE HEADER */
+.page-header {
     background: linear-gradient(90deg, #0b3d91, #1e5ed8);
     color: white;
     padding: 20px;
     text-align: center;
+    font-size: 22px;
 }
 
 /* SECTION */
@@ -27,13 +94,12 @@ header {
     background: #f8f8f8;
 }
 
-/* TITLE */
 .section h2 {
     font-size: 32px;
 }
 
 .section span {
-    color: #5d7f25
+    color: #5d7f25;
 }
 
 /* GRID */
@@ -61,7 +127,7 @@ header {
     height: 100px;
     margin: auto;
     border-radius: 50%;
-    background: #ffe8dc;
+    background: #eaf2dc;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +141,7 @@ header {
     margin-top: 15px;
 }
 
-/* DESCRIPTION BOX */
+/* DESCRIPTION */
 .desc-box {
     display: none;
     margin: 30px auto;
@@ -89,27 +155,17 @@ header {
     border-radius: 5px;
 }
 
-/* CONTRACT SECTION */
+/* CONTRACT */
 .contract {
     background: #f2f2f2;
     padding: 60px 20px;
     text-align: center;
 }
 
-.contract h2 {
-    font-size: 32px;
-}
-
-.contract span {
+.contract h2 span {
     color: #5d7f25;
 }
 
-.subtitle {
-    color: #555;
-    margin-bottom: 30px;
-}
-
-/* Layout */
 .boxes {
     display: flex;
     gap: 20px;
@@ -117,7 +173,7 @@ header {
     flex-wrap: wrap;
 }
 
-/* Box */
+/* BOX */
 .box {
     width: 400px;
     background: white;
@@ -125,7 +181,6 @@ header {
     overflow: hidden;
 }
 
-/* Orange Header */
 .box-header {
     background: #5d7f25;
     color: white;
@@ -135,22 +190,18 @@ header {
     position: relative;
 }
 
-/* Body */
 .box-body {
     padding: 20px;
     text-align: left;
-    color: #444;
-    line-height: 1.6;
 }
 
-/* Tags */
+/* TAGS */
 .tag {
     background: white;
     color: #5d7f25;
     font-size: 12px;
     padding: 3px 6px;
     margin-right: 10px;
-    border-radius: 3px;
 }
 
 .save {
@@ -159,29 +210,46 @@ header {
     top: 10px;
     background: white;
     color: #5d7f25;
-    font-size: 12px;
     padding: 5px 8px;
-    border-radius: 3px;
 }
 
-/* BACK BUTTON */
-a {
+/* BACK */
+.back {
     display: inline-block;
     margin-top: 30px;
     background: #0b3d91;
     color: white;
     padding: 10px 15px;
     text-decoration: none;
-    border-radius: 5px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Construction Services</h1>
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="construction.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-right">
+        <a href="tel:9886887482" class="phone">📞 +91 9886887482</a>
+        <a href="contact.html" class="cta">Get Quote</a>
+    </div>
 </header>
+
+<!-- HEADER -->
+<div class="page-header">
+    Construction Services
+</div>
 
 <!-- EXPERTISE -->
 <section class="section">
@@ -196,21 +264,21 @@ a {
             <h3>Home Construction</h3>
         </div>
 
-        <div class="item" onclick="showText('We deliver best-in-class architectural solutions, including detailed floor plans, 3D elevations, and structural drawings, ensuring modern design, functionality, and efficiency.')">
+        <div class="item" onclick="showText('Best in class architecture including floor plans, 3D elevations and structural drawings.')">
             <div class="icon">
                 <img src="https://img.icons8.com/ios-filled/50/5d7f25/blueprint.png">
             </div>
             <h3>Architecture & Design</h3>
         </div>
 
-        <div class="item" onclick="showText('Best in class interior designs with great value, combining aesthetics, functionality, and cost-effective solutions.')">
+        <div class="item" onclick="showText('Best in class interior designs with great value and functionality.')">
             <div class="icon">
                 <img src="https://img.icons8.com/ios-filled/50/5d7f25/interior.png">
             </div>
             <h3>Interior Designing</h3>
         </div>
 
-        <div class="item" onclick="showText('A well-structured construction plan forms the foundation for developing the project budget and schedule, ensuring efficient execution and timely delivery.')">
+        <div class="item" onclick="showText('Proper planning ensures budget control, scheduling and timely execution.')">
             <div class="icon">
                 <img src="https://img.icons8.com/ios-filled/50/5d7f25/manager.png">
             </div>
@@ -219,28 +287,19 @@ a {
 
     </div>
 
-    <!-- COMMON DESCRIPTION -->
     <div id="commonDesc" class="desc-box"></div>
-
 </section>
 
 <!-- CONTRACT -->
 <section class="contract">
     <h2>Our <span>Contract Models</span></h2>
-    <p class="subtitle">
-        We offer two different Home Construction Contract Models to suit the unique needs and preferences of our clients:
-    </p>
 
     <div class="boxes">
 
         <div class="box">
-            <div class="box-header">
-                Lump-Sum Contract
-            </div>
+            <div class="box-header">Lump-Sum Contract</div>
             <div class="box-body">
-                <p>
-                    Our Lump-Sum Contract offers a fixed price for the complete construction project, based on clearly defined specifications and scope. It ensures budget certainty, streamlined execution, and full responsibility on our part for timely and quality delivery.
-                </p>
+                Fixed price model ensuring budget certainty.
             </div>
         </div>
 
@@ -251,20 +310,19 @@ a {
                 <span class="save">SAVE 10%</span>
             </div>
             <div class="box-body">
-                <p>
-                    Our Cost-Plus Contract model provides complete transparency and flexibility, where clients pay the actual construction costs plus a fixed service fee. It is best suited for those who want greater control over material selection and design decisions, ensuring cost efficiency and adaptability throughout the project lifecycle.
-                </p>
+                Flexible pricing with transparency and control.
             </div>
         </div>
 
     </div>
+
+    <a href="index.html" class="back">← Back to Home</a>
 </section>
 
 <script>
 function showText(text) {
-    var box = document.getElementById("commonDesc");
-    box.innerHTML = text;
-    box.style.display = "block";
+    document.getElementById("commonDesc").innerHTML = text;
+    document.getElementById("commonDesc").style.display = "block";
 }
 </script>
 
