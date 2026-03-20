@@ -7,42 +7,96 @@
 
 <style>
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
+    font-family: 'Segoe UI', sans-serif;
     background: #f5f5f5;
 }
 
-/* Header */
+/* HEADER */
 header {
-    background: #0b3d91;
+    background: linear-gradient(90deg, #0b3d91, #1e5ed8);
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
 }
 
-/* Section */
-section {
-    padding: 30px;
+/* SECTION */
+.section {
+    padding: 50px 20px;
+    text-align: center;
+    background: #f8f8f8;
 }
 
-/* Images */
-.images {
+/* TITLE */
+.section h2 {
+    font-size: 32px;
+}
+
+.section span {
+    color: #ff5a00;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* ITEM */
+.item {
+    width: 220px;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50%;
+    background: #ffe8dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon img {
+    width: 50px;
+}
+
+.item h3 {
+    margin-top: 15px;
+}
+
+/* CONTRACT SECTION */
+.contract {
+    background: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.boxes {
     display: flex;
     gap: 20px;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
-.images img {
-    width: 32%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
+.box {
+    background: #ff5a00;
+    color: white;
+    padding: 20px;
+    width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
-/* Button */
+/* BACK BUTTON */
 a {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 30px;
     background: #0b3d91;
     color: white;
     padding: 10px 15px;
@@ -58,22 +112,67 @@ a {
     <h1>Construction Services</h1>
 </header>
 
-<section>
+<!-- EXPERTISE -->
+<section class="section">
+    <h2>Our <span>Expertise</span></h2>
 
-<p>
-We handle civil construction, structural work, and complete project execution 
-with high quality and timely delivery.
-</p>
+    <div class="grid">
 
-<!-- Images Section -->
-<div class="images">
-    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=60">
-    <img src="https://images.unsplash.com/photo-1541976076758-347942db1974?auto=format&fit=crop&w=800&q=60">
-</div>
+        <div class="item">
+            <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/ff5a00/home.png">
+            </div>
+            <h3>Home Construction</h3>
+        </div>
 
-<a href="index.html">← Back to Home</a>
+        <div class="item">
+            <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/ff5a00/blueprint.png">
+            </div>
+            <h3>Architecture & Design</h3>
+        </div>
 
+        <div class="item">
+            <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/ff5a00/interior.png">
+            </div>
+            <h3>Interior Designing</h3>
+        </div>
+
+        <div class="item">
+            <div class="icon">
+                <img src="https://img.icons8.com/ios-filled/50/ff5a00/manager.png">
+            </div>
+            <h3>Planning & Management</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTRACT -->
+<section class="contract">
+    <h2>Our <span style="color:#ff5a00;">Our Contract Models</span></h2>
+
+    <div class="boxes">
+        <div class="box">
+    <h3>Lump-Sum Contract</h3>
+    <p>
+        With a Lump-Sum or Fixed-Price Contract, we offer a set price for the entire construction project 
+        based on specific material specifications and the agreed scope of work. This model is ideal for 
+        clients who want to know the total project cost upfront and prefer limited involvement during construction. 
+        Once the scope and specifications are finalized, we take full responsibility for completing the project 
+        within the agreed budget.
+    </p>
+         </div>
+               <div class="box">
+    <h3>Cost-Plus Contract</h3>
+    <p>
+The Cost-Plus Contract provides full Transparency, Flexibility, and Potential cost savings by allowing you to pay the actual Construction costs plus a Fixed fee for our Services. This model is ideal for clients who want to be actively involved in selecting materials and making design changes as they need, Ensuring that you only pay for what you need and receive. It also allows for adjustments as the project evolves.
+    </p>
+         </div>
+    </div>
+
+    <a href="index.html">← Back to Home</a>
 </section>
 
 </body>
