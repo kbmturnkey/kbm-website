@@ -8,75 +8,83 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f5f5;
 }
 
-/* Header */
+/* HEADER */
 header {
-    background: #ffffff;
-    text-align: center;
-    padding: 15px;
-    border-bottom: 3px solid #0b3d91;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
 }
 header img {
-    width: 220px;
-}
-
-/* Navigation */
-nav {
-    background: #0b3d91;
-    padding: 12px;
-    text-align: center;
+    width: 120px;
 }
 nav a {
-    color: white;
     margin: 0 15px;
     text-decoration: none;
-    font-weight: bold;
+    color: #333;
 }
-nav a:hover {
-    color: #ffd700;
-}
-
-/* Hero */
-.hero {
-    background: linear-gradient(rgba(11,61,145,0.8), rgba(11,61,145,0.8)),
-    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
-.hero h1 {
-    font-size: 36px;
-}
-.hero p {
-    font-size: 18px;
-}
-
-/* Section */
-section {
-    padding: 30px;
-}
-
-/* Cards */
-.card {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Footer */
-footer {
+.btn {
     background: #0b3d91;
     color: white;
-    text-align: center;
-    padding: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
 }
 
-/* WhatsApp Button */
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    background: #fff;
+}
+.hero-text {
+    width: 50%;
+}
+.hero-text h1 {
+    font-size: 40px;
+}
+.hero-text p {
+    color: #555;
+}
+.hero img {
+    width: 50%;
+    border-radius: 5px;
+}
+
+/* SERVICES */
+.services {
+    padding: 50px;
+}
+.services h2 {
+    margin-bottom: 20px;
+}
+.cards {
+    display: flex;
+    gap: 20px;
+}
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 33%;
+}
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* CONTACT */
+.contact {
+    padding: 40px;
+    background: white;
+}
+
+/* FLOAT BUTTONS */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -86,11 +94,8 @@ footer {
     padding: 15px;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 20px;
 }
-
-/* Call Button */
-.call-btn {
+.call {
     position: fixed;
     bottom: 80px;
     right: 20px;
@@ -99,16 +104,6 @@ footer {
     padding: 15px;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 18px;
-}
-
-/* Watermark */
-.watermark {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    opacity: 0.3;
-    font-size: 12px;
 }
 </style>
 </head>
@@ -116,62 +111,61 @@ footer {
 <body>
 
 <header>
-    <img src="logo.png" alt="KBM Logo">
+    <img src="logo.png">
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+        <a class="btn" href="#">Start a Project</a>
+    </nav>
 </header>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-</nav>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Professional Solutions for Every Turnkey Project</h1>
+        <p>We deliver complete interior and turnkey solutions with quality and efficiency.</p>
+        <a class="btn" href="#">View Services</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
+</section>
 
-<div class="hero">
-    <h1>KBM Turnkey Projects</h1>
-    <p>Complete Interior & Turnkey Solutions</p>
-</div>
+<!-- SERVICES -->
+<section class="services">
+    <h2>Our Expertise & Services</h2>
+    <div class="cards">
 
-<section>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+            <h3>Planning & Strategy</h3>
+            <p>Complete planning and feasibility for turnkey projects.</p>
+        </div>
 
-<div class="card">
-    <h2>About Us</h2>
-    <p>
-        KBM Turnkey Projects delivers high-quality interior and turnkey solutions 
-        with reliability, efficiency, and customer satisfaction.
-    </p>
-</div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786">
+            <h3>Project Management</h3>
+            <p>End-to-end execution ensuring timelines and quality.</p>
+        </div>
 
-<div class="card">
-    <h2>Our Services</h2>
-    <ul>
-        <li>Turnkey Interior Projects</li>
-        <li>Commercial & Residential Interiors</li>
-        <li>Electrical & AC Installation</li>
-        <li>Project Management</li>
-    </ul>
-</div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e">
+            <h3>Turnkey Development</h3>
+            <p>From design to handover with precision.</p>
+        </div>
 
-<div class="card">
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
     <h2>Contact Us</h2>
     <p>Email: kbmturnkeyprojects@gmail.com</p>
     <p>Phone: +91 9886887482</p>
-</div>
-
 </section>
 
-<footer>
-    <p>© 2026 KBM Turnkey Projects</p>
-</footer>
-
-<!-- WhatsApp Chat -->
-<a href="https://wa.me/919886887482?text=Hello%20KBM%20Turnkey%20Projects,%20I%20am%20interested%20in%20your%20services" 
-class="whatsapp" target="_blank">💬</a>
-
-<!-- Call Button -->
-<a href="tel:9886887482" class="call-btn">📞</a>
-
-<div class="watermark">
-    Designed By KBM Turnkey Projects
-</div>
+<!-- FLOAT BUTTONS -->
+<a href="https://wa.me/919886887482?text=Hello%20KBM" class="whatsapp">💬</a>
+<a href="tel:9886887482" class="call">📞</a>
 
 </body>
 </html>
