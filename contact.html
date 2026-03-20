@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f5f5f5;
+    background: #f4f6f8;
 }
 
 /* HEADER */
@@ -20,62 +20,85 @@ header {
     text-align: center;
 }
 
-/* LAYOUT */
+/* MAIN CONTAINER */
 .container {
     display: flex;
-    flex-wrap: wrap;
     gap: 40px;
-    padding: 40px;
+    padding: 50px;
+    flex-wrap: wrap;
 }
 
-/* FORM */
+/* LEFT FORM CARD */
 .form-box {
     flex: 1;
-    background: white;
+    min-width: 320px;
+    background: #ffffff;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
 .form-box h2 {
     margin-bottom: 20px;
+    color: #2c3e70;
 }
 
+/* INPUTS */
 input, select, textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    border: 1px solid #ccd6dd;
+    font-size: 14px;
 }
 
+/* BUTTON */
 button {
     width: 100%;
-    padding: 15px;
+    padding: 14px;
     background: #2596be;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
+    cursor: pointer;
 }
 
-/* CONTACT INFO */
+button:hover {
+    background: #1b7c9c;
+}
+
+/* RIGHT SIDE */
 .info {
     flex: 1;
+    min-width: 320px;
 }
 
 .info h3 {
-    color: #0b3d91;
+    color: #1b2a57;
+    margin-bottom: 10px;
 }
 
-/* BACK */
-a {
-    display: inline-block;
+.info p {
+    color: #444;
+    margin: 5px 0;
+}
+
+.divider {
+    margin: 30px 0;
+    border-top: 1px solid #ddd;
+}
+
+/* BACK BUTTON */
+.back {
     margin: 20px;
-    text-decoration: none;
+    display: inline-block;
     background: #0b3d91;
     color: white;
     padding: 10px 15px;
     border-radius: 5px;
+    text-decoration: none;
 }
 </style>
 </head>
@@ -88,43 +111,59 @@ a {
 
 <div class="container">
 
-    <!-- FORM -->
-    <form action="https://formsubmit.co/kbmturnkeyprojects@gmail.com" method="POST">
+    <!-- LEFT FORM -->
+    <div class="form-box">
+        <h2>Contact Us</h2>
 
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="text" name="phone" placeholder="Phone Number" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="company" placeholder="Company Name">
-    <input type="text" name="country" placeholder="Country">
+        <form action="https://formsubmit.co/kbmturnkeyprojects@gmail.com" method="POST">
 
-    <select name="source">
-        <option>How did you hear about us?</option>
-        <option>Google</option>
-        <option>Reference</option>
-        <option>Social Media</option>
-    </select>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <input type="email" name="email" placeholder="Work Email" required>
+            <input type="text" name="company" placeholder="Company Name">
+            <input type="text" name="country" placeholder="Country">
 
-    <textarea name="message" rows="4" placeholder="Requirements"></textarea>
+            <select name="source">
+                <option>How did you hear about us?</option>
+                <option>Google</option>
+                <option>Reference</option>
+                <option>Social Media</option>
+            </select>
 
-    <!-- Hidden settings -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_subject" value="New Enquiry from KBM Website">
+            <textarea name="message" rows="4" placeholder="Requirements"></textarea>
 
-    <button type="submit">Send your message</button>
+            <!-- IMPORTANT -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Enquiry from KBM Website">
 
-</form>
+            <button type="submit">Send your message</button>
 
-    <!-- INFO -->
+        </form>
+    </div>
+
+    <!-- RIGHT SIDE INFO -->
     <div class="info">
-        <h3>Contact Details</h3>
+
+        <h3>Want to talk to sales?</h3>
+        <p>Call now to speak with our friendly consultants.</p>
+
+        <p><strong>India:</strong> +91 9901935090</p> 
+        <p><strong>India:</strong> +91 9886887482</p>
+
+        <div class="divider"></div>
+
+        <h3>Need technical assistance?</h3>
+        <p>Expert support at your fingertips.</p>
+
         <p>📞 +91 9886887482</p>
         <p>📧 kbmturnkeyprojects@gmail.com</p>
         <p>📍 Bengaluru, India</p>
+
     </div>
 
 </div>
 
-<a href="index.html">← Back to Home</a>
+<a href="index.html" class="back">← Back to Home</a>
 
 </body>
 </html>
