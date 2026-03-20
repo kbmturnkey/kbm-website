@@ -12,70 +12,40 @@ body {
     background: #f5f5f5;
 }
 
-/* ================= NAVBAR ================= */
+/* NAVBAR (same as office.html) */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 50px;
+    padding: 15px 40px;
     background: white;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
 .logo img {
-    height: 50px;
+    width: 160px;
 }
 
-.menu a {
-    margin: 0 18px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    position: relative;
-}
-
-/* Underline animation */
-.menu a::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #5d7f25;
-    transition: 0.3s;
-    margin: auto;
-}
-
-.menu a:hover::after,
-.menu a.active::after {
-    width: 100%;
-}
-
-/* Right side */
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.phone {
+nav a {
+    margin: 0 15px;
     text-decoration: none;
     color: #333;
     font-weight: 500;
 }
 
-.cta {
+nav a:hover {
+    color: #5d7f25;
+}
+
+.call {
     background: #5d7f25;
     color: white;
-    padding: 8px 18px;
+    padding: 8px 15px;
     border-radius: 5px;
     text-decoration: none;
-}
-
-.cta:hover {
-    background: #4a671d;
 }
 
 /* PAGE HEADER */
@@ -213,7 +183,7 @@ body {
     padding: 5px 8px;
 }
 
-/* BACK */
+/* BACK BUTTON */
 .back {
     display: inline-block;
     margin-top: 30px;
@@ -221,6 +191,7 @@ body {
     color: white;
     padding: 10px 15px;
     text-decoration: none;
+    border-radius: 5px;
 }
 </style>
 </head>
@@ -230,23 +201,21 @@ body {
 <!-- NAVBAR -->
 <header class="navbar">
     <div class="logo">
-        <img src="logo.png">
+        <img src="logo.png" alt="KBM Logo">
     </div>
 
-    <nav class="menu">
+    <nav>
         <a href="index.html">Home</a>
         <a href="index.html#services">Services</a>
-        <a href="construction.html" class="active">Projects</a>
         <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="nav-right">
-        <a href="tel:9886887482" class="phone">📞 +91 9886887482</a>
-        <a href="contact.html" class="cta">Get Quote</a>
+    <div>
+        <a href="tel:9886887482" class="call">📞 +91 9886887482</a>
     </div>
 </header>
 
-<!-- HEADER -->
+<!-- PAGE HEADER -->
 <div class="page-header">
     Construction Services
 </div>
@@ -299,7 +268,7 @@ body {
         <div class="box">
             <div class="box-header">Lump-Sum Contract</div>
             <div class="box-body">
-                Fixed price model ensuring budget certainty.
+                Fixed price model ensuring budget certainty and smooth execution.
             </div>
         </div>
 
@@ -310,7 +279,7 @@ body {
                 <span class="save">SAVE 10%</span>
             </div>
             <div class="box-body">
-                Flexible pricing with transparency and control.
+                Flexible model allowing cost transparency and better control.
             </div>
         </div>
 
