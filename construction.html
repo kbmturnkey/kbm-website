@@ -71,11 +71,25 @@ header {
 
 /* CONTRACT SECTION */
 .contract {
-    background: white;
-    padding: 50px 20px;
+    background: #f2f2f2;
+    padding: 60px 20px;
     text-align: center;
 }
 
+.contract h2 {
+    font-size: 32px;
+}
+
+.contract span {
+    color: #ff5a00;
+}
+
+.subtitle {
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Layout */
 .boxes {
     display: flex;
     gap: 20px;
@@ -83,13 +97,61 @@ header {
     flex-wrap: wrap;
 }
 
+/* Box */
 .box {
+    width: 400px;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Orange Header */
+.box-header {
     background: #ff5a00;
     color: white;
-    padding: 20px;
-    width: 300px;
-    font-size: 20px;
+    padding: 15px;
     font-weight: bold;
+    font-size: 20px;
+    position: relative;
+}
+
+/* Body */
+.box-body {
+    padding: 20px;
+    text-align: left;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* Tags */
+.tag {
+    background: white;
+    color: #ff5a00;
+    font-size: 12px;
+    padding: 3px 6px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.save {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: white;
+    color: #ff5a00;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 3px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #ff5a00;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
     border-radius: 5px;
 }
 
@@ -151,27 +213,49 @@ a {
 
 <!-- CONTRACT -->
 <section class="contract">
-    <h2>Our <span style="color:#ff5a00;">Our Contract Models</span></h2>
+    <h2>Our <span>Contract Models</span></h2>
+    <p class="subtitle">
+        We offer two different Home Construction Contract Models to suit the unique needs and preferences of our clients:
+    </p>
 
     <div class="boxes">
-        <div class="box">
-    <h3>Lump-Sum Contract</h3>
-    <p>
-        With a Lump-Sum or Fixed-Price Contract, we offer a set price for the entire construction project 
-        based on specific material specifications and the agreed scope of work. This model is ideal for 
-        clients who want to know the total project cost upfront and prefer limited involvement during construction. 
-        Once the scope and specifications are finalized, we take full responsibility for completing the project 
-        within the agreed budget.
-    </p>
-         </div>
-               <div class="box">
-    <h3>Cost-Plus Contract</h3>
-    <p>
-The Cost-Plus Contract provides full Transparency, Flexibility, and Potential cost savings by allowing you to pay the actual Construction costs plus a Fixed fee for our Services. This model is ideal for clients who want to be actively involved in selecting materials and making design changes as they need, Ensuring that you only pay for what you need and receive. It also allows for adjustments as the project evolves.
-    </p>
-         </div>
-    </div>
 
+        <!-- Lump Sum -->
+        <div class="box">
+            <div class="box-header">
+                Lump-Sum Contract
+            </div>
+            <div class="box-body">
+                <p>
+                    With a Lump-Sum or Fixed-Price Contract, we offer a set price for the entire construction project 
+                    based on specific material specifications and the agreed scope of work. This model is ideal for 
+                    clients who want to know the total project cost upfront and prefer limited involvement during construction. 
+                    Once the scope and specifications are finalized, we take full responsibility for completing the project 
+                    within the agreed budget.
+                </p>
+            </div>
+        </div>
+
+        <!-- Cost Plus -->
+        <div class="box">
+            <div class="box-header">
+                <span class="tag">NEW</span>
+                Cost-Plus Contract
+                <span class="save">SAVE 10%</span>
+            </div>
+            <div class="box-body">
+                <p>
+                    The Cost-Plus Contract provides full transparency, flexibility, and potential cost savings by allowing 
+                    you to pay the actual construction costs plus a fixed fee for our services. This model is ideal for 
+                    clients who want to be actively involved in selecting materials and making design changes. It ensures 
+                    that you only pay for what you need and allows adjustments as the project evolves.
+                </p>
+
+                <a href="#" class="btn">How It Works?</a>
+            </div>
+        </div>
+
+    </div>
     <a href="index.html">← Back to Home</a>
 </section>
 
