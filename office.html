@@ -12,14 +12,49 @@ body {
     background: linear-gradient(to right, #f0f2f5, #e6ecf5);
 }
 
-/* Header */
-header {
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 160px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #2596be;
+}
+
+.call {
+    background: #2596be;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* HEADER TITLE */
+.page-header {
     background: linear-gradient(90deg, #0b3d91, #1e5ed8);
     color: white;
     padding: 20px;
     text-align: center;
     font-size: 22px;
-    letter-spacing: 1px;
 }
 
 /* Section */
@@ -67,7 +102,7 @@ section {
 }
 
 /* Button */
-a {
+.back {
     display: inline-block;
     margin-top: 30px;
     background: #0b3d91;
@@ -76,18 +111,32 @@ a {
     text-decoration: none;
     border-radius: 6px;
 }
-
-a:hover {
-    background: #062a63;
-}
 </style>
 </head>
 
 <body>
 
-<header>
-    Office Supply
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <img src="logo.png" alt="KBM Logo">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div>
+        <a href="tel:9886887482" class="call">📞 +91 9886887482</a>
+    </div>
 </header>
+
+<!-- PAGE TITLE -->
+<div class="page-header">
+    Office Supply
+</div>
 
 <section>
 
@@ -154,7 +203,7 @@ a:hover {
 
 </div>
 
-<a href="index.html">← Back to Home</a>
+<a href="index.html" class="back">← Back to Home</a>
 
 </section>
 
