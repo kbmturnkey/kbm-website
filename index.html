@@ -1,78 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBM Turnkey Projects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KBM Turnkey Projects</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
 
-        header {
-            background: #ffffff;
-            text-align: center;
-            padding: 20px;
-            border-bottom: 3px solid #0b3d91;
-        }
+/* Header */
+header {
+    background: #ffffff;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 3px solid #0b3d91;
+}
+header img {
+    width: 220px;
+}
 
-        header img {
-            width: 250px;
-        }
+/* Navigation */
+nav {
+    background: #0b3d91;
+    padding: 12px;
+    text-align: center;
+}
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav a:hover {
+    color: #ffd700;
+}
 
-        nav {
-            background: #0b3d91;
-            padding: 10px;
-            text-align: center;
-        }
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(11,61,145,0.8), rgba(11,61,145,0.8)),
+    url('https://images.unsplash.com/photo-1503387762-592deb58ef4e');
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+.hero h1 {
+    font-size: 36px;
+}
+.hero p {
+    font-size: 18px;
+}
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+/* Section */
+section {
+    padding: 30px;
+}
 
-        nav a:hover {
-            color: #ffd700;
-        }
+/* Cards */
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 
-        section {
-            padding: 30px;
-        }
+/* Footer */
+footer {
+    background: #0b3d91;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
+/* WhatsApp Button */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 20px;
+}
 
-        footer {
-            background: #0b3d91;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
+/* Call Button */
+.call-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: #0b3d91;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 18px;
+}
 
-        .watermark {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            opacity: 0.3;
-            font-size: 12px;
-        }
-    </style>
+/* Watermark */
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    opacity: 0.3;
+    font-size: 12px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <img src="logo.png" alt="KBM Turnkey Projects Logo">
+    <img src="logo.png" alt="KBM Logo">
 </header>
 
 <nav>
@@ -81,37 +125,49 @@
     <a href="#">Contact</a>
 </nav>
 
+<div class="hero">
+    <h1>KBM Turnkey Projects</h1>
+    <p>Complete Interior & Turnkey Solutions</p>
+</div>
+
 <section>
 
-    <div class="card">
-        <h2>About Us</h2>
-        <p>
-            KBM Turnkey Projects provides complete interior and turnkey solutions, 
-            delivering quality execution with reliability and cost efficiency.
-        </p>
-    </div>
+<div class="card">
+    <h2>About Us</h2>
+    <p>
+        KBM Turnkey Projects delivers high-quality interior and turnkey solutions 
+        with reliability, efficiency, and customer satisfaction.
+    </p>
+</div>
 
-    <div class="card">
-        <h2>Our Services</h2>
-        <ul>
-            <li>Turnkey Interior Projects</li>
-            <li>Commercial & Residential Interiors</li>
-            <li>Electrical & AC Installation</li>
-            <li>Project Management</li>
-        </ul>
-    </div>
+<div class="card">
+    <h2>Our Services</h2>
+    <ul>
+        <li>Turnkey Interior Projects</li>
+        <li>Commercial & Residential Interiors</li>
+        <li>Electrical & AC Installation</li>
+        <li>Project Management</li>
+    </ul>
+</div>
 
-    <div class="card">
-        <h2>Contact Us</h2>
-        <p>Email: kbmprojects@email.com</p>
-        <p>Phone: +91 XXXXX XXXXX</p>
-    </div>
+<div class="card">
+    <h2>Contact Us</h2>
+    <p>Email: kbmturnkeyprojects@gmail.com</p>
+    <p>Phone: +91 9886887482</p>
+</div>
 
 </section>
 
 <footer>
     <p>© 2026 KBM Turnkey Projects</p>
 </footer>
+
+<!-- WhatsApp Chat -->
+<a href="https://wa.me/919886887482?text=Hello%20KBM%20Turnkey%20Projects,%20I%20am%20interested%20in%20your%20services" 
+class="whatsapp" target="_blank">💬</a>
+
+<!-- Call Button -->
+<a href="tel:9886887482" class="call-btn">📞</a>
 
 <div class="watermark">
     Designed By KBM Turnkey Projects
