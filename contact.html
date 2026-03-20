@@ -89,26 +89,30 @@ a {
 <div class="container">
 
     <!-- FORM -->
-    <div class="form-box">
-        <h2>Contact Us</h2>
+    <form action="https://formsubmit.co/kbmturnkeyprojects@gmail.com" method="POST">
 
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Phone Number">
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Company Name">
-        <input type="text" placeholder="Country">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="company" placeholder="Company Name">
+    <input type="text" name="country" placeholder="Country">
 
-        <select>
-            <option>How did you hear about us?</option>
-            <option>Google</option>
-            <option>Reference</option>
-            <option>Social Media</option>
-        </select>
+    <select name="source">
+        <option>How did you hear about us?</option>
+        <option>Google</option>
+        <option>Reference</option>
+        <option>Social Media</option>
+    </select>
 
-        <textarea rows="4" placeholder="Requirements"></textarea>
+    <textarea name="message" rows="4" placeholder="Requirements"></textarea>
 
-        <button>Send your message</button>
-    </div>
+    <!-- Hidden settings -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Enquiry from KBM Website">
+
+    <button type="submit">Send your message</button>
+
+</form>
 
     <!-- INFO -->
     <div class="info">
