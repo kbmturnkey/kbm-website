@@ -6,108 +6,187 @@
 <title>Office Supplies</title>
 
 <style>
-body {margin:0;font-family:'Segoe UI';background:#f5f7fb;}
+
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fb;
+}
 
 /* ===== NAVBAR ===== */
 .navbar {
-display:flex;justify-content:space-between;align-items:center;
-padding:12px 40px;background:white;
-box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 40px;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
 .logo img {height:55px;}
 
 .menu {display:flex;gap:30px;}
-.menu a {text-decoration:none;color:#333;font-weight:500;}
+.menu a {
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
 
 .right-section {
-display:flex;align-items:center;gap:20px;
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
 /* CART */
 .cart {
-position:relative;
-text-decoration:none;
-font-weight:bold;
-background:#f1f3f7;
-padding:8px 14px;
-border-radius:8px;
+    position:relative;
+    background:#f1f3f7;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
-/* RED BADGE */
+/* CART BADGE */
 #cartCount {
-background:red;
-color:white;
-border-radius:50%;
-padding:3px 7px;
-font-size:12px;
-position:absolute;
-top:-8px;
-right:-8px;
+    background:red;
+    color:white;
+    border-radius:50%;
+    padding:3px 7px;
+    font-size:12px;
+    position:absolute;
+    top:-8px;
+    right:-8px;
 }
 
 /* ANIMATION */
-.bounce {
-animation:bounce 0.5s;
-}
-
+.bounce {animation:bounce 0.4s;}
 @keyframes bounce {
-0% {transform:scale(1);}
-50% {transform:scale(1.3);}
-100% {transform:scale(1);}
+0%{transform:scale(1);}
+50%{transform:scale(1.3);}
+100%{transform:scale(1);}
 }
 
 /* PHONE */
 .contact-btn {
-background:#6c8f2e;color:white;
-padding:10px 16px;border-radius:6px;
+    background:#6c8f2e;
+    color:white;
+    padding:10px 16px;
+    border-radius:6px;
 }
 
 /* TITLE */
 .page-title {
-background:linear-gradient(to right,#1e4db7,#2f6be0);
-color:white;text-align:center;
-padding:15px;font-size:22px;
+    background:linear-gradient(to right,#1e4db7,#2f6be0);
+    color:white;
+    text-align:center;
+    padding:15px;
+    font-size:22px;
 }
 
 /* LAYOUT */
-.container {display:flex;padding:20px;gap:20px;}
-
-.filter {
-width:260px;background:white;
-padding:20px;border-radius:12px;
+.container {
+    display:flex;
+    padding:20px;
+    gap:20px;
 }
 
+/* FILTER */
+.filter {
+    width:260px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+.filter select {
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+}
+
+/* PRODUCTS */
 .products {flex:1;}
 
-.shop input {
-width:100%;padding:10px;border-radius:8px;
-border:1px solid #ddd;
+/* SEARCH */
+.shop {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.search-box {
+    position:relative;
+}
+
+.search-box input {
+    width:250px;
+    padding:8px 30px 8px 10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+.search-box span {
+    position:absolute;
+    right:8px;
+    top:6px;
+}
+
+/* COUNT */
+.count {
+    font-size:14px;
+    color:#555;
 }
 
 /* GRID */
 .grid {
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
 }
 
 /* CARD */
 .card {
-background:white;padding:15px;border-radius:15px;
-text-align:center;
-box-shadow:0 6px 15px rgba(0,0,0,0.08);
-transition:0.3s;
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
 }
 
-.card:hover {transform:translateY(-5px);}
+.card:hover {
+    transform:translateY(-5px);
+}
 
-.card img {height:140px;width:100%;object-fit:contain;}
+.card img {
+    height:140px;
+    width:100%;
+    object-fit:contain;
+}
+
+.price {color:#1e4db7;font-weight:bold;}
+.total {color:green;}
 
 button {
-margin-top:10px;padding:8px;border:none;
-background:#1e4db7;color:white;border-radius:6px;
-cursor:pointer;
+    margin-top:10px;
+    padding:8px;
+    border:none;
+    background:#1e4db7;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* EMPTY */
+.empty {
+    text-align:center;
+    padding:40px;
+    color:#888;
 }
 
 </style>
@@ -115,12 +194,8 @@ cursor:pointer;
 
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
-
-<div class="logo">
-<img src="logo.png">
-</div>
+<div class="logo"><img src="logo.png"></div>
 
 <nav class="menu">
 <a href="index.html">Home</a>
@@ -129,17 +204,12 @@ cursor:pointer;
 </nav>
 
 <div class="right-section">
-
 <a href="officecart.html" class="cart">
 🛒 Cart <span id="cartCount">0</span>
 </a>
 
-<div class="contact-btn">
-📞 +91 9886887482
+<div class="contact-btn">📞 +91 9886887482</div>
 </div>
-
-</div>
-
 </header>
 
 <div class="page-title">Office Supplies & Stationery</div>
@@ -152,14 +222,21 @@ cursor:pointer;
 <select id="category" onchange="loadSub()"></select>
 
 <select id="sub" onchange="renderItems()">
-<option>Select</option>
+<option value="">Sub Category</option>
 </select>
 </div>
 
 <div class="products">
 
 <div class="shop">
+
+<div class="search-box">
 <input type="text" id="search" placeholder="Search..." onkeyup="renderItems()">
+<span>🔍</span>
+</div>
+
+<div class="count" id="count"></div>
+
 </div>
 
 <div class="grid" id="grid"></div>
@@ -173,7 +250,7 @@ cursor:pointer;
 let data = [];
 let cartKey = "officecart";
 
-/* LOAD JSON */
+/* LOAD */
 fetch('./office.json')
 .then(res=>res.json())
 .then(json=>{
@@ -187,13 +264,12 @@ updateCartCount();
 function updateCartCount(){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 let count = cart.reduce((a,b)=>a+(b.qty||1),0);
-let el = document.getElementById("cartCount");
 
+let el = document.getElementById("cartCount");
 el.innerText = count;
 
-/* ANIMATION */
 el.classList.add("bounce");
-setTimeout(()=>el.classList.remove("bounce"),500);
+setTimeout(()=>el.classList.remove("bounce"),400);
 }
 
 /* CATEGORY */
@@ -206,13 +282,14 @@ category.innerHTML+=`<option value="${cat}">${cat}</option>`;
 });
 }
 
-/* SUBCATEGORY */
+/* SUB */
 function loadSub(){
 let filtered = data.filter(d=>d.category===category.value);
 
 let unique = [...new Set(filtered.map(d=>d.subcategory))];
 
 sub.innerHTML='<option value="">Sub Category</option>';
+
 unique.forEach(s=>{
 sub.innerHTML+=`<option value="${s}">${s}</option>`;
 });
@@ -225,15 +302,28 @@ function renderItems(){
 
 let search = document.getElementById("search").value.toLowerCase();
 
-let filtered = data.filter(d=>d.name.toLowerCase().includes(search));
+let filtered = data;
 
-if(category.value)
+if(search){
+filtered = filtered.filter(d=>d.name.toLowerCase().includes(search));
+}
+
+if(category.value){
 filtered = filtered.filter(d=>d.category===category.value);
+}
 
-if(sub.value)
+if(sub.value){
 filtered = filtered.filter(d=>d.subcategory===sub.value);
+}
+
+document.getElementById("count").innerText = filtered.length + " items";
 
 grid.innerHTML="";
+
+if(filtered.length === 0){
+grid.innerHTML = "<div class='empty'>No products found</div>";
+return;
+}
 
 filtered.forEach(item=>{
 
@@ -246,15 +336,15 @@ grid.innerHTML+=`
 <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
 <h4>${item.name}</h4>
 <p>${item.description}</p>
-<p>₹${price} + GST ₹${gst}</p>
-<b>Total ₹${total}</b>
+<p class="price">₹${price}</p>
+<p class="total">Total ₹${total}</p>
 <button onclick="addToCart('${item.name}',${total})">Add to Cart</button>
 </div>
 `;
 });
 }
 
-/* ADD TO CART */
+/* ADD CART */
 function addToCart(name,price){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
@@ -270,7 +360,6 @@ cart.push({name,price,qty:1});
 localStorage.setItem(cartKey,JSON.stringify(cart));
 
 updateCartCount();
-
 }
 
 </script>
