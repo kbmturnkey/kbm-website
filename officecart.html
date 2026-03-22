@@ -53,14 +53,14 @@ body {
     grid-template-columns:1fr;
 }
 
-/* LEFT */
+/* CART BOX */
 .cart-items {
     background:white;
     border-radius:12px;
     padding:20px;
 }
 
-/* ===== FLIPKART ITEM ===== */
+/* ITEM */
 .item {
     display:grid;
     grid-template-columns:100px 1fr 120px 120px;
@@ -78,23 +78,13 @@ body {
 }
 
 /* DETAILS */
-.item-details h4 {
-    margin:0;
-    font-size:16px;
-}
+.item-details h4 {margin:0;}
+.desc {font-size:13px;color:#777;}
 
-.desc {
-    font-size:13px;
-    color:#777;
-    margin:5px 0;
-}
-
-/* REMOVE */
 .remove {
-    font-size:13px;
     color:#2874f0;
     cursor:pointer;
-    font-weight:500;
+    font-size:13px;
 }
 
 /* QTY */
@@ -110,7 +100,6 @@ body {
     border-radius:50%;
     border:1px solid #ccc;
     background:white;
-    cursor:pointer;
 }
 
 /* PRICE */
@@ -125,10 +114,9 @@ body {
 
 .item-price span {
     color:#388e3c;
-    font-size:14px;
 }
 
-/* ===== SUMMARY ===== */
+/* SUMMARY */
 .summary {
     background:white;
     border-radius:12px;
@@ -138,7 +126,6 @@ body {
 .row {
     display:flex;
     justify-content:space-between;
-    margin:8px 0;
 }
 
 .total {
@@ -154,7 +141,6 @@ body {
     border:none;
     border-radius:6px;
     margin-top:10px;
-    cursor:pointer;
 }
 
 .clear-btn {
@@ -165,7 +151,6 @@ body {
     color:white;
     border:none;
     border-radius:6px;
-    cursor:pointer;
 }
 
 .back {
@@ -173,53 +158,44 @@ body {
     margin-top:10px;
     text-align:center;
     color:#2874f0;
-    text-decoration:none;
 }
 
-/* ===== EMPTY CART ===== */
+/* EMPTY */
 .empty-wrapper {
     text-align:center;
     padding:50px;
 }
 
-.empty-card img {
+.empty-wrapper img {
     width:120px;
 }
 
-.shop-btn {
-    padding:12px 25px;
-    background:#2874f0;
-    color:white;
-    border:none;
-    border-radius:8px;
-}
-
-/* ===== RECOMMENDED ===== */
+/* RECOMMENDED */
 .recommend {
-    margin-top:40px;
+    margin-top:30px;
 }
 
 .recommend-grid {
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:15px;
 }
 
 .re-card {
     background:white;
     padding:15px;
-    border-radius:12px;
+    border-radius:10px;
     text-align:center;
 }
 
 .re-card img {
-    height:100px;
+    height:80px;
 }
 
 .re-card button {
-    margin-top:10px;
+    margin-top:8px;
     padding:8px;
-    background:#2874f0;
+    background:#6c8f2e;
     color:white;
     border:none;
     border-radius:6px;
@@ -237,11 +213,13 @@ body {
 
 <div class="navbar">
 <div class="logo"><img src="logo.png"></div>
+
 <div class="menu">
 <a href="#">Home</a>
-<a href="index.html#services">Services</a>
+<a href="#">Services</a>
 <a href="#">Contact</a>
 </div>
+
 <div class="contact-btn">📞 +91 9886887482</div>
 </div>
 
@@ -258,13 +236,13 @@ const cartKey = "officecart";
 
 /* RECOMMENDED */
 const recommended = [
-{name:"A4 Paper", price:120},
-{name:"Stapler", price:250},
-{name:"Notebook", price:150},
-{name:"Pen Set", price:90}
+{name:"A4 Paper", price:120, img:"https://via.placeholder.com/100"},
+{name:"Stapler", price:250, img:"https://via.placeholder.com/100"},
+{name:"Notebook", price:150, img:"https://via.placeholder.com/100"},
+{name:"Pen Set", price:90, img:"https://via.placeholder.com/100"}
 ];
 
-/* LOAD */
+/* LOAD CART */
 function loadCart(){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
@@ -280,6 +258,7 @@ document.getElementById("items").innerHTML = `
 <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png">
 <h2>Your cart is empty</h2>
 <p>Add items to get started</p>
+
 <a href="office.html">
 <button class="shop-btn">← Continue Shopping</button>
 </a>
@@ -289,9 +268,10 @@ document.getElementById("items").innerHTML = `
 <div class="recommend-grid">
 ${recommended.map(p=>`
 <div class="re-card">
+<img src="${p.img}">
 <h4>${p.name}</h4>
 <p>₹${p.price}</p>
-<button onclick="addToCart('${p.name}',${p.price})">Add</button>
+<button onclick="addToCart('${p.name}',${p.price},'${p.img}')">Add</button>
 </div>`).join("")}
 </div>
 </div>
@@ -306,18 +286,19 @@ return;
 container.classList.remove("empty-mode");
 document.getElementById("summary").style.display="block";
 
-let itemsHTML="";
+let html="";
 let total=0;
 
 cart.forEach((item,i)=>{
+
 let sub=item.price*item.qty;
 total+=sub;
 
-itemsHTML+=`
+html+=`
 <div class="item">
 
 <div class="item-img">
-<img src="https://via.placeholder.com/90">
+<img src="${item.img || 'https://via.placeholder.com/90'}">
 </div>
 
 <div class="item-details">
@@ -341,12 +322,12 @@ itemsHTML+=`
 `;
 });
 
-document.getElementById("items").innerHTML=itemsHTML;
+document.getElementById("items").innerHTML = html;
 
 /* SUMMARY */
-let gst=Math.round(total*0.18);
+let gst = Math.round(total * 0.18);
 
-document.getElementById("summary").innerHTML=`
+document.getElementById("summary").innerHTML = `
 <h3>Price Details</h3>
 <div class="row"><span>Subtotal</span><span>₹${total}</span></div>
 <div class="row"><span>GST</span><span>₹${gst}</span></div>
@@ -358,36 +339,52 @@ document.getElementById("summary").innerHTML=`
 `;
 }
 
-/* FUNCTIONS */
-function addToCart(name,price){
-let cart=JSON.parse(localStorage.getItem(cartKey))||[];
-let f=cart.find(i=>i.name===name);
-if(f) f.qty++;
-else cart.push({name,price,qty:1});
-localStorage.setItem(cartKey,JSON.stringify(cart));
+/* ADD */
+function addToCart(name,price,img){
+
+let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+let f = cart.find(i => i.name === name);
+
+if(f){
+    f.qty++;
+}else{
+    cart.push({name,price,img,qty:1});
+}
+
+localStorage.setItem(cartKey, JSON.stringify(cart));
 loadCart();
 }
 
+/* CHANGE QTY */
 function changeQty(i,c){
-let cart=JSON.parse(localStorage.getItem(cartKey))||[];
-cart[i].qty+=c;
-if(cart[i].qty<=0) cart.splice(i,1);
-localStorage.setItem(cartKey,JSON.stringify(cart));
+let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+cart[i].qty += c;
+
+if(cart[i].qty <= 0){
+    cart.splice(i,1);
+}
+
+localStorage.setItem(cartKey, JSON.stringify(cart));
 loadCart();
 }
 
+/* DELETE */
 function deleteItem(i){
-let cart=JSON.parse(localStorage.getItem(cartKey))||[];
+let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 cart.splice(i,1);
-localStorage.setItem(cartKey,JSON.stringify(cart));
+localStorage.setItem(cartKey, JSON.stringify(cart));
 loadCart();
 }
 
+/* CLEAR */
 function clearCart(){
 localStorage.removeItem(cartKey);
 loadCart();
 }
 
+/* INIT */
 loadCart();
 
 </script>
