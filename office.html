@@ -187,6 +187,21 @@ body {
     transition:0.4s;
 }
 
+.cart {
+    position: relative;
+    background: #f1f3f7;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.cart:hover {
+    background: #e0e3ea;
+}
+
 /* MOBILE */
 @media(max-width:768px){
 .container {flex-direction:column;}
@@ -208,7 +223,9 @@ body {
 </nav>
 
 <div class="right-section">
-<div class="cart">🛒 Cart <span id="cartCount">0</span></div>
+<a href="officecart.html" class="cart">
+    🛒 Cart <span id="cartCount">0</span>
+</a>
 </div>
 </header>
 
