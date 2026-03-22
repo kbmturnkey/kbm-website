@@ -41,8 +41,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-
-    flex-wrap: nowrap; /* prevent breaking */
+    flex-wrap: nowrap; /* prevents cart going down */
 }
 
 .logo img {height:55px;}
@@ -203,27 +202,31 @@ width: 100%;
 }
 
 .cart {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 
-    padding: 8px 12px;
-    border-radius: 20px;
     background: #f1f3f7;
+    padding: 8px 16px;
+    border-radius: 12px;
 
-    white-space: nowrap; /* IMPORTANT */
-    flex-shrink: 0; /* prevents going down */
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+
+    white-space: nowrap; /* prevent break */
 }
 
 /* FIX ICON */
 .cart-icon {
     font-size: 18px;
-    line-height: 1;
 }
 
 /* TEXT */
 .cart-text {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* BADGE */
@@ -235,9 +238,14 @@ width: 100%;
     background: red;
     color: white;
 
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: bold;
+
     padding: 3px 6px;
     border-radius: 50%;
+
+    min-width: 18px;
+    text-align: center;
 }
 
 /* MOBILE */
@@ -263,7 +271,9 @@ width: 100%;
         </nav>
 
         <a href="officecart.html" class="cart">
-            🛒 Cart <span id="cartCount">0</span>
+            <span class="cart-icon">🛒</span>
+            <span class="cart-icon">🛒</span>
+            <span class="cart-text">Cart</span>
         </a>
  </div>
 </header>
