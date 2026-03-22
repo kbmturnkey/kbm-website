@@ -3,207 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Office Supply - KBM</title>
+<title>Office Supplies - KBM</title>
 
 <style>
+
+/* ===== GLOBAL ===== */
 body {
-    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    background: linear-gradient(to right, #f0f2f5, #e6ecf5);
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7fb;
 }
 
-/* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
+/* ===== HEADER ===== */
+.header {
     background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    padding: 15px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.logo img {
-    width: 160px;
-}
-
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-}
-
-nav a:hover {
-    color: #2596be;
-}
-
-.call {
-    background: #2596be;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-/* HEADER TITLE */
-.page-header {
-    background: linear-gradient(90deg, #0b3d91, #1e5ed8);
-    color: white;
+/* ===== CONTAINER ===== */
+.container {
+    display: flex;
     padding: 20px;
-    text-align: center;
-    font-size: 22px;
+    gap: 20px;
 }
 
-/* Section */
-section {
-    padding: 40px;
+/* ===== FILTER PANEL ===== */
+.filter {
+    width: 260px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Grid */
+.filter h3 {
+    margin-bottom: 15px;
+}
+
+.filter label {
+    font-size: 14px;
+    color: #555;
+}
+
+.filter select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.clear-btn {
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: right;
+}
+
+/* ===== PRODUCT SECTION ===== */
+.products {
+    flex: 1;
+}
+
+/* ===== SHOP DROPDOWN ===== */
+.shop-dropdown {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+/* ===== GRID ===== */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
 }
 
-/* Card */
+/* ===== CARD ===== */
 .card {
     background: white;
-    padding: 15px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
-/* Image */
 .card img {
+    height: 140px;
     width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
+    object-fit: contain;
 }
 
-/* Text */
-.card h3 {
-    margin: 12px 0;
+.card h4 {
+    margin-top: 10px;
+    font-size: 16px;
 }
 
-.card p {
-    margin: 5px 0;
-    color: #555;
-    font-size: 14px;
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .filter {
+        width: 100%;
+    }
 }
 
-/* Button */
-.back {
-    display: inline-block;
-    margin-top: 30px;
-    background: #0b3d91;
-    color: white;
-    padding: 10px 18px;
-    text-decoration: none;
-    border-radius: 6px;
-}
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">
-        <img src="logo.png" alt="KBM Logo">
+<div class="header">Office Supplies & Stationery</div>
+
+<div class="container">
+
+    <!-- FILTER -->
+    <div class="filter">
+        <h3>Filter <span class="clear-btn" onclick="clearFilter()">Clear All</span></h3>
+
+        <label>Category</label>
+        <select id="category" onchange="loadSub()">
+            <option value="">Select</option>
+            <option value="writing">Writing</option>
+            <option value="paper">Paper</option>
+            <option value="desk">Desk</option>
+        </select>
+
+        <label>Sub Category</label>
+        <select id="sub" onchange="renderItems()">
+            <option value="">Select</option>
+        </select>
     </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+    <!-- PRODUCTS -->
+    <div class="products">
 
-    <div>
-        <a href="tel:9886887482" class="call">📞 +91 9886887482</a>
-    </div>
-</header>
+        <div class="shop-dropdown">Shop by Category ⌄</div>
 
-<!-- PAGE TITLE -->
-<div class="page-header">
-    Office Supply
-</div>
+        <div class="grid" id="grid"></div>
 
-<section>
-
-<div class="grid">
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=800&q=60">
-        <h3>Clips, Tacks & Rubber Bands</h3>
-        <p>Binder Clips</p>
-        <p>Rubber Bands</p>
-        <p>Paper Clips</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=60">
-        <h3>Tape, Glue & Adhesives</h3>
-        <p>Invisible Tapes</p>
-        <p>Glue Dispensers</p>
-        <p>All-Purpose Glues</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1604908176997-4317a2c4caa3?auto=format&fit=crop&w=800&q=60">
-        <h3>Scissors, Rulers & Cutters</h3>
-        <p>Scissors</p>
-        <p>Utility Knives</p>
-        <p>Rulers</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=60">
-        <h3>Stapler Accessories</h3>
-        <p>Staples</p>
-        <p>Staple Removers</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=60">
-        <h3>Indexing Flags & Tabs</h3>
-        <p>Flags</p>
-        <p>Page Markers</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1581091012184-5c8f3c2d1d8c?auto=format&fit=crop&w=800&q=60">
-        <h3>Stamps & Accessories</h3>
-        <p>Pre-inked Stamps</p>
-        <p>Stamp Pads</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=60">
-        <h3>Badges & Holders</h3>
-        <p>Name Badges</p>
-        <p>Card Holders</p>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=800&q=60">
-        <h3>Clocks</h3>
-        <p>Wall Clocks</p>
-        <p>Desk Clocks</p>
     </div>
 
 </div>
 
-</section>
+<script>
+
+const data = {
+    writing: [
+        {name: "Ball Pens", img: "https://m.media-amazon.com/images/I/61qQ1Qp6WLL._SX679_.jpg"},
+        {name: "Pencils", img: "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"},
+        {name: "Highlighters", img: "https://m.media-amazon.com/images/I/71X3g3h6u0L._SX679_.jpg"}
+    ],
+    paper: [
+        {name: "A4 Paper", img: "https://m.media-amazon.com/images/I/81r6zJ2r8XL._SX679_.jpg"},
+        {name: "Notebook", img: "https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"},
+        {name: "Sticky Notes", img: "https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"}
+    ],
+    desk: [
+        {name: "Stapler", img: "https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"},
+        {name: "Scissors", img: "https://m.media-amazon.com/images/I/71u9RZLhYPL._SX679_.jpg"},
+        {name: "Calculator", img: "https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"}
+    ]
+};
+
+function loadSub() {
+    const cat = document.getElementById("category").value;
+    const sub = document.getElementById("sub");
+
+    sub.innerHTML = '<option value="">Select</option>';
+
+    if (cat) {
+        data[cat].forEach((item, i) => {
+            sub.innerHTML += `<option value="${i}">${item.name}</option>`;
+        });
+    }
+
+    renderItems();
+}
+
+function renderItems() {
+    const cat = document.getElementById("category").value;
+    const sub = document.getElementById("sub").value;
+    const grid = document.getElementById("grid");
+
+    grid.innerHTML = "";
+
+    if (!cat) return;
+
+    let items = data[cat];
+
+    if (sub !== "") {
+        items = [items[sub]];
+    }
+
+    items.forEach(item => {
+        grid.innerHTML += `
+            <div class="card">
+                <img src="${item.img}">
+                <h4>${item.name}</h4>
+            </div>
+        `;
+    });
+}
+
+function clearFilter() {
+    document.getElementById("category").value = "";
+    document.getElementById("sub").innerHTML = '<option>Select</option>';
+    document.getElementById("grid").innerHTML = "";
+}
+
+</script>
 
 </body>
 </html>
