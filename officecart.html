@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+
+<style>
+body {font-family:Arial;background:#f5f7fb;padding:20px;}
+
+.box {
+background:white;padding:20px;border-radius:10px;
+max-width:700px;margin:auto;
+}
+
+.item {
+display:flex;justify-content:space-between;
+align-items:center;
+padding:10px;border-bottom:1px solid #eee;
+}
+
+.qty-btn {padding:5px 10px;margin:2px;}
+
+.remove {background:red;color:white;border:none;}
+
+button {
+margin-top:10px;padding:10px;width:100%;
+background:#1e4db7;color:white;border:none;
+}
+
+.total {font-weight:bold;margin-top:20px;}
+</style>
+
+</head>
+
+<body>
+
+<h2 align="center">🛒 Cart</h2>
+
+<div class="box" id="cartBox"></div>
+
+<script>
+
+function loadCart(){
+
+let cart = JSON.parse(localStorage.getItem("officecart")) || [];
+
+let total = 0;
+let html = "";
+
+cart.forEach((item,i)=>{
+
+let sub = item.price * item.qty;
+total += sub;
+
+html += `
+<div class="item">
+<div>
+<b>${item.name}</b><br>
+₹${item.price} x ${item.qty} = ₹${sub}
+</div>
+
+<div>
+<button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+<button class="qty-btn" onclick="changeQty(${i},-1)">-</button>
+<button class="remove" onclick="removeItem(${i})">❌</button>
+</div>
+</div>
+`;
+});
+
+html += `<div class="total">Total: ₹${total}</div>
+
+<button onclick="sendWhatsApp()">Send to WhatsApp</button>
+<button onclick="sendEmail()">Send to Email</button>
+`;
+
+document.getElementById("cartBox").innerHTML = html;
+}
+
+/* QTY */
+function changeQty(i,change){
+let cart = JSON.parse(localStorage.getItem("officecart")) || [];
+
+cart[i].qty += change;
+
+if(cart[i].qty <= 0){
+cart.splice(i,1);
+}
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+loadCart();
+}
+
+/* REMOVE */
+function removeItem(i){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.splice(i,1);
+localStorage.setItem("cart",JSON.stringify(cart));
+loadCart();
+}
+
+/* WHATSAPP */
+function sendWhatsApp(){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let msg = "Order Details:%0A";
+let total = 0;
+
+cart.forEach(item=>{
+let sub = item.price * item.qty;
+total += sub;
+msg += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}%0A`;
+});
+
+msg += `%0ATotal: ₹${total}`;
+
+window.open(`https://wa.me/919886887482?text=${msg}`);
+}
+
+/* EMAIL */
+function sendEmail(){
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+let body = "Order Details:\n";
+let total = 0;
+
+cart.forEach(item=>{
+let sub = item.price * item.qty;
+total += sub;
+body += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}\n`;
+});
+
+body += `\nTotal: ₹${total}`;
+
+window.location.href =
+`mailto:your@email.com?subject=Order&body=${body}`;
+}
+
+loadCart();
+
+</script>
+
+</body>
+</html>
