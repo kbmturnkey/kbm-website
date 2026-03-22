@@ -99,6 +99,12 @@ body {
 .card h4 {
     margin-top: 10px;
 }
+.desc {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    min-height: 40px;
+}
 
 /* MOBILE */
 @media(max-width:768px){
@@ -200,6 +206,7 @@ function renderItems() {
             <div class="card">
                 <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
                 <h4>${item.name}</h4>
+                <p class="desc">${item.description || ""}</p>
             </div>
         `;
     });
