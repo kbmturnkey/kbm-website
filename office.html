@@ -46,7 +46,6 @@ body {
     position: relative;
 }
 
-/* hover */
 .menu a::after {
     content: "";
     position: absolute;
@@ -57,6 +56,7 @@ body {
     background: #6c8f2e;
     transition: 0.3s;
 }
+
 .menu a:hover::after { width: 100%; }
 
 .contact-btn {
@@ -74,6 +74,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
 }
+
 #cartCount {
     position: absolute;
     top: -5px;
@@ -103,6 +104,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 8px 0;
+    font-size: 14px;
 }
 
 .cart-item span {
@@ -144,9 +146,15 @@ body {
     border-radius: 12px;
 }
 
+.filter select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
 .clear-btn {
     margin-top: 10px;
-    background: red;
+    background: #ff4d4f;
     color: white;
     padding: 10px;
     border: none;
@@ -169,25 +177,32 @@ body {
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    gap: 25px;
 }
 
 /* CARD */
 .card {
     background: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 14px;
     text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
 }
 
-.card img { height: 120px; }
+.card img {
+    height: 140px;
+    object-fit: contain;
+}
 
 .card button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
     background: #6c8f2e;
     color: white;
     border: none;
-    padding: 8px;
+    border-radius: 6px;
 }
 
 /* MOBILE */
@@ -200,6 +215,7 @@ body {
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
 <div class="logo"><img src="logo.png"></div>
 
@@ -230,8 +246,11 @@ body {
 <!-- FILTER -->
 <div class="filter">
 <h3>Filter</h3>
-<select id="category" onchange="renderItems()"></select>
-<button class="clear-btn" onclick="clearFilters()">Clear</button>
+
+<select id="category" onchange="loadSub()"></select>
+<select id="sub" onchange="renderItems()" style="display:none;"></select>
+
+<button class="clear-btn" onclick="clearFilters()">Clear Filters</button>
 </div>
 
 <!-- PRODUCTS -->
@@ -256,7 +275,7 @@ body {
 let data=[];
 const cartKey="officecart";
 
-/* LOAD DATA */
+/* LOAD */
 fetch('./office.json')
 .then(res=>res.json())
 .then(json=>{
@@ -269,15 +288,41 @@ updateCartCount();
 /* CATEGORY */
 function loadCategories(){
 let unique=[...new Set(data.map(d=>d.category))];
-category.innerHTML='<option value="">All</option>';
+category.innerHTML='<option value="">Select Category</option>';
 unique.forEach(c=>{
 category.innerHTML+=`<option>${c}</option>`;
 });
 }
 
-/* FILTER */
+/* SUB */
+function loadSub(){
+let cat=category.value;
+
+if(!cat){
+sub.style.display="none";
+renderItems();
+return;
+}
+
+sub.style.display="block";
+
+let filtered=data.filter(d=>d.category===cat);
+let unique=[...new Set(filtered.map(d=>d.subcategory))];
+
+sub.innerHTML='<option value="">Select Sub Category</option>';
+
+unique.forEach(s=>{
+sub.innerHTML+=`<option>${s}</option>`;
+});
+
+renderItems();
+}
+
+/* CLEAR */
 function clearFilters(){
 category.value="";
+sub.style.display="none";
+sub.innerHTML="";
 search.value="";
 renderItems();
 }
@@ -285,10 +330,11 @@ renderItems();
 /* RENDER */
 function renderItems(){
 
-let searchText=document.getElementById("search").value.toLowerCase();
+let searchText=search.value.toLowerCase();
 
 let filtered=data.filter(d=>{
 return (!category.value || d.category===category.value) &&
+(!sub.value || d.subcategory===sub.value) &&
 d.name.toLowerCase().includes(searchText);
 });
 
@@ -296,22 +342,26 @@ count.innerText=filtered.length+" Items";
 grid.innerHTML="";
 
 filtered.forEach(item=>{
+
+let price=Math.floor(Math.random()*500)+100;
+
 grid.innerHTML+=`
 <div class="card">
-<img src="${item.img}">
+<img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
 <h4>${item.name}</h4>
-<button onclick="addToCart('${item.name}')">Add</button>
+<button onclick="addToCart('${item.name}', ${price}, '${item.img}')">Add to Cart</button>
 </div>`;
 });
 }
 
-/* ADD TO CART */
-function addToCart(name){
-let cart=JSON.parse(localStorage.getItem(cartKey))||[];
-let item=cart.find(i=>i.name===name);
+/* ADD */
+function addToCart(name, price, img){
 
-if(item) item.qty++;
-else cart.push({name,qty:1});
+let cart=JSON.parse(localStorage.getItem(cartKey))||[];
+let existing=cart.find(i=>i.name===name);
+
+if(existing) existing.qty++;
+else cart.push({name,price,img,qty:1});
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
 
@@ -324,7 +374,7 @@ let cart=JSON.parse(localStorage.getItem(cartKey))||[];
 cartCount.innerText=cart.reduce((a,b)=>a+b.qty,0);
 }
 
-/* CART POPUP */
+/* POPUP */
 function toggleCart(){
 let popup=document.getElementById("cartPopup");
 popup.style.display=popup.style.display==="block"?"none":"block";
@@ -343,7 +393,7 @@ return;
 cart.forEach((i,index)=>{
 cartItems.innerHTML+=`
 <div class="cart-item">
-${i.name} x${i.qty}
+${i.name} (x${i.qty})
 <span onclick="removeItem(${index})">❌</span>
 </div>`;
 });
