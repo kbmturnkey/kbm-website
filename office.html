@@ -10,18 +10,25 @@
 /* ===== GLOBAL ===== */
 body {
     margin: 0;
+    padding-top: 80px; /* IMPORTANT: space for fixed navbar */
     font-family: 'Segoe UI', sans-serif;
     background: #f5f7fb;
 }
 
-/* NAVBAR */
+/* ===== STICKY NAVBAR ===== */
 .navbar {
+    position: fixed;   /* changed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:12px 40px;
     background:white;
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    transition: 0.3s;
 }
 
 .logo img {height:55px;}
@@ -412,6 +419,16 @@ setTimeout(()=>{
 toast.style.opacity=0;
 },2000);
 }
+/* SCROLL EFFECT */
+window.addEventListener("scroll", function() {
+    let nav = document.querySelector(".navbar");
+
+    if (window.scrollY > 10) {
+        nav.style.boxShadow = "0 4px 20px rgba(0,0,0,0.15)";
+    } else {
+        nav.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
+    }
+});
 
 </script>
 
