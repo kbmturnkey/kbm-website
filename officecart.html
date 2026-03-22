@@ -40,7 +40,7 @@ body {
     padding:12px;
 }
 
-/* MAIN LAYOUT */
+/* LAYOUT */
 .container {
     display:grid;
     grid-template-columns: 2fr 1fr;
@@ -48,7 +48,7 @@ body {
     padding:20px;
 }
 
-/* LEFT ITEMS */
+/* LEFT */
 .cart-items {
     background:white;
     border-radius:10px;
@@ -63,26 +63,19 @@ body {
     border-bottom:1px solid #eee;
 }
 
-/* IMAGE */
 .item img {
     width:80px;
     height:80px;
     object-fit:contain;
 }
 
-/* DETAILS */
 .details {
     flex:1;
-}
-
-.details h4 {
-    margin:0;
 }
 
 .price {
     color:#2874f0;
     font-weight:bold;
-    margin-top:5px;
 }
 
 /* QTY */
@@ -110,7 +103,7 @@ body {
     margin-top:5px;
 }
 
-/* RIGHT SUMMARY */
+/* RIGHT */
 .summary {
     background:white;
     border-radius:10px;
@@ -118,10 +111,7 @@ body {
     height:fit-content;
 }
 
-/* SUMMARY TEXT */
-.summary h3 {
-    margin-top:0;
-}
+.summary h3 {margin-top:0;}
 
 .row {
     display:flex;
@@ -135,7 +125,7 @@ body {
     margin-top:10px;
 }
 
-/* BUTTON */
+/* BUTTONS */
 .checkout {
     width:100%;
     padding:12px;
@@ -147,20 +137,30 @@ body {
     cursor:pointer;
 }
 
-/* BACK */
-.back {
+.clear-btn {
+    width:100%;
+    padding:12px;
     margin-top:10px;
+    background:#999;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.clear-btn:hover {background:#777;}
+
+.back {
     display:block;
+    margin-top:10px;
     text-align:center;
-    text-decoration:none;
     color:#2874f0;
+    text-decoration:none;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-    .container {
-        grid-template-columns:1fr;
-    }
+    .container {grid-template-columns:1fr;}
 }
 
 </style>
@@ -168,6 +168,7 @@ body {
 
 <body>
 
+<!-- NAVBAR -->
 <div class="navbar">
 <div class="logo"><img src="logo.png"></div>
 
@@ -205,7 +206,8 @@ let itemsHTML = "";
 let total = 0;
 
 if(cart.length === 0){
-document.getElementById("items").innerHTML = "<p>Your cart is empty</p>";
+document.getElementById("items").innerHTML =
+"<p>Your cart is empty</p>";
 document.getElementById("summary").innerHTML = "";
 return;
 }
@@ -242,30 +244,37 @@ ${item.qty}
 document.getElementById("items").innerHTML = itemsHTML;
 
 /* SUMMARY */
+let gst = Math.round(total * 0.18);
+let grandTotal = total + gst;
+
 document.getElementById("summary").innerHTML = `
 <h3>Order Summary</h3>
 
 <div class="row"><span>Subtotal</span><span>₹${total}</span></div>
-<div class="row"><span>GST (18%)</span><span>₹${Math.round(total*0.18)}</span></div>
+<div class="row"><span>GST (18%)</span><span>₹${gst}</span></div>
 
 <div class="row total">
 <span>Total</span>
-<span>₹${total + Math.round(total*0.18)}</span>
+<span>₹${grandTotal}</span>
 </div>
 
 <button class="checkout" onclick="sendWhatsApp()">Checkout</button>
+
+<button class="clear-btn" onclick="clearCart()">Clear Cart</button>
 
 <a href="office.html" class="back">← Continue Shopping</a>
 `;
 }
 
-/* QTY */
+/* CHANGE QTY */
 function changeQty(i,change){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
 cart[i].qty += change;
 
-if(cart[i].qty<=0) cart.splice(i,1);
+if(cart[i].qty <= 0){
+cart.splice(i,1);
+}
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
@@ -279,12 +288,20 @@ localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
 }
 
+/* CLEAR CART */
+function clearCart(){
+if(confirm("Are you sure you want to clear the cart?")){
+localStorage.removeItem(cartKey);
+loadCart();
+}
+}
+
 /* WHATSAPP */
 function sendWhatsApp(){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
-let msg = "Order:%0A";
+let msg = "Order Details:%0A";
 let total = 0;
 
 cart.forEach(item=>{
@@ -298,6 +315,7 @@ msg += `%0ATotal ₹${total}`;
 window.open(`https://wa.me/919886887482?text=${msg}`);
 }
 
+/* INIT */
 loadCart();
 
 </script>
