@@ -13,6 +13,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: #f5f7fb;
     overflow-x: hidden; /* prevents horizontal overflow */
+    padding-top: 80px;
 }
 
 * {
@@ -21,22 +22,27 @@ body {
 
 /* NAVBAR */
 .navbar {
-    position: fixed;   /* MAKE IT STICK */
+    position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
     z-index: 9999;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 12px 60px; /* increase right space */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* prevents pushing outside */
+    padding: 12px 30px;
+    background: white;
+
+    box-sizing: border-box;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    flex-wrap: nowrap; /* prevent breaking */
 }
 
 .logo img {height:55px;}
@@ -50,9 +56,9 @@ width: 100%;
 /* MENU */
 .menu {
     display: flex;
-    gap: 15px; /* reduced spacing */
-    margin-right: 8px; /* move closer to cart */
-    white-space: nowrap; /* prevents text wrapping */
+    gap: 20px;
+
+    white-space: nowrap; /* prevent wrap */
 }
 
 /* TITLE */
@@ -203,8 +209,10 @@ width: 100%;
 
     padding: 8px 12px;
     border-radius: 20px;
+    background: #f1f3f7;
 
-    flex-shrink: 0; /* prevents shrinking/cutting */
+    white-space: nowrap; /* IMPORTANT */
+    flex-shrink: 0; /* prevents going down */
 }
 
 /* FIX ICON */
