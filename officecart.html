@@ -131,9 +131,23 @@ body {
 
 /* EMPTY */
 .empty {
-    text-align:center;
-    padding:40px;
-    color:#888;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.empty img {
+    width: 120px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.empty h3 {
+    margin: 10px 0 5px;
+}
+
+.empty p {
+    font-size: 14px;
 }
 
 /* FOOTER */
@@ -230,7 +244,11 @@ let total = 0;
 
 if(cart.length === 0){
 document.getElementById("cartBox").innerHTML =
-`<div class="empty">🛒 Your cart is empty</div>
+`<div class="empty">
+    <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart">
+    <h3>Your cart is empty</h3>
+    <p>Add items to get started</p>
+</div>
 <a href="office.html"><button class="btn back">⬅ Continue Shopping </button></a>`;
 return;
 }
