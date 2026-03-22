@@ -12,6 +12,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #f5f7fb;
+    overflow-x: hidden; /* prevents horizontal overflow */
 }
 
 /* NAVBAR */
@@ -27,7 +28,7 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    padding: 12px 40px;
+    padding: 12px 60px; /* increase right space */
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
@@ -38,7 +39,7 @@ body {
 .right-section {
     display: flex;
     align-items: center;
-    gap: 10px; /* reduced space */
+    gap: 20px; /* reduced space */
 }
 
 /* MENU */
@@ -192,7 +193,19 @@ body {
 .cart {
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+
+    min-width: 80px; /* prevent shrinking */
+    height: 36px;
+
+    background: #f1f3f7;
+    padding: 0 12px;
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    white-space: nowrap; /* prevent breaking */
 }
 
 /* FIX ICON */
