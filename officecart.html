@@ -5,9 +5,10 @@
 
 <style>
 
+/* ===== GLOBAL ===== */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f1f3f6;
+    background: linear-gradient(135deg, #e9eef5, #dce3ec);
     margin: 0;
 }
 
@@ -51,8 +52,9 @@ body {
 /* LEFT */
 .cart-items {
     background:white;
-    border-radius:10px;
+    border-radius:12px;
     padding:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.05);
 }
 
 /* ITEM */
@@ -69,9 +71,7 @@ body {
     object-fit:contain;
 }
 
-.details {
-    flex:1;
-}
+.details {flex:1;}
 
 .price {
     color:#2874f0;
@@ -103,12 +103,13 @@ body {
     margin-top:5px;
 }
 
-/* RIGHT */
+/* RIGHT SUMMARY */
 .summary {
     background:white;
-    border-radius:10px;
+    border-radius:12px;
     padding:20px;
     height:fit-content;
+    box-shadow:0 6px 20px rgba(0,0,0,0.05);
 }
 
 .summary h3 {margin-top:0;}
@@ -132,7 +133,7 @@ body {
     background:#fb641b;
     color:white;
     border:none;
-    border-radius:5px;
+    border-radius:6px;
     margin-top:15px;
     cursor:pointer;
 }
@@ -144,11 +145,9 @@ body {
     background:#999;
     color:white;
     border:none;
-    border-radius:5px;
+    border-radius:6px;
     cursor:pointer;
 }
-
-.clear-btn:hover {background:#777;}
 
 .back {
     display:block;
@@ -158,34 +157,95 @@ body {
     text-decoration:none;
 }
 
-/* EMPTY CART */
-.empty-cart {
+/* ===== ULTRA PREMIUM EMPTY CART ===== */
+
+.empty-wrapper {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:75vh;
+}
+
+.empty-card {
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.7);
+    border-radius:20px;
+    padding:50px 30px;
     text-align:center;
-    padding:50px 20px;
+    width:350px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08),
+        inset 0 1px 1px rgba(255,255,255,0.6);
+
+    animation: fadeInUp 0.6s ease;
 }
 
-.empty-cart img {
-    width:140px;
-    margin-bottom:15px;
-    opacity:0.8;
+/* FLOAT ICON */
+.icon img {
+    width:120px;
+    margin-bottom:20px;
+    animation: float 3s ease-in-out infinite;
 }
 
-.empty-cart h3 {
+/* TEXT */
+.empty-card h2 {
     margin:10px 0;
+    font-size:22px;
 }
 
-.empty-cart p {
+.empty-card p {
     color:#666;
+    margin-bottom:25px;
 }
 
+/* BUTTON */
 .shop-btn {
-    margin-top:15px;
-    padding:10px 18px;
-    background:#2874f0;
+    padding:12px 26px;
+    background: linear-gradient(135deg,#2874f0,#1e4db7);
     color:white;
     border:none;
-    border-radius:6px;
+    border-radius:10px;
     cursor:pointer;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.shop-btn:hover {
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(40,116,240,0.3);
+}
+
+/* SHINE */
+.shop-btn::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.6),transparent);
+    transform:skewX(-20deg);
+}
+
+.shop-btn:hover::after {
+    animation:shine 1s;
+}
+
+/* ANIMATION */
+@keyframes float {
+    0%,100% {transform:translateY(0);}
+    50% {transform:translateY(-10px);}
+}
+
+@keyframes fadeInUp {
+    from {opacity:0;transform:translateY(30px);}
+    to {opacity:1;transform:translateY(0);}
+}
+
+@keyframes shine {
+    100% {left:125%;}
 }
 
 /* MOBILE */
@@ -215,10 +275,7 @@ body {
 
 <div class="container">
 
-<!-- LEFT -->
 <div class="cart-items" id="items"></div>
-
-<!-- RIGHT -->
 <div class="summary" id="summary"></div>
 
 </div>
@@ -231,20 +288,23 @@ const cartKey = "officecart";
 function loadCart(){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
 let itemsHTML = "";
 let total = 0;
 
 /* EMPTY CART */
 if(cart.length === 0){
 document.getElementById("items").innerHTML = `
-<div class="empty-cart">
-<img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png">
-<h3>Your cart is empty</h3>
-<p>Add items to get started</p>
-<a href="office.html">
-<button class="shop-btn">← Continue Shopping</button>
-</a>
+<div class="empty-wrapper">
+    <div class="empty-card">
+        <div class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png">
+        </div>
+        <h2>Your cart is empty</h2>
+        <p>Start adding items to build your order</p>
+        <a href="office.html">
+            <button class="shop-btn">← Continue Shopping</button>
+        </a>
+    </div>
 </div>
 `;
 
@@ -260,7 +320,6 @@ total += sub;
 
 itemsHTML += `
 <div class="item">
-
 <img src="https://via.placeholder.com/80">
 
 <div class="details">
@@ -277,7 +336,6 @@ ${item.qty}
 </div>
 
 <div class="price">₹${sub}</div>
-
 </div>
 `;
 });
@@ -300,28 +358,20 @@ document.getElementById("summary").innerHTML = `
 </div>
 
 <button class="checkout" onclick="sendWhatsApp()">Checkout</button>
-
 <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
-
 <a href="office.html" class="back">← Continue Shopping</a>
 `;
 }
 
-/* CHANGE QTY */
+/* FUNCTIONS */
 function changeQty(i,change){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
 cart[i].qty += change;
-
-if(cart[i].qty <= 0){
-cart.splice(i,1);
-}
-
+if(cart[i].qty<=0) cart.splice(i,1);
 localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
 }
 
-/* DELETE */
 function deleteItem(i){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 cart.splice(i,1);
@@ -329,34 +379,28 @@ localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
 }
 
-/* CLEAR CART */
 function clearCart(){
-if(confirm("Are you sure you want to clear the cart?")){
+if(confirm("Clear cart?")){
 localStorage.removeItem(cartKey);
 loadCart();
 }
 }
 
-/* WHATSAPP */
 function sendWhatsApp(){
-
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
-let msg = "Order Details:%0A";
-let total = 0;
+let msg="Order:%0A";
+let total=0;
 
 cart.forEach(item=>{
-let sub = item.price * item.qty;
-total += sub;
-msg += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}%0A`;
+let sub=item.price*item.qty;
+total+=sub;
+msg+=`${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}%0A`;
 });
 
-msg += `%0ATotal ₹${total}`;
-
+msg+=`%0ATotal ₹${total}`;
 window.open(`https://wa.me/919886887482?text=${msg}`);
 }
 
-/* INIT */
 loadCart();
 
 </script>
