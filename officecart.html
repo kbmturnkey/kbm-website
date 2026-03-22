@@ -8,7 +8,7 @@
 /* ===== GLOBAL ===== */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg,#eef2f7,#dde4ee);
+    background: #f1f3f6;
     margin: 0;
 }
 
@@ -49,7 +49,6 @@ body {
     padding:20px;
 }
 
-/* EMPTY MODE */
 .container.empty-mode {
     grid-template-columns:1fr;
 }
@@ -61,57 +60,123 @@ body {
     padding:20px;
 }
 
-/* ITEM */
+/* ===== FLIPKART ITEM ===== */
 .item {
-    display:flex;
+    display:grid;
+    grid-template-columns:100px 1fr 120px 120px;
+    align-items:center;
     gap:15px;
-    padding:15px 0;
+    padding:20px 0;
     border-bottom:1px solid #eee;
 }
 
-.item img {
-    width:80px;
-    height:80px;
+/* IMAGE */
+.item-img img {
+    width:90px;
+    height:90px;
     object-fit:contain;
 }
 
-.details {flex:1;}
-
-.price {
-    color:#2874f0;
-    font-weight:bold;
+/* DETAILS */
+.item-details h4 {
+    margin:0;
+    font-size:16px;
 }
 
-/* QTY */
-.qty {
-    display:flex;
-    gap:8px;
-    margin-top:10px;
-}
-
-.qty button {
-    padding:5px 10px;
-    border:none;
-    background:#2874f0;
-    color:white;
-    border-radius:4px;
+.desc {
+    font-size:13px;
+    color:#777;
+    margin:5px 0;
 }
 
 /* REMOVE */
 .remove {
-    color:red;
     font-size:13px;
+    color:#2874f0;
+    cursor:pointer;
+    font-weight:500;
+}
+
+/* QTY */
+.item-qty {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.item-qty button {
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:1px solid #ccc;
+    background:white;
     cursor:pointer;
 }
 
-/* SUMMARY */
+/* PRICE */
+.item-price {
+    text-align:right;
+}
+
+.item-price p {
+    margin:0;
+    font-weight:bold;
+}
+
+.item-price span {
+    color:#388e3c;
+    font-size:14px;
+}
+
+/* ===== SUMMARY ===== */
 .summary {
     background:white;
     border-radius:12px;
     padding:20px;
 }
 
-/* EMPTY CART */
+.row {
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
+}
+
+.total {
+    font-weight:bold;
+    font-size:18px;
+}
+
+.checkout {
+    width:100%;
+    padding:12px;
+    background:#fb641b;
+    color:white;
+    border:none;
+    border-radius:6px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+.clear-btn {
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    background:#999;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.back {
+    display:block;
+    margin-top:10px;
+    text-align:center;
+    color:#2874f0;
+    text-decoration:none;
+}
+
+/* ===== EMPTY CART ===== */
 .empty-wrapper {
     text-align:center;
     padding:50px;
@@ -121,23 +186,17 @@ body {
     width:120px;
 }
 
-/* BUTTON */
 .shop-btn {
     padding:12px 25px;
     background:#2874f0;
     color:white;
     border:none;
     border-radius:8px;
-    cursor:pointer;
 }
 
-/* RECOMMENDED */
+/* ===== RECOMMENDED ===== */
 .recommend {
     margin-top:40px;
-}
-
-.recommend h3 {
-    margin-bottom:15px;
 }
 
 .recommend-grid {
@@ -151,22 +210,24 @@ body {
     padding:15px;
     border-radius:12px;
     text-align:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
 .re-card img {
     height:100px;
-    object-fit:contain;
 }
 
 .re-card button {
     margin-top:10px;
-    padding:8px 12px;
+    padding:8px;
     background:#2874f0;
     color:white;
     border:none;
     border-radius:6px;
-    cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.container {grid-template-columns:1fr;}
 }
 
 </style>
@@ -177,7 +238,7 @@ body {
 <div class="navbar">
 <div class="logo"><img src="logo.png"></div>
 <div class="menu">
-<a href="index.html">Home</a>
+<a href="#">Home</a>
 <a href="#">Services</a>
 <a href="#">Contact</a>
 </div>
@@ -195,51 +256,45 @@ body {
 
 const cartKey = "officecart";
 
-/* SAMPLE RECOMMENDED PRODUCTS */
+/* RECOMMENDED */
 const recommended = [
-{name:"A4 Paper", price:120, img:"https://via.placeholder.com/100"},
-{name:"Ball Pen", price:50, img:"https://via.placeholder.com/100"},
-{name:"Stapler", price:200, img:"https://via.placeholder.com/100"},
-{name:"Notebook", price:150, img:"https://via.placeholder.com/100"},
-{name:"Marker", price:80, img:"https://via.placeholder.com/100"}
+{name:"A4 Paper", price:120},
+{name:"Stapler", price:250},
+{name:"Notebook", price:150},
+{name:"Pen Set", price:90}
 ];
 
-/* LOAD CART */
+/* LOAD */
 function loadCart(){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 let container = document.getElementById("container");
 
-/* EMPTY CART */
+/* EMPTY */
 if(cart.length === 0){
 
 container.classList.add("empty-mode");
 
 document.getElementById("items").innerHTML = `
 <div class="empty-wrapper">
-    <div class="empty-card">
-        <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png">
-        <h2>Your cart is empty</h2>
-        <p>Add items to get started</p>
-        <a href="office.html">
-            <button class="shop-btn">← Continue Shopping</button>
-        </a>
-    </div>
+<img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png">
+<h2>Your cart is empty</h2>
+<p>Add items to get started</p>
+<a href="office.html">
+<button class="shop-btn">← Continue Shopping</button>
+</a>
 
-    <!-- RECOMMENDED -->
-    <div class="recommend">
-        <h3>Recommended Products</h3>
-        <div class="recommend-grid">
-            ${recommended.map((p,i)=>`
-            <div class="re-card">
-                <img src="${p.img}">
-                <h4>${p.name}</h4>
-                <p>₹${p.price}</p>
-                <button onclick="addToCart('${p.name}',${p.price})">Add</button>
-            </div>
-            `).join("")}
-        </div>
-    </div>
+<div class="recommend">
+<h3>Recommended Products</h3>
+<div class="recommend-grid">
+${recommended.map(p=>`
+<div class="re-card">
+<h4>${p.name}</h4>
+<p>₹${p.price}</p>
+<button onclick="addToCart('${p.name}',${p.price})">Add</button>
+</div>`).join("")}
+</div>
+</div>
 </div>
 `;
 
@@ -247,7 +302,7 @@ document.getElementById("summary").style.display="none";
 return;
 }
 
-/* NORMAL CART */
+/* NORMAL */
 container.classList.remove("empty-mode");
 document.getElementById("summary").style.display="block";
 
@@ -260,56 +315,59 @@ total+=sub;
 
 itemsHTML+=`
 <div class="item">
-<img src="https://via.placeholder.com/80">
-<div class="details">
-<h4>${item.name}</h4>
-<div class="price">₹${item.price}</div>
 
-<div class="qty">
-<button onclick="changeQty(${i},-1)">-</button>
-${item.qty}
+<div class="item-img">
+<img src="https://via.placeholder.com/90">
+</div>
+
+<div class="item-details">
+<h4>${item.name}</h4>
+<p class="desc">Office Product</p>
+<span class="remove" onclick="deleteItem(${i})">REMOVE</span>
+</div>
+
+<div class="item-qty">
+<button onclick="changeQty(${i},-1)">−</button>
+<span>${item.qty}</span>
 <button onclick="changeQty(${i},1)">+</button>
 </div>
 
-<div class="remove" onclick="deleteItem(${i})">Remove</div>
+<div class="item-price">
+<p>₹${item.price}</p>
+<span>₹${sub}</span>
 </div>
 
-<div class="price">₹${sub}</div>
 </div>
 `;
 });
 
 document.getElementById("items").innerHTML=itemsHTML;
 
+/* SUMMARY */
 let gst=Math.round(total*0.18);
 
 document.getElementById("summary").innerHTML=`
-<h3>Order Summary</h3>
-<p>Subtotal: ₹${total}</p>
-<p>GST: ₹${gst}</p>
-<h3>Total: ₹${total+gst}</h3>
-<button onclick="clearCart()">Clear Cart</button>
+<h3>Price Details</h3>
+<div class="row"><span>Subtotal</span><span>₹${total}</span></div>
+<div class="row"><span>GST</span><span>₹${gst}</span></div>
+<div class="row total"><span>Total</span><span>₹${total+gst}</span></div>
+
+<button class="checkout">Checkout</button>
+<button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+<a href="office.html" class="back">← Continue Shopping</a>
 `;
-
 }
 
-/* ADD TO CART */
+/* FUNCTIONS */
 function addToCart(name,price){
-let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
-let found = cart.find(i=>i.name===name);
-
-if(found){
-found.qty++;
-}else{
-cart.push({name,price,qty:1});
-}
-
+let cart=JSON.parse(localStorage.getItem(cartKey))||[];
+let f=cart.find(i=>i.name===name);
+if(f) f.qty++;
+else cart.push({name,price,qty:1});
 localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
 }
 
-/* QTY */
 function changeQty(i,c){
 let cart=JSON.parse(localStorage.getItem(cartKey))||[];
 cart[i].qty+=c;
@@ -318,7 +376,6 @@ localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
 }
 
-/* DELETE */
 function deleteItem(i){
 let cart=JSON.parse(localStorage.getItem(cartKey))||[];
 cart.splice(i,1);
@@ -326,7 +383,6 @@ localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
 }
 
-/* CLEAR */
 function clearCart(){
 localStorage.removeItem(cartKey);
 loadCart();
