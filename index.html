@@ -43,7 +43,6 @@ nav a:hover {
     color: #6c8f2e;
 }
 
-/* MOBILE MENU */
 .menu-toggle {
     display: none;
     font-size: 26px;
@@ -62,26 +61,47 @@ nav a:hover {
     background: #56751f;
 }
 
-/* HERO */
+/* HERO VIDEO */
 .hero {
+    position: relative;
+    height: 90vh;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 70px;
-    background: linear-gradient(135deg, #0b3d91, #6c8f2e);
+    justify-content: center;
+    text-align: center;
     color: white;
+    overflow: hidden;
 }
-.hero-text {
-    width: 50%;
-    animation: fadeIn 1s ease;
+
+/* VIDEO */
+#bgVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -2;
 }
-.hero-text h1 {
-    font-size: 42px;
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
 }
-.hero img {
-    width: 45%;
-    border-radius: 15px;
-    animation: fadeIn 1.5s ease;
+
+/* HERO TEXT */
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 /* SERVICES */
@@ -103,7 +123,6 @@ nav a:hover {
     overflow: hidden;
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    animation: fadeUp 1s ease;
 }
 .card:hover {
     transform: translateY(-8px);
@@ -147,26 +166,8 @@ nav a:hover {
     background: #0b3d91;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(20px);}
-    to {opacity:1; transform:translateY(0);}
-}
-@keyframes fadeUp {
-    from {opacity:0; transform:translateY(40px);}
-    to {opacity:1; transform:translateY(0);}
-}
-
 /* MOBILE */
 @media(max-width:768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-    .hero-text, .hero img {
-        width: 100%;
-    }
-
     nav {
         position: absolute;
         top: 70px;
@@ -180,9 +181,15 @@ nav a:hover {
     nav.show {
         display: flex;
     }
-
     .menu-toggle {
         display: block;
+    }
+
+    .hero {
+        height: 70vh;
+    }
+    .hero-content h1 {
+        font-size: 28px;
     }
 }
 </style>
@@ -192,7 +199,7 @@ nav a:hover {
 
 <header>
     <img src="logo.png">
-    
+
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
     <nav id="nav">
@@ -202,14 +209,21 @@ nav a:hover {
     </nav>
 </header>
 
-<!-- HERO -->
+<!-- HERO VIDEO -->
 <section class="hero">
-    <div class="hero-text">
+
+    <video autoplay muted loop id="bgVideo">
+        <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
         <h1>End-to-End Turnkey Solutions</h1>
         <p>Interior, construction & workforce services delivered with precision and quality.</p>
         <a class="btn" href="#services">Explore Services</a>
     </div>
-    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
+
 </section>
 
 <!-- SERVICES -->
@@ -269,7 +283,7 @@ nav a:hover {
     </div>
 </section>
 
-<!-- FLOAT -->
+<!-- FLOAT BUTTONS -->
 <a href="https://wa.me/919886887482" class="whatsapp">💬</a>
 <a href="tel:9886887482" class="call">📞</a>
 
