@@ -1,11 +1,358 @@
 [
-  {"category":"Paper Products","subcategory":"A4 Paper","name":"A4 Paper","img":"https://5.imimg.com/data5/SELLER/Default/2022/9/LS/YN/QU/13890228/a4-paper-500x500.jpg"},
-  {"category":"Paper Products","subcategory":"Notebook","name":"Notebook","img":"https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"},
-  {"category":"Paper Products","subcategory":"Sticky Notes","name":"Sticky Notes","img":"https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"},
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Ball Pens",
+    "name": "Ball Pens",
+    "description": "Blue/Black/Green ink pens",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Gel Pens",
+    "name": "Gel Pens",
+    "description": "Smooth writing Blue/Black/Green pens",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Pencils",
+    "name": "Pencil",
+    "description": "High quality HB pencil suitable for writing and sketching",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Mechanical Pencils",
+    "name": "Mechanical Pencils",
+    "description": "High quality Refillable pencils suitable for writing and sketching",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Erasers",
+    "name": "Erasers",
+    "description": "Rubber erasers",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Sharpeners",
+    "name": "Sharpeners",
+    "description": "Manual sharpeners",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Highlighters",
+    "name": "Highlighters",
+    "description": "High quality Fluorescent markers",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Whiteboard Markers",
+    "name": "Whiteboard Markers",
+    "description": "High quality Markers suitable for boards",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Permanent Markers",
+    "name": "Permanent Markers",
+    "description": "CD/DVD markers",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
+  {
+    "category": "Writing & Correction",
+    "subcategory": "Correction Tape",
+    "name": "Correction Tape",
+    "description": "Error correction",
+    "img": "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+  },
 
-  {"category":"Writing & Correction","subcategory":"Pens","name":"Ball Pen","img":"https://m.media-amazon.com/images/I/61qQ1Qp6WLL._SX679_.jpg"},
-  {"category":"Writing & Correction","subcategory":"Pencils","name":"Pencil","img":"https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"},
+  {
+    "category": "Paper Products",
+    "subcategory": "A4 Paper",
+    "name": "A4 Paper",
+    "description": "Printer sheets",
+    "img": "https://5.imimg.com/data5/SELLER/Default/2022/9/LS/YN/QU/13890228/a4-paper-500x500.jpg"
+  },
+  {
+    "category": "Paper Products",
+    "subcategory": "Legal Paper",
+    "name": "Legal Paper",
+    "description": "Long size sheets",
+    "img": "https://5.imimg.com/data5/SELLER/Default/2022/9/YR/HL/ZY/13890228/legal-paper-500x500.jpg"
+  },
+  {
+    "category": "Paper Products",
+    "subcategory": "Notebooks",
+    "name": "Notebooks",
+    "description": "Office notebooks",
+    "img": "https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"
+  },
+  {
+    "category": "Paper Products",
+    "subcategory": "Registers",
+    "name": "Registers",
+    "description": "Large record books",
+    "img": "https://m.media-amazon.com/images/I/81Gm7m7PpEL._SX679_.jpg"
+  },
+  {
+    "category": "Paper Products",
+    "subcategory": "Sticky Notes",
+    "name": "Sticky Notes",
+    "description": "Post-it notes",
+    "img": "https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"
+  },
+  {
+    "category": "Paper Products",
+    "subcategory": "Envelopes",
+    "name": "Envelopes",
+    "description": "Office covers",
+    "img": "https://5.imimg.com/data5/SELLER/Default/2021/12/PO/KT/OB/13890228/envelope-500x500.jpg"
+  },
+  {
+    "category": "Paper Products",
+    "subcategory": "Notepads",
+    "name": "Notepads",
+    "description": "Writing pads",
+    "img": "https://m.media-amazon.com/images/I/71FJ+0C0zLL._SX679_.jpg"
+  },
 
-  {"category":"Desk Accessories","subcategory":"Stapler","name":"Stapler","img":"https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"},
-  {"category":"Desk Accessories","subcategory":"Calculator","name":"Calculator","img":"https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"}
+  {
+    "category": "Filing & Organization",
+    "subcategory": "File Folders",
+    "name": "File Folders",
+    "description": "Paper/plastic",
+    "img": "https://m.media-amazon.com/images/I/71QpQ9vF4+L._SX679_.jpg"
+  },
+  {
+    "category": "Filing & Organization",
+    "subcategory": "Clip Files",
+    "name": "Clip Files",
+    "description": "With clip",
+    "img": "https://m.media-amazon.com/images/I/71c0Z+YpZML._SX679_.jpg"
+  },
+  {
+    "category": "Filing & Organization",
+    "subcategory": "Ring Binders",
+    "name": "Ring Binders",
+    "description": "Document binder",
+    "img": "https://m.media-amazon.com/images/I/71f6z1zJX7L._SX679_.jpg"
+  },
+  {
+    "category": "Filing & Organization",
+    "subcategory": "Lever Arch Files",
+    "name": "Lever Arch Files",
+    "description": "Heavy files",
+    "img": "https://m.media-amazon.com/images/I/71b+zj5P6kL._SX679_.jpg"
+  },
+  {
+    "category": "Filing & Organization",
+    "subcategory": "Expanding Files",
+    "name": "Expanding Files",
+    "description": "Accordion files",
+    "img": "https://m.media-amazon.com/images/I/81u5bJrZ7HL._SX679_.jpg"
+  },
+  {
+    "category": "Filing & Organization",
+    "subcategory": "Index Dividers",
+    "name": "Index Dividers",
+    "description": "Section dividers",
+    "img": "https://m.media-amazon.com/images/I/71n9wFhQ1RL._SX679_.jpg"
+  },
+
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Stapler",
+    "name": "Stapler",
+    "description": "Paper stapler",
+    "img": "https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Staple Pins",
+    "name": "Staple Pins",
+    "description": "Refill pins",
+    "img": "https://m.media-amazon.com/images/I/71Hk2g6ZlRL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Punch Machine",
+    "name": "Punch Machine",
+    "description": "Hole punch",
+    "img": "https://m.media-amazon.com/images/I/71mKcXz+YGL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Scissors",
+    "name": "Scissors",
+    "description": "Cutting tool",
+    "img": "https://m.media-amazon.com/images/I/71u9RZLhYPL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Tape Dispenser",
+    "name": "Tape Dispenser",
+    "description": "Sellotape holder",
+    "img": "https://m.media-amazon.com/images/I/61kX8wY5pYL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Paper Clips",
+    "name": "Paper Clips",
+    "description": "Metal clips",
+    "img": "https://m.media-amazon.com/images/I/71cC0V7kz2L._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Binder Clips",
+    "name": "Binder Clips",
+    "description": "Large clips",
+    "img": "https://m.media-amazon.com/images/I/71Cz1L2pRPL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Rubber Bands",
+    "name": "Rubber Bands",
+    "description": "Elastic bands",
+    "img": "https://m.media-amazon.com/images/I/71l7+zQXzBL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Pen Stand",
+    "name": "Pen Stand",
+    "description": "Desk holder",
+    "img": "https://m.media-amazon.com/images/I/71o8mGZ2fUL._SX679_.jpg"
+  },
+  {
+    "category": "Desk Accessories",
+    "subcategory": "Calculator",
+    "name": "Calculator",
+    "description": "Desktop calculator",
+    "img": "https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"
+  },
+
+  {
+    "category": "Printing Supplies",
+    "subcategory": "Printer Ink",
+    "name": "Printer Ink",
+    "description": "Ink cartridges",
+    "img": "https://m.media-amazon.com/images/I/71R8J7n5FzL._SX679_.jpg"
+  },
+  {
+    "category": "Printing Supplies",
+    "subcategory": "Toner",
+    "name": "Toner",
+    "description": "Laser toner",
+    "img": "https://m.media-amazon.com/images/I/61wH2J9l5LL._SX679_.jpg"
+  },
+  {
+    "category": "Printing Supplies",
+    "subcategory": "USB Drives",
+    "name": "USB Drives",
+    "description": "Pen drives",
+    "img": "https://m.media-amazon.com/images/I/61xNG4wjOuL._SX679_.jpg"
+  },
+  {
+    "category": "Printing Supplies",
+    "subcategory": "External HDD",
+    "name": "External HDD",
+    "description": "Storage device",
+    "img": "https://m.media-amazon.com/images/I/81uGv2z3+SL._SX679_.jpg"
+  },
+  {
+    "category": "Printing Supplies",
+    "subcategory": "Keyboard",
+    "name": "Keyboard",
+    "description": "Computer keyboard",
+    "img": "https://m.media-amazon.com/images/I/61LtuGzXeaL._SX679_.jpg"
+  },
+  {
+    "category": "Printing Supplies",
+    "subcategory": "Mouse",
+    "name": "Mouse",
+    "description": "Computer mouse",
+    "img": "https://m.media-amazon.com/images/I/61MpMH5TzkL._SX679_.jpg"
+  },
+
+  {
+    "category": "Cleaning",
+    "subcategory": "Sanitizer",
+    "name": "Sanitizer",
+    "description": "Hand sanitizer",
+    "img": "https://m.media-amazon.com/images/I/61lZ2hXK4LL._SX679_.jpg"
+  },
+  {
+    "category": "Cleaning",
+    "subcategory": "Tissue Papers",
+    "name": "Tissue Papers",
+    "description": "Soft tissues",
+    "img": "https://m.media-amazon.com/images/I/81zZl7zjPpL._SX679_.jpg"
+  },
+  {
+    "category": "Cleaning",
+    "subcategory": "Dustbin",
+    "name": "Dustbin",
+    "description": "Waste bin",
+    "img": "https://m.media-amazon.com/images/I/71c5F2kP6FL._SX679_.jpg"
+  },
+  {
+    "category": "Cleaning",
+    "subcategory": "Garbage Bags",
+    "name": "Garbage Bags",
+    "description": "Trash bags",
+    "img": "https://m.media-amazon.com/images/I/71mR4K6g7XL._SX679_.jpg"
+  },
+  {
+    "category": "Cleaning",
+    "subcategory": "Cleaning Wipes",
+    "name": "Cleaning Wipes",
+    "description": "Surface wipes",
+    "img": "https://m.media-amazon.com/images/I/71wzQ1X3bJL._SX679_.jpg"
+  },
+
+  {
+    "category": "Pantry",
+    "subcategory": "Tea",
+    "name": "Tea",
+    "description": "Office tea",
+    "img": "https://m.media-amazon.com/images/I/71dX1bG8+HL._SX679_.jpg"
+  },
+  {
+    "category": "Pantry",
+    "subcategory": "Coffee",
+    "name": "Coffee",
+    "description": "Office coffee",
+    "img": "https://m.media-amazon.com/images/I/71S0p1gk2+L._SX679_.jpg"
+  },
+  {
+    "category": "Pantry",
+    "subcategory": "Sugar",
+    "name": "Sugar",
+    "description": "Sweetener",
+    "img": "https://m.media-amazon.com/images/I/71r5fW1xkLL._SX679_.jpg"
+  },
+  {
+    "category": "Pantry",
+    "subcategory": "Disposable Cups",
+    "name": "Disposable Cups",
+    "description": "Paper cups",
+    "img": "https://m.media-amazon.com/images/I/71f9k5X3dFL._SX679_.jpg"
+  },
+  {
+    "category": "Pantry",
+    "subcategory": "Water Bottles",
+    "name": "Water Bottles",
+    "description": "Drinking water",
+    "img": "https://m.media-amazon.com/images/I/61L6vQ1y4XL._SX679_.jpg"
+  },
+  {
+    "category": "Pantry",
+    "subcategory": "Electric Kettle",
+    "name": "Electric Kettle",
+    "description": "Boiling water",
+    "img": "https://m.media-amazon.com/images/I/61vY5V3j9CL._SX679_.jpg"
+  }
 ]
