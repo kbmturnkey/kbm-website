@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f5f5f5;
+    background: #f4f7fb;
 }
 
 /* HEADER */
@@ -17,98 +17,135 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 15px 60px;
     background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 header img {
-    width: 280px;
-    height: auto;
+    width: 220px;
 }
 nav a {
     margin: 0 15px;
     text-decoration: none;
     color: #333;
+    font-weight: 500;
 }
+nav a:hover {
+    color: #0b3d91;
+}
+
+/* BUTTON */
 .btn {
     display: inline-block;
-    margin-top: 10px;
     background: #0b3d91;
     color: white;
-    padding: 8px 12px;
+    padding: 10px 18px;
+    border-radius: 30px;
     text-decoration: none;
-    border-radius: 5px;
+    font-size: 14px;
+}
+.btn:hover {
+    background: #062b66;
 }
 
 /* HERO */
 .hero {
     display: flex;
     align-items: center;
-    padding: 50px;
-    background: #fff;
+    justify-content: space-between;
+    padding: 70px;
+    background: linear-gradient(135deg, #0b3d91, #6c8f2e);
+    color: white;
 }
 .hero-text {
     width: 50%;
 }
 .hero-text h1 {
-    font-size: 40px;
+    font-size: 42px;
+    margin-bottom: 20px;
 }
 .hero-text p {
-    color: #555;
+    font-size: 16px;
+    margin-bottom: 25px;
 }
 .hero img {
-    width: 50%;
-    border-radius: 5px;
+    width: 45%;
+    border-radius: 15px;
 }
 
 /* SERVICES */
 .services {
-    padding: 50px;
+    padding: 60px;
 }
 .services h2 {
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 40px;
 }
 .cards {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 25px;
 }
 .card {
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    width: 33%;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.card:hover {
+    transform: translateY(-8px);
 }
 .card img {
     width: 100%;
-    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+}
+.card-content {
+    padding: 15px;
+}
+.card h3 {
+    margin: 10px 0;
+}
+.card p {
+    font-size: 14px;
+    color: #555;
 }
 
 /* CONTACT */
 .contact {
-    padding: 40px;
-    background: white;
+    background: #0b3d91;
+    color: white;
+    padding: 50px;
+}
+.contact-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.contact img {
+    width: 200px;
 }
 
 /* FLOAT BUTTONS */
-.whatsapp {
+.whatsapp, .call {
     position: fixed;
-    bottom: 20px;
     right: 20px;
-    background: #25D366;
-    color: white;
     padding: 15px;
     border-radius: 50%;
+    color: white;
     text-decoration: none;
+}
+.whatsapp {
+    bottom: 20px;
+    background: #25D366;
 }
 .call {
-    position: fixed;
     bottom: 80px;
-    right: 20px;
     background: #0b3d91;
-    color: white;
-    padding: 15px;
-    border-radius: 50%;
-    text-decoration: none;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -120,52 +157,61 @@ html {
 <header>
     <img src="logo.png">
     <nav>
-        <a class="btn" href="#">Home</a>
-        <a class="btn" href="contact.html">Contact</a>
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="contact.html" class="btn">Contact</a>
     </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
     <div class="hero-text">
-        <h1>Professional Solutions for Every Turnkey Project</h1>
-        <p>We deliver complete interior and turnkey solutions with quality and efficiency.</p>
-        <a class="btn" href="#services">View Services</a>
+        <h1>Professional Turnkey Solutions</h1>
+        <p>Complete interior, construction & workforce solutions with premium quality and execution.</p>
+        <a class="btn" href="#services">Explore Services</a>
     </div>
     <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
 </section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
-    <h2>Main Services</h2>
+    <h2>Our Services</h2>
     <div class="cards">
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c">
-            <h3>Office Supply</h3>
-            <p>We supply high-quality office furniture, workstations, chairs, stationery items, and essential materials to create a productive and comfortable work environment.</p>
-            <a href="office.html" class="btn">View Details</a>
+            <div class="card-content">
+                <h3>Office Supply</h3>
+                <p>Furniture, chairs, workstations & all office essentials.</p>
+                <a href="office.html" class="btn">View</a>
+            </div>
         </div>
 
         <div class="card">
-            <img src="https://source.unsplash.com/400x300/?construction,building">
-            <h3>Construction</h3>
-            <p>We deliver end-to-end construction and civil work solutions, including planning, execution, and project management with a focus on quality and efficiency.</p>
-            <a href="construction.html" class="btn">View Details</a>
+            <img src="https://source.unsplash.com/400x300/?construction">
+            <div class="card-content">
+                <h3>Construction</h3>
+                <p>Complete civil and building construction solutions.</p>
+                <a href="construction.html" class="btn">View</a>
+            </div>
         </div>
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
-            <h3>Labour Management</h3>
-            <p>Our labour management services include supplying skilled and unskilled workforce, supervision, and coordination to ensure efficient operations and on-time project completion.</p>
-            <a href="labour.html" class="btn">View Details</a>
+            <div class="card-content">
+                <h3>Labour Management</h3>
+                <p>Skilled workforce supply and project supervision.</p>
+                <a href="labour.html" class="btn">View</a>
+            </div>
         </div>
 
         <div class="card">
             <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
-            <h3>Interior Design & Works</h3>
-            <p>We offer end-to-end interior design and execution services, including planning, customization, and complete fit-out solutions.</p>
-            <a href="interior.html" class="btn">View Details</a>
+            <div class="card-content">
+                <h3>Interior Works</h3>
+                <p>Modern interior design and turnkey execution.</p>
+                <a href="interior.html" class="btn">View</a>
+            </div>
         </div>
 
     </div>
@@ -173,23 +219,15 @@ html {
 
 <!-- CONTACT -->
 <section class="contact">
-    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <img src="logo.png">
 
-    <div style="display:flex; gap:30px; align-items:center; flex-wrap:wrap;">
-
-        <!-- Logo -->
         <div>
-            <img src="logo.png" alt="KBM Logo" style="width:180px;">
+            <h2>KBM Turnkey Projects</h2>
+            <p>📍 Bagalagunte, Bengaluru - 560073</p>
+            <p>📞 +91 9886887482</p>
+            <p>📧 kbmturnkeyprojects@gmail.com</p>
         </div>
-
-        <!-- Contact Details -->
-        <div>
-            <p><strong>KBM Turnkey Projects</strong></p>
-            <p>📍 Address: No 37, 7Th Cross, Sheshadhri Layout, Bagalagunte, Bengaluru - 560073</p>
-            <p>📞 Phone: +91 9886887482</p>
-            <p>📧 Email: kbmturnkeyprojects@gmail.com</p>
-        </div>
-
     </div>
 </section>
 
