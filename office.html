@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Office Supplies - KBM</title>
+<title>Office Supplies</title>
 
 <style>
 
@@ -14,23 +14,23 @@ body {
     background: #f5f7fb;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header {
-    background: white;
     padding: 15px 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    font-weight: bold;
+    background: white;
     font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* ===== CONTAINER ===== */
+/* LAYOUT */
 .container {
     display: flex;
     padding: 20px;
     gap: 20px;
 }
 
-/* ===== FILTER PANEL ===== */
+/* FILTER */
 .filter {
     width: 260px;
     background: white;
@@ -40,12 +40,7 @@ body {
 }
 
 .filter h3 {
-    margin-bottom: 15px;
-}
-
-.filter label {
-    font-size: 14px;
-    color: #555;
+    margin-bottom: 10px;
 }
 
 .filter select {
@@ -56,63 +51,57 @@ body {
     border: 1px solid #ddd;
 }
 
-.clear-btn {
-    color: #007bff;
+.clear {
+    color: blue;
     cursor: pointer;
     font-size: 14px;
-    text-align: right;
 }
 
-/* ===== PRODUCT SECTION ===== */
+/* PRODUCTS */
 .products {
     flex: 1;
 }
 
-/* ===== SHOP DROPDOWN ===== */
-.shop-dropdown {
+.shop {
     background: white;
-    padding: 12px 15px;
+    padding: 12px;
     border-radius: 10px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    cursor: pointer;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
 }
 
-/* ===== CARD ===== */
+/* CARD */
 .card {
     background: white;
-    border-radius: 15px;
     padding: 15px;
+    border-radius: 15px;
     text-align: center;
     box-shadow: 0 6px 15px rgba(0,0,0,0.08);
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
 }
 
 .card img {
     height: 140px;
     width: 100%;
     object-fit: contain;
-    background: #fff;
 }
 
 .card h4 {
     margin-top: 10px;
-    font-size: 16px;
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width: 768px) {
+/* MOBILE */
+@media(max-width:768px){
     .container {
         flex-direction: column;
     }
@@ -132,100 +121,68 @@ body {
 
     <!-- FILTER -->
     <div class="filter">
-        <h3>Filter <span class="clear-btn" onclick="clearFilter()">Clear All</span></h3>
+        <h3>Filter <span class="clear" onclick="clearFilter()">Clear All</span></h3>
 
         <label>Category</label>
-        <select id="category" onchange="loadSub()">
-            <option value="">Select</option>
-            <option value="writing">Writing</option>
-            <option value="paper">Paper</option>
-            <option value="desk">Desk</option>
-        </select>
+        <select id="category" onchange="loadSub()"></select>
 
         <label>Sub Category</label>
         <select id="sub" onchange="renderItems()">
-            <option value="">Select</option>
+            <option>Select</option>
         </select>
     </div>
 
     <!-- PRODUCTS -->
     <div class="products">
-
-        <div class="shop-dropdown">Shop by Category ⌄</div>
-
+        <div class="shop">Shop by Category ⌄</div>
         <div class="grid" id="grid"></div>
-
     </div>
 
 </div>
 
 <script>
 
-const data = {
-    paper: {
-        name: "Paper",
-        items: [
-            {
-                name: "A4 Paper",
-                img: "https://5.imimg.com/data5/SELLER/Default/2022/9/LS/YN/QU/13890228/a4-paper-500x500.jpg"
-            },
-            {
-                name: "Notebook",
-                img: "https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"
-            },
-            {
-                name: "Sticky Notes",
-                img: "https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"
-            }
-        ]
-    },
+let data = [];
 
-    writing: {
-        name: "Writing",
-        items: [
-            {
-                name: "Ball Pens",
-                img: "https://m.media-amazon.com/images/I/61qQ1Qp6WLL._SX679_.jpg"
-            },
-            {
-                name: "Pencils",
-                img: "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
-            }
-        ]
-    },
+/* LOAD JSON */
+fetch('office.json')
+.then(res => res.json())
+.then(json => {
+    data = json;
+    loadCategories();
+    renderItems();
+});
 
-    desk: {
-        name: "Desk",
-        items: [
-            {
-                name: "Stapler",
-                img: "https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"
-            },
-            {
-                name: "Calculator",
-                img: "https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"
-            }
-        ]
-    }
-};
+/* CATEGORY */
+function loadCategories() {
+    const category = document.getElementById("category");
+    const unique = [...new Set(data.map(d => d.category))];
 
-/* LOAD SUBCATEGORY */
+    category.innerHTML = '<option value="">Select</option>';
+
+    unique.forEach(cat => {
+        category.innerHTML += `<option value="${cat}">${cat}</option>`;
+    });
+}
+
+/* SUBCATEGORY */
 function loadSub() {
     const cat = document.getElementById("category").value;
     const sub = document.getElementById("sub");
 
+    const filtered = data.filter(d => d.category === cat);
+    const unique = [...new Set(filtered.map(d => d.subcategory))];
+
     sub.innerHTML = '<option value="">Select</option>';
 
-    if (cat && data[cat]) {
-        data[cat].items.forEach((item, i) => {
-            sub.innerHTML += `<option value="${i}">${item.name}</option>`;
-        });
-    }
+    unique.forEach(s => {
+        sub.innerHTML += `<option value="${s}">${s}</option>`;
+    });
 
     renderItems();
 }
 
-/* RENDER PRODUCTS */
+/* RENDER */
 function renderItems() {
     const cat = document.getElementById("category").value;
     const sub = document.getElementById("sub").value;
@@ -233,15 +190,12 @@ function renderItems() {
 
     grid.innerHTML = "";
 
-    if (!cat) return;
+    let filtered = data;
 
-    let items = data[cat].items;
+    if (cat) filtered = filtered.filter(d => d.category === cat);
+    if (sub) filtered = filtered.filter(d => d.subcategory === sub);
 
-    if (sub !== "") {
-        items = [items[sub]];
-    }
-
-    items.forEach(item => {
+    filtered.forEach(item => {
         grid.innerHTML += `
             <div class="card">
                 <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
@@ -251,18 +205,12 @@ function renderItems() {
     });
 }
 
-/* CLEAR FILTER */
+/* CLEAR */
 function clearFilter() {
     document.getElementById("category").value = "";
     document.getElementById("sub").innerHTML = '<option>Select</option>';
-    document.getElementById("grid").innerHTML = "";
+    renderItems();
 }
-
-/* LOAD DEFAULT DATA */
-window.onload = function() {
-    document.getElementById("category").value = "paper";
-    loadSub();
-};
 
 </script>
 
