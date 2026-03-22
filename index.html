@@ -168,26 +168,64 @@ nav a:hover::after {
     padding: 15px;
 }
 
-/* ===== CONTACT ===== */
+/* ===== PREMIUM CONTACT ===== */
 .contact {
-    background: #0b3d91;
-    color: white;
-    padding: 50px;
-}
-
-.contact-container {
+    background: linear-gradient(135deg, #0b3d91, #6c8f2e);
+    padding: 70px 20px;
     display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.contact img {
-    height: 120px;
-    width: auto;
+.contact-box {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    color: white;
+}
+
+.contact-left img {
+    height: 90px;
     background: white;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
+
+.contact-left h2 {
+    margin: 10px 0;
+}
+
+.tagline {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.info p {
+    margin: 6px 0;
+}
+
+.contact-right {
+    text-align: center;
+}
+
+.call-btn, .whatsapp-btn {
+    display: block;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: white;
+}
+
+.call-btn { background: #0b3d91; }
+.whatsapp-btn { background: #25D366; }
 
 /* FLOAT BUTTONS */
 .whatsapp, .call {
@@ -198,18 +236,10 @@ nav a:hover::after {
     color: white;
     text-decoration: none;
 }
+.whatsapp { bottom: 20px; background: #25D366; }
+.call { bottom: 80px; background: #0b3d91; }
 
-.whatsapp {
-    bottom: 20px;
-    background: #25D366;
-}
-
-.call {
-    bottom: 80px;
-    background: #0b3d91;
-}
-
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:768px) {
 
     nav {
@@ -238,6 +268,11 @@ nav a:hover::after {
 
     .hero-content h1 {
         font-size: 28px;
+    }
+
+    .contact-box {
+        flex-direction: column;
+        text-align: center;
     }
 }
 </style>
@@ -323,14 +358,29 @@ nav a:hover::after {
 
 <!-- CONTACT -->
 <section class="contact">
-    <div class="contact-container">
-        <img src="logo.png">
-        <div>
+    <div class="contact-box">
+
+        <div class="contact-left">
+            <img src="logo.png">
+
             <h2>KBM Turnkey Projects</h2>
-            <p>📍 Bengaluru - 560073</p>
-            <p>📞 +91 9886887482</p>
-            <p>📧 kbmturnkeyprojects@gmail.com</p>
+            <p class="tagline">Delivering quality turnkey solutions with trust & excellence.</p>
+
+            <div class="info">
+                <p>📍 Bengaluru - 560073</p>
+                <p>📞 +91 9886887482</p>
+                <p>📧 kbmturnkeyprojects@gmail.com</p>
+            </div>
         </div>
+
+        <div class="contact-right">
+            <h3>Get in Touch</h3>
+            <p>Let’s discuss your project today</p>
+
+            <a href="tel:9886887482" class="call-btn">📞 Call Now</a>
+            <a href="https://wa.me/919886887482" class="whatsapp-btn">💬 WhatsApp</a>
+        </div>
+
     </div>
 </section>
 
