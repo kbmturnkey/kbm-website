@@ -166,7 +166,6 @@ body {
 }
 
 .price {color:#1e4db7;font-weight:bold;}
-.total {color:green;}
 
 button {
     margin-top:10px;
@@ -357,7 +356,6 @@ filtered.forEach(item=>{
 
 let price = Math.floor(Math.random()*500)+50;
 let gst = Math.round(price*0.18);
-let total = price + gst;
 
 grid.innerHTML+=`
 <div class="card">
@@ -370,7 +368,6 @@ grid.innerHTML+=`
 
     <div class="card-bottom">
         <p class="price">₹${price}</p>
-        <p class="total">Total ₹${total}</p>
         <button onclick="addToCart('${item.name}',${total})">Add to Cart</button>
     </div>
 `;
