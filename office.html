@@ -64,7 +64,7 @@ cursor:pointer;
 <div class="logo"><img src="logo.png"></div>
 
 <div class="cart">
-<a href="cart.html">🛒 <span id="cartCount">0</span></a>
+<a href="officecart.html">🛒 <span id="cartCount">0</span></a>
 </div>
 </header>
 
@@ -95,7 +95,7 @@ cursor:pointer;
 <script>
 
 let data = [];
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("officecart")) || [];
 
 /* LOAD JSON */
 fetch('./office.json')
@@ -183,7 +183,7 @@ existing.qty += 1;
 cart.push({name,price,qty:1});
 }
 
-localStorage.setItem("cart",JSON.stringify(cart));
+localStorage.setItem("officecart",JSON.stringify(cart));
 
 document.getElementById("cartCount").innerText =
 cart.reduce((a,b)=>a+b.qty,0);
