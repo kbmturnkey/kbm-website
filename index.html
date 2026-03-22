@@ -14,38 +14,52 @@ body {
 
 /* HEADER */
 header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 60px;
+    padding: 15px 40px;
     background: white;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 header img {
-    width: 220px;
+    width: 200px;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    align-items: center;
 }
 nav a {
-    margin: 0 15px;
+    margin: 0 12px;
     text-decoration: none;
     color: #333;
     font-weight: 500;
 }
 nav a:hover {
-    color: #0b3d91;
+    color: #6c8f2e;
+}
+
+/* MOBILE MENU */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
 }
 
 /* BUTTON */
 .btn {
-    display: inline-block;
-    background: #0b3d91;
+    background: #6c8f2e;
     color: white;
     padding: 10px 18px;
-    border-radius: 30px;
+    border-radius: 25px;
     text-decoration: none;
-    font-size: 14px;
 }
 .btn:hover {
-    background: #062b66;
+    background: #56751f;
 }
 
 /* HERO */
@@ -59,18 +73,15 @@ nav a:hover {
 }
 .hero-text {
     width: 50%;
+    animation: fadeIn 1s ease;
 }
 .hero-text h1 {
     font-size: 42px;
-    margin-bottom: 20px;
-}
-.hero-text p {
-    font-size: 16px;
-    margin-bottom: 25px;
 }
 .hero img {
     width: 45%;
     border-radius: 15px;
+    animation: fadeIn 1.5s ease;
 }
 
 /* SERVICES */
@@ -92,6 +103,7 @@ nav a:hover {
     overflow: hidden;
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    animation: fadeUp 1s ease;
 }
 .card:hover {
     transform: translateY(-8px);
@@ -104,13 +116,6 @@ nav a:hover {
 .card-content {
     padding: 15px;
 }
-.card h3 {
-    margin: 10px 0;
-}
-.card p {
-    font-size: 14px;
-    color: #555;
-}
 
 /* CONTACT */
 .contact {
@@ -121,11 +126,7 @@ nav a:hover {
 .contact-container {
     display: flex;
     gap: 40px;
-    align-items: center;
     flex-wrap: wrap;
-}
-.contact img {
-    width: 200px;
 }
 
 /* FLOAT BUTTONS */
@@ -146,8 +147,43 @@ nav a:hover {
     background: #0b3d91;
 }
 
-html {
-    scroll-behavior: smooth;
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(20px);}
+    to {opacity:1; transform:translateY(0);}
+}
+@keyframes fadeUp {
+    from {opacity:0; transform:translateY(40px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-text, .hero img {
+        width: 100%;
+    }
+
+    nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    nav.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
 }
 </style>
 </head>
@@ -156,7 +192,10 @@ html {
 
 <header>
     <img src="logo.png">
-    <nav>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <nav id="nav">
         <a href="#">Home</a>
         <a href="#services">Services</a>
         <a href="contact.html" class="btn">Contact</a>
@@ -166,8 +205,8 @@ html {
 <!-- HERO -->
 <section class="hero">
     <div class="hero-text">
-        <h1>Professional Turnkey Solutions</h1>
-        <p>Complete interior, construction & workforce solutions with premium quality and execution.</p>
+        <h1>End-to-End Turnkey Solutions</h1>
+        <p>Interior, construction & workforce services delivered with precision and quality.</p>
         <a class="btn" href="#services">Explore Services</a>
     </div>
     <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab">
@@ -182,7 +221,7 @@ html {
             <img src="https://images.unsplash.com/photo-1497366216548-37526070297c">
             <div class="card-content">
                 <h3>Office Supply</h3>
-                <p>Furniture, chairs, workstations & all office essentials.</p>
+                <p>Furniture & office essentials.</p>
                 <a href="office.html" class="btn">View</a>
             </div>
         </div>
@@ -191,7 +230,7 @@ html {
             <img src="https://source.unsplash.com/400x300/?construction">
             <div class="card-content">
                 <h3>Construction</h3>
-                <p>Complete civil and building construction solutions.</p>
+                <p>Complete civil solutions.</p>
                 <a href="construction.html" class="btn">View</a>
             </div>
         </div>
@@ -199,8 +238,8 @@ html {
         <div class="card">
             <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
             <div class="card-content">
-                <h3>Labour Management</h3>
-                <p>Skilled workforce supply and project supervision.</p>
+                <h3>Labour</h3>
+                <p>Workforce & supervision.</p>
                 <a href="labour.html" class="btn">View</a>
             </div>
         </div>
@@ -208,8 +247,8 @@ html {
         <div class="card">
             <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
             <div class="card-content">
-                <h3>Interior Works</h3>
-                <p>Modern interior design and turnkey execution.</p>
+                <h3>Interior</h3>
+                <p>Modern interiors.</p>
                 <a href="interior.html" class="btn">View</a>
             </div>
         </div>
@@ -220,20 +259,25 @@ html {
 <!-- CONTACT -->
 <section class="contact">
     <div class="contact-container">
-        <img src="logo.png">
-
+        <img src="logo.png" style="width:180px;">
         <div>
             <h2>KBM Turnkey Projects</h2>
-            <p>📍 Bagalagunte, Bengaluru - 560073</p>
+            <p>📍 Bengaluru - 560073</p>
             <p>📞 +91 9886887482</p>
             <p>📧 kbmturnkeyprojects@gmail.com</p>
         </div>
     </div>
 </section>
 
-<!-- FLOAT BUTTONS -->
-<a href="https://wa.me/919886887482?text=Hello%20KBM" class="whatsapp">💬</a>
+<!-- FLOAT -->
+<a href="https://wa.me/919886887482" class="whatsapp">💬</a>
 <a href="tel:9886887482" class="call">📞</a>
+
+<script>
+function toggleMenu() {
+    document.getElementById("nav").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
