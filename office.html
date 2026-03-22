@@ -46,18 +46,37 @@ body {
 
 .logo img {height:55px;}
 
-.menu a {text-decoration:none;color:#333;}
-
-width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* prevents pushing outside */
-
 /* MENU */
 .menu {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 25px; /* space between items */
+}
+/* MENU LINKS */
+.menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
 
-    white-space: nowrap; /* prevent wrap */
+    position: relative;
+    padding: 5px 0;
+}
+
+/* HOVER UNDERLINE EFFECT */
+.menu a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background: #6c8f2e;
+    transition: 0.3s;
+}
+
+.menu a:hover::after {
+    width: 100%;
 }
 
 /* TITLE */
