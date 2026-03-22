@@ -1,0 +1,11 @@
+[
+  {"category":"Paper Products","subcategory":"A4 Paper","name":"A4 Paper","img":"https://5.imimg.com/data5/SELLER/Default/2022/9/LS/YN/QU/13890228/a4-paper-500x500.jpg"},
+  {"category":"Paper Products","subcategory":"Notebook","name":"Notebook","img":"https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"},
+  {"category":"Paper Products","subcategory":"Sticky Notes","name":"Sticky Notes","img":"https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"},
+
+  {"category":"Writing & Correction","subcategory":"Pens","name":"Ball Pen","img":"https://m.media-amazon.com/images/I/61qQ1Qp6WLL._SX679_.jpg"},
+  {"category":"Writing & Correction","subcategory":"Pencils","name":"Pencil","img":"https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"},
+
+  {"category":"Desk Accessories","subcategory":"Stapler","name":"Stapler","img":"https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"},
+  {"category":"Desk Accessories","subcategory":"Calculator","name":"Calculator","img":"https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"}
+]
