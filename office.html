@@ -147,6 +147,11 @@ body {
     text-align:center;
     box-shadow:0 6px 15px rgba(0,0,0,0.08);
     transition:0.3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* 🔥 key */
+    height: 100%;                    /* 🔥 equal height */
 }
 
 .card:hover {transform:translateY(-5px);}
@@ -174,6 +179,35 @@ button {
     text-align:center;
     padding:40px;
     color:#888;
+}
+
+.card-top {
+    flex-grow: 1;
+}
+
+/* DESCRIPTION */
+.desc {
+    font-size: 13px;
+    color: #666;
+    min-height: 40px; /* 🔥 keeps alignment */
+}
+
+/* BOTTOM FIXED */
+.card-bottom {
+    margin-top: auto;
+}
+
+/* PRICE */
+.price {
+    color: #1e4db7;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+/* TOTAL */
+.total {
+    color: green;
+    margin-bottom: 10px;
 }
 
 </style>
@@ -323,13 +357,18 @@ let total = price + gst;
 
 grid.innerHTML+=`
 <div class="card">
-<img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
-<h4>${item.name}</h4>
-<p>${item.description}</p>
-<p class="price">₹${price}</p>
-<p class="total">Total ₹${total}</p>
-<button onclick="addToCart('${item.name}',${total})">Add to Cart</button>
-</div>
+
+    <div class="card-top">
+        <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
+        <h4>${item.name}</h4>
+        <p class="desc">${item.description}</p>
+    </div>
+
+    <div class="card-bottom">
+        <p class="price">₹${price}</p>
+        <p class="total">Total ₹${total}</p>
+        <button onclick="addToCart('${item.name}',${total})">Add to Cart</button>
+    </div>
 `;
 });
 }
