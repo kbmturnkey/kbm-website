@@ -103,6 +103,7 @@ body {
     height: 140px;
     width: 100%;
     object-fit: contain;
+    background: #fff;
 }
 
 .card h4 {
@@ -161,31 +162,62 @@ body {
 <script>
 
 const data = {
-    writing: [
-        {name: "Ball Pens", img: "https://m.media-amazon.com/images/I/61qQ1Qp6WLL._SX679_.jpg"},
-        {name: "Pencils", img: "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"},
-        {name: "Highlighters", img: "https://m.media-amazon.com/images/I/71X3g3h6u0L._SX679_.jpg"}
-    ],
-    paper: [
-        {name: "A4 Paper", img: "https://m.media-amazon.com/images/I/81r6zJ2r8XL._SX679_.jpg"},
-        {name: "Notebook", img: "https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"},
-        {name: "Sticky Notes", img: "https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"}
-    ],
-    desk: [
-        {name: "Stapler", img: "https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"},
-        {name: "Scissors", img: "https://m.media-amazon.com/images/I/71u9RZLhYPL._SX679_.jpg"},
-        {name: "Calculator", img: "https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"}
-    ]
+    paper: {
+        name: "Paper",
+        items: [
+            {
+                name: "A4 Paper",
+                img: "https://5.imimg.com/data5/SELLER/Default/2022/9/LS/YN/QU/13890228/a4-paper-500x500.jpg"
+            },
+            {
+                name: "Notebook",
+                img: "https://m.media-amazon.com/images/I/81Y9H9v7HJL._SX679_.jpg"
+            },
+            {
+                name: "Sticky Notes",
+                img: "https://m.media-amazon.com/images/I/71g2ednj0JL._SX679_.jpg"
+            }
+        ]
+    },
+
+    writing: {
+        name: "Writing",
+        items: [
+            {
+                name: "Ball Pens",
+                img: "https://m.media-amazon.com/images/I/61qQ1Qp6WLL._SX679_.jpg"
+            },
+            {
+                name: "Pencils",
+                img: "https://m.media-amazon.com/images/I/71EJ8D9sSGL._SX679_.jpg"
+            }
+        ]
+    },
+
+    desk: {
+        name: "Desk",
+        items: [
+            {
+                name: "Stapler",
+                img: "https://m.media-amazon.com/images/I/61cM5bYhK0L._SX679_.jpg"
+            },
+            {
+                name: "Calculator",
+                img: "https://m.media-amazon.com/images/I/61CGHv6kmWL._SX679_.jpg"
+            }
+        ]
+    }
 };
 
+/* LOAD SUBCATEGORY */
 function loadSub() {
     const cat = document.getElementById("category").value;
     const sub = document.getElementById("sub");
 
     sub.innerHTML = '<option value="">Select</option>';
 
-    if (cat) {
-        data[cat].forEach((item, i) => {
+    if (cat && data[cat]) {
+        data[cat].items.forEach((item, i) => {
             sub.innerHTML += `<option value="${i}">${item.name}</option>`;
         });
     }
@@ -193,6 +225,7 @@ function loadSub() {
     renderItems();
 }
 
+/* RENDER PRODUCTS */
 function renderItems() {
     const cat = document.getElementById("category").value;
     const sub = document.getElementById("sub").value;
@@ -202,7 +235,7 @@ function renderItems() {
 
     if (!cat) return;
 
-    let items = data[cat];
+    let items = data[cat].items;
 
     if (sub !== "") {
         items = [items[sub]];
@@ -211,18 +244,25 @@ function renderItems() {
     items.forEach(item => {
         grid.innerHTML += `
             <div class="card">
-                <img src="${item.img}">
+                <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
                 <h4>${item.name}</h4>
             </div>
         `;
     });
 }
 
+/* CLEAR FILTER */
 function clearFilter() {
     document.getElementById("category").value = "";
     document.getElementById("sub").innerHTML = '<option>Select</option>';
     document.getElementById("grid").innerHTML = "";
 }
+
+/* LOAD DEFAULT DATA */
+window.onload = function() {
+    document.getElementById("category").value = "paper";
+    loadSub();
+};
 
 </script>
 
