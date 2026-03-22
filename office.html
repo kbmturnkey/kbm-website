@@ -10,180 +10,166 @@
 /* ===== GLOBAL ===== */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg,#eef2f7,#dde4ee);
+    font-family: Arial, sans-serif;
+    background: #eaeded;
 }
 
-/* ===== NAVBAR ===== */
-.navbar {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 40px;
-    background:white;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+/* ===== AMAZON HEADER ===== */
+.header {
+    background: #131921;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 20px;
 }
 
-.logo img {height:55px;}
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ff9900;
+}
 
-.menu {display:flex;gap:30px;}
-.menu a {text-decoration:none;color:#333;font-weight:500;}
+/* SEARCH BAR */
+.search-bar {
+    flex: 1;
+    display: flex;
+}
 
-.right-section {display:flex;align-items:center;gap:20px;}
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+}
 
+.search-bar button {
+    background: #febd69;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+/* CART */
 .cart {
-    position:relative;
-    background:#f1f3f7;
-    padding:8px 14px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-#cartCount {
-    background:red;color:white;border-radius:50%;
-    padding:3px 7px;font-size:12px;
-    position:absolute;top:-8px;right:-8px;
-}
-
-.contact-btn {
-    background:#6c8f2e;color:white;
-    padding:10px 16px;border-radius:6px;
-}
-
-/* ===== TITLE ===== */
-.page-title {
-    background:linear-gradient(to right,#1e4db7,#2f6be0);
-    color:white;text-align:center;
-    padding:15px;font-size:22px;
+    background: #232f3e;
+    padding: 8px 12px;
+    border-radius: 6px;
 }
 
 /* ===== LAYOUT ===== */
 .container {
-    display:flex;
-    padding:20px;
-    gap:20px;
+    display: flex;
 }
 
-/* ===== ULTRA FILTER ===== */
-.filter {
-    width:260px;
-    padding:20px;
-    border-radius:16px;
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition:0.3s;
+/* ===== SIDEBAR FILTER ===== */
+.sidebar {
+    width: 250px;
+    background: white;
+    padding: 15px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.filter:hover {
-    transform: translateY(-3px);
+.sidebar h4 {
+    margin-bottom: 10px;
 }
 
-.filter h3 {
-    margin-top:0;
-}
-
-/* SELECT */
-.filter select {
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    outline:none;
-    transition:0.3s;
-}
-
-.filter select:focus {
-    border-color:#2874f0;
-    box-shadow:0 0 6px rgba(40,116,240,0.2);
+.sidebar select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
 }
 
 /* ===== PRODUCTS ===== */
-.products {flex:1;}
-
-/* HEADER */
-.shop {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-/* SEARCH */
-.search-box {
-    position: relative;
-    width: 260px;
-}
-
-.search-box input {
-    width:100%;
-    padding:10px 35px 10px 12px;
-    border-radius:20px;
-    border:1px solid #ddd;
-    outline:none;
-}
-
-.search-icon {
-    position:absolute;
-    right:10px;
-    top:50%;
-    transform:translateY(-50%);
+.products {
+    flex: 1;
+    padding: 20px;
 }
 
 /* GRID */
 .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+    gap: 20px;
 }
 
-/* CARD */
+/* ===== PRODUCT CARD ===== */
 .card {
-    background:white;
-    padding:15px;
-    border-radius:16px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
-    transition:0.3s;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    transition: 0.2s;
+    position: relative;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
 }
 
 .card img {
-    height:140px;
-    object-fit:contain;
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
 }
 
-.desc {
-    font-size:13px;
-    color:#666;
-    min-height:40px;
+/* TITLE */
+.card h4 {
+    font-size: 15px;
+    margin: 10px 0;
 }
 
+/* RATING */
+.rating {
+    color: #ffa41c;
+    font-size: 13px;
+}
+
+/* PRICE */
 .price {
-    color:#1e4db7;
-    font-weight:bold;
-    margin-top:5px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-button {
-    margin-top:10px;
-    padding:8px 12px;
-    border:none;
-    background:#1e4db7;
-    color:white;
-    border-radius:6px;
-    cursor:pointer;
+/* MRP */
+.mrp {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 13px;
+}
+
+/* DISCOUNT */
+.discount {
+    color: green;
+    font-size: 13px;
+}
+
+/* BUTTON */
+.card button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background: #ffd814;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #f7ca00;
+}
+
+/* TOP BAR */
+.topbar {
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
 .container {flex-direction:column;}
-.filter {width:100%;}
+.sidebar {width:100%;height:auto;}
 }
 
 </style>
@@ -191,46 +177,36 @@ button {
 
 <body>
 
-<header class="navbar">
-<div class="logo"><img src="logo.png"></div>
+<!-- HEADER -->
+<div class="header">
+<div class="logo">KBM Store</div>
 
-<nav class="menu">
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Contact</a>
-</nav>
-
-<div class="right-section">
-<a href="officecart.html" class="cart">
-🛒 Cart <span id="cartCount">0</span>
-</a>
-<div class="contact-btn">📞 +91 9886887482</div>
+<div class="search-bar">
+<input type="text" id="search" placeholder="Search products..." onkeyup="renderItems()">
+<button>🔍</button>
 </div>
-</header>
 
-<div class="page-title">Office Supplies & Stationery</div>
+<div class="cart">🛒 Cart</div>
+</div>
 
 <div class="container">
 
-<!-- FILTER -->
-<div class="filter">
-<h3>Filter</h3>
+<!-- SIDEBAR -->
+<div class="sidebar">
 
+<h4>Category</h4>
 <select id="category" onchange="loadSub()"></select>
 
+<h4>Sub Category</h4>
 <select id="sub" onchange="renderItems()" style="display:none;"></select>
+
 </div>
 
 <!-- PRODUCTS -->
 <div class="products">
 
-<div class="shop">
-<div id="count">0 Items</div>
-
-<div class="search-box">
-<input type="text" id="search" placeholder="Search..." onkeyup="renderItems()">
-<span class="search-icon">🔍</span>
-</div>
+<div class="topbar">
+<div id="count">0 results</div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -244,31 +220,23 @@ button {
 let data=[];
 let cartKey="officecart";
 
-/* LOAD JSON */
+/* LOAD DATA */
 fetch('./office.json')
 .then(res=>res.json())
 .then(json=>{
 data=json;
 loadCategories();
 renderItems();
-updateCartCount();
 });
-
-/* CART COUNT */
-function updateCartCount(){
-let cart=JSON.parse(localStorage.getItem(cartKey))||[];
-let count=cart.reduce((a,b)=>a+(b.qty||1),0);
-document.getElementById("cartCount").innerText=count;
-}
 
 /* CATEGORY */
 function loadCategories(){
 let unique=[...new Set(data.map(d=>d.category))];
 
-category.innerHTML='<option value="">Select Category</option>';
+category.innerHTML='<option value="">All</option>';
 
-unique.forEach(cat=>{
-category.innerHTML+=`<option>${cat}</option>`;
+unique.forEach(c=>{
+category.innerHTML+=`<option>${c}</option>`;
 });
 }
 
@@ -276,11 +244,9 @@ category.innerHTML+=`<option>${cat}</option>`;
 function loadSub(){
 
 let cat=category.value;
-let sub=document.getElementById("sub");
 
 if(!cat){
 sub.style.display="none";
-sub.innerHTML="";
 renderItems();
 return;
 }
@@ -290,7 +256,7 @@ sub.style.display="block";
 let filtered=data.filter(d=>d.category===cat);
 let unique=[...new Set(filtered.map(d=>d.subcategory))];
 
-sub.innerHTML='<option value="">Select Sub Category</option>';
+sub.innerHTML='<option value="">All</option>';
 
 unique.forEach(s=>{
 sub.innerHTML+=`<option>${s}</option>`;
@@ -318,43 +284,46 @@ if(sub.value){
 filtered=filtered.filter(d=>d.subcategory===sub.value);
 }
 
-document.getElementById("count").innerText=filtered.length+" Items";
+document.getElementById("count").innerText=filtered.length+" results";
 
 grid.innerHTML="";
 
-if(filtered.length===0){
-grid.innerHTML="<p>No items found</p>";
-return;
-}
-
 filtered.forEach(item=>{
 
-let price=Math.floor(Math.random()*500)+50;
+let price=Math.floor(Math.random()*500)+100;
+let mrp=price+Math.floor(Math.random()*100);
+let discount=Math.round(((mrp-price)/mrp)*100);
 
 grid.innerHTML+=`
 <div class="card">
+
 <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
+
 <h4>${item.name}</h4>
-<p class="desc">${item.description || ""}</p>
-<p class="price">₹${price}</p>
+
+<div class="rating">⭐⭐⭐⭐☆ (120)</div>
+
+<div class="price">₹${price}</div>
+<div class="mrp">₹${mrp}</div>
+<div class="discount">${discount}% off</div>
+
 <button onclick="addToCart('${item.name}',${price})">Add to Cart</button>
+
 </div>
 `;
 });
 }
 
-/* ADD CART */
+/* CART */
 function addToCart(name,price){
-
 let cart=JSON.parse(localStorage.getItem(cartKey))||[];
+let f=cart.find(i=>i.name===name);
 
-let existing=cart.find(i=>i.name===name);
-
-if(existing){existing.qty++;}
-else{cart.push({name,price,qty:1});}
+if(f) f.qty++;
+else cart.push({name,price,qty:1});
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
-updateCartCount();
+alert("Added to cart");
 }
 
 </script>
