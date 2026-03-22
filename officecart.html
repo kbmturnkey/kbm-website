@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f5f7fb;
+    background: #f1f3f6;
     margin: 0;
 }
 
@@ -16,211 +16,179 @@ body {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 50px;
+    padding:15px 40px;
     background:white;
-    box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
 
-.logo img {height:60px;}
+.logo img {height:55px;}
 
-.menu {display:flex;gap:40px;}
+.menu {display:flex;gap:30px;}
 .menu a {text-decoration:none;color:#333;}
-
-.right-section {
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
-
-.cart {
-    position:relative;
-    background:#f3f4f6;
-    padding:8px 14px;
-    border-radius:8px;
-    text-decoration:none;
-}
-
-#cartCount {
-    position:absolute;
-    top:-6px;
-    right:-6px;
-    background:red;
-    color:white;
-    font-size:12px;
-    border-radius:50%;
-    padding:3px 7px;
-}
 
 .contact-btn {
     background:#6c8f2e;
     color:white;
-    padding:10px 18px;
+    padding:10px 16px;
     border-radius:6px;
 }
 
 /* TITLE */
 .page-title {
-    background:linear-gradient(to right,#1e4db7,#2f6be0);
+    background:#2874f0;
     color:white;
     text-align:center;
-    padding:18px;
+    padding:12px;
 }
 
-/* MAIN */
-.main {padding:20px;}
-
-.box {
-    background:white;
+/* MAIN LAYOUT */
+.container {
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:20px;
     padding:20px;
-    border-radius:15px;
-    max-width:900px;
-    margin:auto;
-    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* LEFT ITEMS */
+.cart-items {
+    background:white;
+    border-radius:10px;
+    padding:20px;
 }
 
 /* ITEM */
 .item {
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px;
+    gap:15px;
+    padding:15px 0;
     border-bottom:1px solid #eee;
-    animation:slideIn 0.4s ease;
 }
 
-@keyframes slideIn {
-    from {opacity:0; transform:translateX(50px);}
-    to {opacity:1; transform:translateX(0);}
+/* IMAGE */
+.item img {
+    width:80px;
+    height:80px;
+    object-fit:contain;
 }
 
-.item-details {flex:1;}
+/* DETAILS */
+.details {
+    flex:1;
+}
 
-.price {color:#1e4db7;font-weight:bold;}
+.details h4 {
+    margin:0;
+}
+
+.price {
+    color:#2874f0;
+    font-weight:bold;
+    margin-top:5px;
+}
 
 /* QTY */
-.qty-box {
+.qty {
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:8px;
+    margin-top:10px;
 }
 
-.qty-btn {
-    background:#1e4db7;
-    color:white;
+.qty button {
+    padding:5px 10px;
     border:none;
-    padding:6px 12px;
-    border-radius:6px;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.qty-btn:hover {
-    background:#163c91;
-    transform:scale(1.1);
-}
-
-/* DELETE */
-.delete {
-    background:red;
+    background:#2874f0;
     color:white;
-    border:none;
-    padding:6px 10px;
-    border-radius:6px;
+    border-radius:4px;
     cursor:pointer;
 }
 
-/* EMPTY */
-.empty {
-    text-align: center;
-    padding: 40px;
-    color: #666;
+/* REMOVE */
+.remove {
+    color:red;
+    font-size:13px;
+    cursor:pointer;
+    margin-top:5px;
 }
 
-.empty img {
-    width: 120px;
-    margin-bottom: 15px;
-    opacity: 0.8;
+/* RIGHT SUMMARY */
+.summary {
+    background:white;
+    border-radius:10px;
+    padding:20px;
+    height:fit-content;
 }
 
-.empty h3 {
-    margin: 10px 0 5px;
+/* SUMMARY TEXT */
+.summary h3 {
+    margin-top:0;
 }
 
-.empty p {
-    font-size: 14px;
+.row {
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
 }
 
-/* FOOTER */
-.footer {
-    margin-top:20px;
-    padding-top:15px;
-    border-top:2px solid #eee;
-}
-
-/* TOTAL */
 .total {
-    font-size:22px;
     font-weight:bold;
+    font-size:18px;
+    margin-top:10px;
 }
 
-/* BUTTONS */
-.btn {
+/* BUTTON */
+.checkout {
     width:100%;
     padding:12px;
-    margin-top:10px;
+    background:#fb641b;
+    color:white;
     border:none;
-    border-radius:8px;
+    border-radius:5px;
+    margin-top:15px;
     cursor:pointer;
-    font-size:15px;
-    transition:0.3s;
 }
 
-.btn:hover {
-    transform:translateY(-2px);
+/* BACK */
+.back {
+    margin-top:10px;
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    color:#2874f0;
 }
 
-.whatsapp {background:#25D366;color:white;}
-.email {background:#1e4db7;color:white;}
-.clear {background:#999;color:white;}
-.back {background:#444;color:white;}
-
-/* STICKY BOTTOM */
-.bottom-bar {
-    position:sticky;
-    bottom:0;
-    background:white;
-    padding:15px;
-    box-shadow:0 -2px 10px rgba(0,0,0,0.1);
-    border-radius:10px;
-    margin-top:20px;
+/* MOBILE */
+@media(max-width:768px){
+    .container {
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<header class="navbar">
+<div class="navbar">
 <div class="logo"><img src="logo.png"></div>
 
-<nav class="menu">
+<div class="menu">
 <a href="index.html">Home</a>
-<a href="index.html#services">Services</a>
-<a href="contact.html">Contact</a>
-</nav>
+<a href="#">Services</a>
+<a href="#">Contact</a>
+</div>
 
-<div class="right-section">
-<a href="#" class="cart">🛒 <span id="cartCount">0</span></a>
 <div class="contact-btn">📞 +91 9886887482</div>
 </div>
-</header>
 
-<div class="page-title">Office Cart</div>
+<div class="page-title">Shopping Cart</div>
 
-<div class="main">
+<div class="container">
 
-<div class="box" id="cartBox"></div>
+<!-- LEFT -->
+<div class="cart-items" id="items"></div>
+
+<!-- RIGHT -->
+<div class="summary" id="summary"></div>
 
 </div>
 
@@ -228,28 +196,17 @@ body {
 
 const cartKey = "officecart";
 
-/* CART COUNT */
-function updateCartCount(){
-let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-let count = cart.reduce((a,b)=>a+(b.qty||1),0);
-document.getElementById("cartCount").innerText = count;
-}
-
 /* LOAD CART */
 function loadCart(){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-let html = "";
+
+let itemsHTML = "";
 let total = 0;
 
 if(cart.length === 0){
-document.getElementById("cartBox").innerHTML =
-`<div class="empty">
-    <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart">
-    <h3>Your cart is empty</h3>
-    <p>Add items to get started</p>
-</div>
-<a href="office.html"><button class="btn back">⬅ Continue Shopping </button></a>`;
+document.getElementById("items").innerHTML = "<p>Your cart is empty</p>";
+document.getElementById("summary").innerHTML = "";
 return;
 }
 
@@ -258,42 +215,48 @@ cart.forEach((item,i)=>{
 let sub = item.price * item.qty;
 total += sub;
 
-html += `
+itemsHTML += `
 <div class="item">
 
-<div class="item-details">
-<b>${item.name}</b><br>
-<span class="price">₹${item.price}</span>
+<img src="https://via.placeholder.com/80">
+
+<div class="details">
+<h4>${item.name}</h4>
+<div class="price">₹${item.price}</div>
+
+<div class="qty">
+<button onclick="changeQty(${i},-1)">-</button>
+${item.qty}
+<button onclick="changeQty(${i},1)">+</button>
 </div>
 
-<div class="qty-box">
-<button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
-<span>${item.qty}</span>
-<button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
+<div class="remove" onclick="deleteItem(${i})">Remove</div>
 </div>
 
 <div class="price">₹${sub}</div>
-
-<button class="delete" onclick="deleteItem(${i})">❌</button>
 
 </div>
 `;
 });
 
-html += `
-<div class="bottom-bar">
+document.getElementById("items").innerHTML = itemsHTML;
 
-<div class="total">Total: ₹${total}</div>
+/* SUMMARY */
+document.getElementById("summary").innerHTML = `
+<h3>Order Summary</h3>
 
-<button class="btn whatsapp" onclick="sendWhatsApp()">Send to WhatsApp</button>
-<button class="btn email" onclick="sendEmail()">Send to Email</button>
-<button class="btn clear" onclick="clearCart()">Clear Cart</button>
-<a href="office.html"><button class="btn back">⬅ Continue Shopping</button></a>
+<div class="row"><span>Subtotal</span><span>₹${total}</span></div>
+<div class="row"><span>GST (18%)</span><span>₹${Math.round(total*0.18)}</span></div>
 
+<div class="row total">
+<span>Total</span>
+<span>₹${total + Math.round(total*0.18)}</span>
 </div>
-`;
 
-document.getElementById("cartBox").innerHTML = html;
+<button class="checkout" onclick="sendWhatsApp()">Checkout</button>
+
+<a href="office.html" class="back">← Continue Shopping</a>
+`;
 }
 
 /* QTY */
@@ -302,13 +265,10 @@ let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
 cart[i].qty += change;
 
-if(cart[i].qty <= 0){
-cart.splice(i,1);
-}
+if(cart[i].qty<=0) cart.splice(i,1);
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
-updateCartCount();
 }
 
 /* DELETE */
@@ -317,22 +277,14 @@ let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 cart.splice(i,1);
 localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
-updateCartCount();
-}
-
-/* CLEAR */
-function clearCart(){
-if(confirm("Clear all items?")){
-localStorage.removeItem(cartKey);
-loadCart();
-updateCartCount();
-}
 }
 
 /* WHATSAPP */
 function sendWhatsApp(){
+
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-let msg = "Order Details:%0A";
+
+let msg = "Order:%0A";
 let total = 0;
 
 cart.forEach(item=>{
@@ -341,29 +293,11 @@ total += sub;
 msg += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}%0A`;
 });
 
-msg += `%0ATotal: ₹${total}`;
+msg += `%0ATotal ₹${total}`;
+
 window.open(`https://wa.me/919886887482?text=${msg}`);
 }
 
-/* EMAIL */
-function sendEmail(){
-let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-let body = "Order Details:\n";
-let total = 0;
-
-cart.forEach(item=>{
-let sub = item.price * item.qty;
-total += sub;
-body += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}\n`;
-});
-
-body += `\nTotal: ₹${total}`;
-window.location.href =
-`mailto:your@email.com?subject=Order&body=${body}`;
-}
-
-/* INIT */
-updateCartCount();
 loadCart();
 
 </script>
