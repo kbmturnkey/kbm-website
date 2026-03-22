@@ -11,7 +11,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f5f7fb;
+    background: linear-gradient(135deg,#eef2f7,#dde4ee);
 }
 
 /* ===== NAVBAR ===== */
@@ -51,31 +51,56 @@ body {
     padding:10px 16px;border-radius:6px;
 }
 
-/* TITLE */
+/* ===== TITLE ===== */
 .page-title {
     background:linear-gradient(to right,#1e4db7,#2f6be0);
     color:white;text-align:center;
     padding:15px;font-size:22px;
 }
 
-/* LAYOUT */
-.container {display:flex;padding:20px;gap:20px;}
-
-/* FILTER */
-.filter {
-    width:260px;
-    background:white;
+/* ===== LAYOUT ===== */
+.container {
+    display:flex;
     padding:20px;
-    border-radius:12px;
+    gap:20px;
 }
 
+/* ===== ULTRA FILTER ===== */
+.filter {
+    width:260px;
+    padding:20px;
+    border-radius:16px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.filter:hover {
+    transform: translateY(-3px);
+}
+
+.filter h3 {
+    margin-top:0;
+}
+
+/* SELECT */
 .filter select {
     width:100%;
     padding:10px;
     margin-top:10px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    outline:none;
+    transition:0.3s;
 }
 
-/* PRODUCTS */
+.filter select:focus {
+    border-color:#2874f0;
+    box-shadow:0 0 6px rgba(40,116,240,0.2);
+}
+
+/* ===== PRODUCTS ===== */
 .products {flex:1;}
 
 /* HEADER */
@@ -83,13 +108,28 @@ body {
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:15px;
+    margin-bottom:20px;
+}
+
+/* SEARCH */
+.search-box {
+    position: relative;
+    width: 260px;
 }
 
 .search-box input {
-    padding:8px;
-    border-radius:6px;
-    border:1px solid #ccc;
+    width:100%;
+    padding:10px 35px 10px 12px;
+    border-radius:20px;
+    border:1px solid #ddd;
+    outline:none;
+}
+
+.search-icon {
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
 }
 
 /* GRID */
@@ -103,19 +143,20 @@ body {
 .card {
     background:white;
     padding:15px;
-    border-radius:15px;
+    border-radius:16px;
     text-align:center;
-    box-shadow:0 6px 15px rgba(0,0,0,0.08);
-    display:flex;
-    flex-direction:column;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
 }
 
 .card img {
     height:140px;
     object-fit:contain;
 }
-
-.card-top {flex-grow:1;}
 
 .desc {
     font-size:13px;
@@ -126,16 +167,23 @@ body {
 .price {
     color:#1e4db7;
     font-weight:bold;
+    margin-top:5px;
 }
 
 button {
     margin-top:10px;
-    padding:8px;
+    padding:8px 12px;
     border:none;
     background:#1e4db7;
     color:white;
     border-radius:6px;
     cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.container {flex-direction:column;}
+.filter {width:100%;}
 }
 
 </style>
@@ -169,7 +217,8 @@ button {
 <h3>Filter</h3>
 
 <select id="category" onchange="loadSub()"></select>
-<select id="sub" onchange="renderItems()"></select>
+
+<select id="sub" onchange="renderItems()" style="display:none;"></select>
 </div>
 
 <!-- PRODUCTS -->
@@ -177,7 +226,11 @@ button {
 
 <div class="shop">
 <div id="count">0 Items</div>
+
+<div class="search-box">
 <input type="text" id="search" placeholder="Search..." onkeyup="renderItems()">
+<span class="search-icon">🔍</span>
+</div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -188,8 +241,8 @@ button {
 
 <script>
 
-let data = [];
-let cartKey = "officecart";
+let data=[];
+let cartKey="officecart";
 
 /* LOAD JSON */
 fetch('./office.json')
@@ -203,27 +256,41 @@ updateCartCount();
 
 /* CART COUNT */
 function updateCartCount(){
-let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-let count = cart.reduce((a,b)=>a+(b.qty||1),0);
-document.getElementById("cartCount").innerText = count;
+let cart=JSON.parse(localStorage.getItem(cartKey))||[];
+let count=cart.reduce((a,b)=>a+(b.qty||1),0);
+document.getElementById("cartCount").innerText=count;
 }
 
 /* CATEGORY */
 function loadCategories(){
 let unique=[...new Set(data.map(d=>d.category))];
-category.innerHTML='<option value="">Category</option>';
+
+category.innerHTML='<option value="">Select Category</option>';
 
 unique.forEach(cat=>{
 category.innerHTML+=`<option>${cat}</option>`;
 });
 }
 
-/* SUB */
+/* SUBCATEGORY */
 function loadSub(){
-let filtered=data.filter(d=>d.category===category.value);
+
+let cat=category.value;
+let sub=document.getElementById("sub");
+
+if(!cat){
+sub.style.display="none";
+sub.innerHTML="";
+renderItems();
+return;
+}
+
+sub.style.display="block";
+
+let filtered=data.filter(d=>d.category===cat);
 let unique=[...new Set(filtered.map(d=>d.subcategory))];
 
-sub.innerHTML='<option value="">Sub Category</option>';
+sub.innerHTML='<option value="">Select Sub Category</option>';
 
 unique.forEach(s=>{
 sub.innerHTML+=`<option>${s}</option>`;
@@ -266,18 +333,11 @@ let price=Math.floor(Math.random()*500)+50;
 
 grid.innerHTML+=`
 <div class="card">
-
-    <div class="card-top">
-        <img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
-        <h4>${item.name}</h4>
-        <p class="desc">${item.description || ""}</p>
-    </div>
-
-    <div class="card-bottom">
-        <p class="price">₹${price}</p>
-        <button onclick="addToCart('${item.name}',${price})">Add to Cart</button>
-    </div>
-
+<img src="${item.img}" onerror="this.src='https://via.placeholder.com/150'">
+<h4>${item.name}</h4>
+<p class="desc">${item.description || ""}</p>
+<p class="price">₹${price}</p>
+<button onclick="addToCart('${item.name}',${price})">Add to Cart</button>
 </div>
 `;
 });
