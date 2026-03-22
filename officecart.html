@@ -9,126 +9,176 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: #f5f7fb;
     margin: 0;
-    padding: 20px;
+}
+
+/* NAVBAR */
+.navbar {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:white;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+.logo img {height:60px;}
+
+.menu {display:flex;gap:40px;}
+.menu a {text-decoration:none;color:#333;}
+
+.right-section {
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.cart {
+    position:relative;
+    background:#f3f4f6;
+    padding:8px 14px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+#cartCount {
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    background:red;
+    color:white;
+    font-size:12px;
+    border-radius:50%;
+    padding:3px 7px;
+}
+
+.contact-btn {
+    background:#6c8f2e;
+    color:white;
+    padding:10px 18px;
+    border-radius:6px;
 }
 
 /* TITLE */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
+.page-title {
+    background:linear-gradient(to right,#1e4db7,#2f6be0);
+    color:white;
+    text-align:center;
+    padding:18px;
 }
 
-/* CART BOX */
+/* MAIN */
+.main {padding:20px;}
+
 .box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 800px;
-    margin: auto;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    max-width:900px;
+    margin:auto;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
 }
 
 /* ITEM */
 .item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-    transition: 0.3s;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    border-bottom:1px solid #eee;
+    animation:slideIn 0.4s ease;
 }
 
-.item:hover {
-    background: #fafafa;
+@keyframes slideIn {
+    from {opacity:0; transform:translateX(50px);}
+    to {opacity:1; transform:translateX(0);}
 }
 
-/* DETAILS */
-.item-details {
-    flex: 1;
-}
+.item-details {flex:1;}
 
-/* PRICE */
-.price {
-    color: #1e4db7;
-    font-weight: bold;
-}
+.price {color:#1e4db7;font-weight:bold;}
 
-/* QTY STEPPER */
+/* QTY */
 .qty-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
 .qty-btn {
-    background: #1e4db7;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 6px;
-    cursor: pointer;
+    background:#1e4db7;
+    color:white;
+    border:none;
+    padding:6px 12px;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.2s;
 }
 
-.qty-value {
-    min-width: 20px;
-    text-align: center;
+.qty-btn:hover {
+    background:#163c91;
+    transform:scale(1.1);
 }
 
 /* DELETE */
 .delete {
-    background: red;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
+    background:red;
+    color:white;
+    border:none;
+    padding:6px 10px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
-/* EMPTY CART */
+/* EMPTY */
 .empty {
-    text-align: center;
-    color: #888;
-    padding: 40px;
+    text-align:center;
+    padding:40px;
+    color:#888;
 }
 
-/* STICKY TOTAL */
+/* FOOTER */
 .footer {
-    margin-top: 20px;
-    padding-top: 10px;
-    border-top: 2px solid #eee;
+    margin-top:20px;
+    padding-top:15px;
+    border-top:2px solid #eee;
 }
 
 /* TOTAL */
 .total {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
+    font-size:22px;
+    font-weight:bold;
 }
 
 /* BUTTONS */
 .btn {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    transition:0.3s;
 }
 
-.whatsapp {
-    background: #25D366;
-    color: white;
+.btn:hover {
+    transform:translateY(-2px);
 }
 
-.email {
-    background: #1e4db7;
-    color: white;
-}
+.whatsapp {background:#25D366;color:white;}
+.email {background:#1e4db7;color:white;}
+.clear {background:#999;color:white;}
+.back {background:#444;color:white;}
 
-.clear {
-    background: #999;
-    color: white;
+/* STICKY BOTTOM */
+.bottom-bar {
+    position:sticky;
+    bottom:0;
+    background:white;
+    padding:15px;
+    box-shadow:0 -2px 10px rgba(0,0,0,0.1);
+    border-radius:10px;
+    margin-top:20px;
 }
 
 </style>
@@ -137,26 +187,52 @@ h2 {
 
 <body>
 
-<h2>🛒 Office Cart</h2>
+<header class="navbar">
+<div class="logo"><img src="logo.png"></div>
+
+<nav class="menu">
+<a href="index.html">Home</a>
+<a href="index.html#services">Services</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<div class="right-section">
+<a href="#" class="cart">🛒 <span id="cartCount">0</span></a>
+<div class="contact-btn">📞 +91 9886887482</div>
+</div>
+</header>
+
+<div class="page-title">Office Cart</div>
+
+<div class="main">
 
 <div class="box" id="cartBox"></div>
+
+</div>
 
 <script>
 
 const cartKey = "officecart";
 
+/* CART COUNT */
+function updateCartCount(){
+let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+let count = cart.reduce((a,b)=>a+(b.qty||1),0);
+document.getElementById("cartCount").innerText = count;
+}
+
 /* LOAD CART */
 function loadCart(){
 
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
 let html = "";
 let total = 0;
 
 if(cart.length === 0){
-    document.getElementById("cartBox").innerHTML =
-    `<div class="empty">🛒 Your cart is empty</div>`;
-    return;
+document.getElementById("cartBox").innerHTML =
+`<div class="empty">🛒 Your cart is empty</div>
+<a href="office.html"><button class="btn back">⬅ Back to Office</button></a>`;
+return;
 }
 
 cart.forEach((item,i)=>{
@@ -167,33 +243,34 @@ total += sub;
 html += `
 <div class="item">
 
-    <div class="item-details">
-        <b>${item.name}</b><br>
-        <span class="price">₹${item.price}</span>
-    </div>
+<div class="item-details">
+<b>${item.name}</b><br>
+<span class="price">₹${item.price}</span>
+</div>
 
-    <div class="qty-box">
-        <button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
-        <span class="qty-value">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
-    </div>
+<div class="qty-box">
+<button class="qty-btn" onclick="changeQty(${i},-1)">➖</button>
+<span>${item.qty}</span>
+<button class="qty-btn" onclick="changeQty(${i},1)">➕</button>
+</div>
 
-    <div class="price">₹${sub}</div>
+<div class="price">₹${sub}</div>
 
-    <button class="delete" onclick="deleteItem(${i})">❌</button>
+<button class="delete" onclick="deleteItem(${i})">❌</button>
 
 </div>
 `;
 });
 
 html += `
-<div class="footer">
+<div class="bottom-bar">
 
-    <div class="total">Total: ₹${total}</div>
+<div class="total">Total: ₹${total}</div>
 
-    <button class="btn whatsapp" onclick="sendWhatsApp()">Send to WhatsApp</button>
-    <button class="btn email" onclick="sendEmail()">Send to Email</button>
-    <button class="btn clear" onclick="clearCart()">Clear Cart</button>
+<button class="btn whatsapp" onclick="sendWhatsApp()">Send to WhatsApp</button>
+<button class="btn email" onclick="sendEmail()">Send to Email</button>
+<button class="btn clear" onclick="clearCart()">Clear Cart</button>
+<a href="office.html"><button class="btn back">⬅ Back to Office</button></a>
 
 </div>
 `;
@@ -201,27 +278,28 @@ html += `
 document.getElementById("cartBox").innerHTML = html;
 }
 
-/* CHANGE QTY */
-function changeQty(i, change){
+/* QTY */
+function changeQty(i,change){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
 cart[i].qty += change;
 
 if(cart[i].qty <= 0){
-    cart.splice(i,1);
+cart.splice(i,1);
 }
 
-localStorage.setItem(cartKey, JSON.stringify(cart));
-
+localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
+updateCartCount();
 }
 
 /* DELETE */
 function deleteItem(i){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 cart.splice(i,1);
-localStorage.setItem(cartKey, JSON.stringify(cart));
+localStorage.setItem(cartKey,JSON.stringify(cart));
 loadCart();
+updateCartCount();
 }
 
 /* CLEAR */
@@ -229,51 +307,45 @@ function clearCart(){
 if(confirm("Clear all items?")){
 localStorage.removeItem(cartKey);
 loadCart();
+updateCartCount();
 }
 }
 
 /* WHATSAPP */
 function sendWhatsApp(){
-
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
 let msg = "Order Details:%0A";
 let total = 0;
 
 cart.forEach(item=>{
 let sub = item.price * item.qty;
 total += sub;
-
 msg += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}%0A`;
 });
 
 msg += `%0ATotal: ₹${total}`;
-
 window.open(`https://wa.me/919886887482?text=${msg}`);
 }
 
 /* EMAIL */
 function sendEmail(){
-
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
 let body = "Order Details:\n";
 let total = 0;
 
 cart.forEach(item=>{
 let sub = item.price * item.qty;
 total += sub;
-
 body += `${item.name} - ${item.qty} x ₹${item.price} = ₹${sub}\n`;
 });
 
 body += `\nTotal: ₹${total}`;
-
 window.location.href =
 `mailto:your@email.com?subject=Order&body=${body}`;
 }
 
 /* INIT */
+updateCartCount();
 loadCart();
 
 </script>
