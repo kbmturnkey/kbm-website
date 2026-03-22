@@ -12,7 +12,7 @@ body {
     background: #f4f7fb;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header {
     position: sticky;
     top: 0;
@@ -25,10 +25,11 @@ body {
     padding: 12px 50px;
     box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
-/* LOGO */
+
 .logo img {
     height: 55px;
     width: auto;
+    object-fit: contain;
 }
 
 /* NAV */
@@ -43,10 +44,9 @@ nav a {
     color: #333;
     font-weight: 500;
     position: relative;
-    transition: 0.3s;
 }
 
-/* UNDERLINE EFFECT */
+/* Hover underline */
 nav a::after {
     content: "";
     position: absolute;
@@ -62,25 +62,26 @@ nav a:hover::after {
     width: 100%;
 }
 
+/* Contact Button */
+.contact-btn {
+    background: #6c8f2e;
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 25px;
+}
+
+.contact-btn:hover {
+    background: #56751f;
+}
+
+/* MOBILE MENU */
 .menu-toggle {
     display: none;
     font-size: 26px;
     cursor: pointer;
 }
 
-/* BUTTON */
-.btn {
-    background: #6c8f2e;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 25px;
-    text-decoration: none;
-}
-.btn:hover {
-    background: #56751f;
-}
-
-/* HERO VIDEO */
+/* ===== HERO VIDEO ===== */
 .hero {
     position: relative;
     height: 90vh;
@@ -92,7 +93,6 @@ nav a:hover::after {
     overflow: hidden;
 }
 
-/* VIDEO */
 #bgVideo {
     position: absolute;
     top: 50%;
@@ -104,7 +104,6 @@ nav a:hover::after {
     z-index: -2;
 }
 
-/* OVERLAY */
 .overlay {
     position: absolute;
     width: 100%;
@@ -113,29 +112,40 @@ nav a:hover::after {
     z-index: -1;
 }
 
-/* HERO TEXT */
 .hero-content h1 {
     font-size: 48px;
     margin-bottom: 15px;
 }
+
 .hero-content p {
     font-size: 18px;
     margin-bottom: 20px;
 }
 
-/* SERVICES */
+.btn {
+    background: #6c8f2e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+/* ===== SERVICES ===== */
 .services {
     padding: 60px;
 }
+
 .services h2 {
     text-align: center;
     margin-bottom: 40px;
 }
+
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 25px;
 }
+
 .card {
     background: white;
     border-radius: 15px;
@@ -143,56 +153,65 @@ nav a:hover::after {
     transition: 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
+
 .card:hover {
     transform: translateY(-8px);
 }
+
 .card img {
     width: 100%;
     height: 180px;
     object-fit: cover;
 }
+
 .card-content {
     padding: 15px;
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
 .contact {
     background: #0b3d91;
     color: white;
     padding: 50px;
 }
+
 .contact-container {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
 }
-    .contact img {
+
+.contact img {
     height: 120px;
     width: auto;
     background: white;
     padding: 10px;
     border-radius: 8px;
 }
-/* CONTACT BUTTON */
-.contact-btn {
-    background: #6c8f2e;
+
+/* FLOAT BUTTONS */
+.whatsapp, .call {
+    position: fixed;
+    right: 20px;
+    padding: 15px;
+    border-radius: 50%;
     color: white;
-    padding: 8px 18px;
-    border-radius: 25px;
+    text-decoration: none;
 }
 
-.contact-btn:hover {
-    background: #56751f;
+.whatsapp {
+    bottom: 20px;
+    background: #25D366;
 }
 
-/* MOBILE */
-.menu-toggle {
-    display: none;
-    font-size: 26px;
-    cursor: pointer;
+.call {
+    bottom: 80px;
+    background: #0b3d91;
 }
 
+/* ===== MOBILE ===== */
 @media(max-width:768px) {
+
     nav {
         position: absolute;
         top: 70px;
@@ -212,48 +231,11 @@ nav a:hover::after {
     .menu-toggle {
         display: block;
     }
-}
-
-/* FLOAT BUTTONS */
-.whatsapp, .call {
-    position: fixed;
-    right: 20px;
-    padding: 15px;
-    border-radius: 50%;
-    color: white;
-    text-decoration: none;
-}
-.whatsapp {
-    bottom: 20px;
-    background: #25D366;
-}
-.call {
-    bottom: 80px;
-    background: #0b3d91;
-}
-
-/* MOBILE */
-@media(max-width:768px) {
-    nav {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        width: 200px;
-        display: none;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    nav.show {
-        display: flex;
-    }
-    .menu-toggle {
-        display: block;
-    }
 
     .hero {
         height: 70vh;
     }
+
     .hero-content h1 {
         font-size: 28px;
     }
@@ -263,10 +245,10 @@ nav a:hover::after {
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
-
     <div class="logo">
-        <img src="logo.png" alt="KBM Logo">
+        <img src="logo.png">
     </div>
 
     <nav id="nav">
@@ -278,12 +260,10 @@ nav a:hover::after {
     </nav>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
 </header>
 
-<!-- HERO VIDEO -->
+<!-- HERO -->
 <section class="hero">
-
     <video autoplay muted loop id="bgVideo">
         <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
     </video>
@@ -295,7 +275,6 @@ nav a:hover::after {
         <p>Interior, construction & workforce services delivered with precision and quality.</p>
         <a class="btn" href="#services">Explore Services</a>
     </div>
-
 </section>
 
 <!-- SERVICES -->
@@ -345,7 +324,7 @@ nav a:hover::after {
 <!-- CONTACT -->
 <section class="contact">
     <div class="contact-container">
-        <img src="logo.png" style="width:180px;">
+        <img src="logo.png">
         <div>
             <h2>KBM Turnkey Projects</h2>
             <p>📍 Bengaluru - 560073</p>
