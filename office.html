@@ -136,27 +136,29 @@ body {
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-
-    column-gap: 20px;  /* left-right */
-    row-gap: 30px;     /* 🔥 top-bottom spacing */
+    gap: 25px; /* 🔥 both row + column gap */
 }
 
 /* CARD */
 .card {
-    background:white;
-    padding:15px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 6px 15px rgba(0,0,0,0.08);
-    transition:0.3s;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  /* 🔥 key */
-    height: 100%;                    /* 🔥 equal height */
+
+    /* 🔥 IMPORTANT FIX */
+    align-self: start;   /* prevents stretching */
 }
 
-.card:hover {transform:translateY(-5px);}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
 
 .card img {
     height:140px;width:100%;
