@@ -27,19 +27,10 @@ body {
 .logo img {height:55px;}
 
 .menu {display:flex;gap:30px;}
-.menu a {
-    text-decoration:none;
-    color:#333;
-    font-weight:500;
-}
+.menu a {text-decoration:none;color:#333;font-weight:500;}
 
-.right-section {
-    display:flex;
-    align-items:center;
-    gap:20px;
-}
+.right-section {display:flex;align-items:center;gap:20px;}
 
-/* CART */
 .cart {
     position:relative;
     background:#f1f3f7;
@@ -49,69 +40,67 @@ body {
     font-weight:bold;
 }
 
-/* CART BADGE */
 #cartCount {
-    background:red;
-    color:white;
-    border-radius:50%;
-    padding:3px 7px;
-    font-size:12px;
-    position:absolute;
-    top:-8px;
-    right:-8px;
+    background:red;color:white;border-radius:50%;
+    padding:3px 7px;font-size:12px;
+    position:absolute;top:-8px;right:-8px;
 }
 
-/* ANIMATION */
-.bounce {animation:bounce 0.4s;}
-@keyframes bounce {
-0%{transform:scale(1);}
-50%{transform:scale(1.3);}
-100%{transform:scale(1);}
-}
-
-/* PHONE */
 .contact-btn {
-    background:#6c8f2e;
-    color:white;
-    padding:10px 16px;
-    border-radius:6px;
+    background:#6c8f2e;color:white;
+    padding:10px 16px;border-radius:6px;
 }
 
 /* TITLE */
 .page-title {
     background:linear-gradient(to right,#1e4db7,#2f6be0);
-    color:white;
-    text-align:center;
-    padding:15px;
-    font-size:22px;
+    color:white;text-align:center;
+    padding:15px;font-size:22px;
 }
 
 /* LAYOUT */
-.container {
-    display:flex;
-    padding:20px;
-    gap:20px;
-}
+.container {display:flex;padding:20px;gap:20px;}
 
-/* FILTER */
+/* ===== PREMIUM FILTER ===== */
 .filter {
     width:260px;
     background:white;
     padding:20px;
     border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
 }
 
+.filter h3 {
+    margin-bottom:10px;
+}
+
+/* LABEL */
+.filter label {
+    font-size:13px;
+    color:#666;
+    margin-top:12px;
+    display:block;
+}
+
+/* SELECT */
 .filter select {
     width:100%;
     padding:10px;
-    margin-top:10px;
+    margin-top:5px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    transition:0.2s;
+}
+
+.filter select:focus {
+    border-color:#1e4db7;
+    outline:none;
 }
 
 /* PRODUCTS */
 .products {flex:1;}
 
-/* SEARCH */
+/* ===== SHOP HEADER ===== */
 .shop {
     display:flex;
     justify-content:space-between;
@@ -119,12 +108,19 @@ body {
     margin-bottom:15px;
 }
 
+/* LEFT COUNT */
+.item-count {
+    font-weight:600;
+    color:#333;
+}
+
+/* RIGHT SEARCH */
 .search-box {
     position:relative;
 }
 
 .search-box input {
-    width:250px;
+    width:220px;
     padding:8px 30px 8px 10px;
     border-radius:6px;
     border:1px solid #ccc;
@@ -134,12 +130,6 @@ body {
     position:absolute;
     right:8px;
     top:6px;
-}
-
-/* COUNT */
-.count {
-    font-size:14px;
-    color:#555;
 }
 
 /* GRID */
@@ -159,13 +149,10 @@ body {
     transition:0.3s;
 }
 
-.card:hover {
-    transform:translateY(-5px);
-}
+.card:hover {transform:translateY(-5px);}
 
 .card img {
-    height:140px;
-    width:100%;
+    height:140px;width:100%;
     object-fit:contain;
 }
 
@@ -207,7 +194,6 @@ button {
 <a href="officecart.html" class="cart">
 🛒 Cart <span id="cartCount">0</span>
 </a>
-
 <div class="contact-btn">📞 +91 9886887482</div>
 </div>
 </header>
@@ -216,26 +202,33 @@ button {
 
 <div class="container">
 
+<!-- FILTER -->
 <div class="filter">
 <h3>Filter</h3>
 
+<label>Category</label>
 <select id="category" onchange="loadSub()"></select>
 
+<label>Sub Category</label>
 <select id="sub" onchange="renderItems()">
-<option value="">Sub Category</option>
+<option value="">Select Sub Category</option>
 </select>
 </div>
 
+<!-- PRODUCTS -->
 <div class="products">
 
+<!-- HEADER -->
 <div class="shop">
 
+<!-- LEFT -->
+<div class="item-count" id="count">0 Items</div>
+
+<!-- RIGHT -->
 <div class="search-box">
 <input type="text" id="search" placeholder="Search..." onkeyup="renderItems()">
 <span>🔍</span>
 </div>
-
-<div class="count" id="count"></div>
 
 </div>
 
@@ -264,31 +257,27 @@ updateCartCount();
 function updateCartCount(){
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 let count = cart.reduce((a,b)=>a+(b.qty||1),0);
-
-let el = document.getElementById("cartCount");
-el.innerText = count;
-
-el.classList.add("bounce");
-setTimeout(()=>el.classList.remove("bounce"),400);
+document.getElementById("cartCount").innerText = count;
 }
 
 /* CATEGORY */
 function loadCategories(){
 let unique = [...new Set(data.map(d=>d.category))];
-category.innerHTML='<option value="">Category</option>';
+category.innerHTML='<option value="">Select Category</option>';
 
 unique.forEach(cat=>{
 category.innerHTML+=`<option value="${cat}">${cat}</option>`;
 });
 }
 
-/* SUB */
+/* SUB CATEGORY BELOW */
 function loadSub(){
+
 let filtered = data.filter(d=>d.category===category.value);
 
 let unique = [...new Set(filtered.map(d=>d.subcategory))];
 
-sub.innerHTML='<option value="">Sub Category</option>';
+sub.innerHTML='<option value="">Select Sub Category</option>';
 
 unique.forEach(s=>{
 sub.innerHTML+=`<option value="${s}">${s}</option>`;
@@ -316,7 +305,8 @@ if(sub.value){
 filtered = filtered.filter(d=>d.subcategory===sub.value);
 }
 
-document.getElementById("count").innerText = filtered.length + " items";
+/* LEFT COUNT */
+document.getElementById("count").innerText = filtered.length + " Items";
 
 grid.innerHTML="";
 
@@ -346,19 +336,14 @@ grid.innerHTML+=`
 
 /* ADD CART */
 function addToCart(name,price){
-
 let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
 let existing = cart.find(i=>i.name===name);
 
-if(existing){
-existing.qty+=1;
-}else{
-cart.push({name,price,qty:1});
-}
+if(existing){existing.qty+=1;}
+else{cart.push({name,price,qty:1});}
 
 localStorage.setItem(cartKey,JSON.stringify(cart));
-
 updateCartCount();
 }
 
