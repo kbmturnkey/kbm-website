@@ -335,14 +335,18 @@ nav a:hover::after {
 .eye-icon {
     position: absolute;
     right: 12px;
-    top: 10px;
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
     color: #555;
     }
+    
 .password-box input {
     width: 100%;
-    padding-right: 40px;
-}
+    padding: 10px 40px 10px 10px; /* space for icon */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    }
 
 /* BUTTON */
 .login-submit {
