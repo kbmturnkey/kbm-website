@@ -2,165 +2,162 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KBM Turnkey Projects</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
-  height: 100vh;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.container {
-  width: 350px;
-  padding: 30px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  color: #fff;
-  animation: fadeIn 1s ease;
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #fff;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
-.input-box {
-  position: relative;
-  margin-bottom: 20px;
+nav a {
+    text-decoration: none;
+    color: #333;
 }
 
-.input-box input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
+/* LOGIN BUTTON */
+.login-btn {
+    background: linear-gradient(135deg,#1e73be,#155a96);
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.toggle {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  cursor: pointer;
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: white;
+    width: 350px;
+    margin: 8% auto;
+    padding: 25px;
+    border-radius: 12px;
+    animation: popup 0.3s ease;
+}
+
+@keyframes popup {
+    from {transform: scale(0.8); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+}
+
+/* FORM */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #00c6ff;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+    width: 100%;
+    padding: 10px;
+    background: #1e73be;
+    color: white;
+    border: none;
 }
 
-button:hover {
-  background: #0072ff;
+.password-box {
+    display: flex;
 }
 
-.error {
-  color: #ff6b6b;
-  font-size: 14px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.links {
-  margin-top: 15px;
-  text-align: center;
-}
-
-.links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+.password-box span {
+    margin-left: -30px;
+    cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h2>Welcome Back</h2>
+<header class="header">
+    <h2>KBM</h2>
 
-  <div class="error" id="errorMsg"></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
 
-  <form onsubmit="loginUser(event)">
-    
-    <div class="input-box">
+        <!-- LOGIN BUTTON -->
+        <a href="#" class="login-btn" onclick="openLogin()">👤 Login</a>
+    </nav>
+</header>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeLogin()">❌</span>
+
+    <h2>Login</h2>
+
+    <form onsubmit="loginUser(event)">
       <input type="email" id="email" placeholder="Email" required>
-    </div>
 
-    <div class="input-box">
-      <input type="password" id="password" placeholder="Password" required>
-      <span class="toggle" onclick="togglePassword()">👁️</span>
-    </div>
+      <div class="password-box">
+        <input type="password" id="password" placeholder="Password" required>
+        <span onclick="togglePassword()">👁</span>
+      </div>
 
-    <button type="submit">Login</button>
-  </form>
+      <button type="submit">Login</button>
+    </form>
 
-  <div class="links">
-    <a href="/kbm-website/pages/register.html">Create Account</a><br>
-    <a href="/kbm-website/index.html">Home</a>
   </div>
 </div>
 
 <script>
-// Auto redirect if already logged in
-if (localStorage.getItem("loggedInUser")) {
-  window.location.href = "/kbm-website/index.html";
+function openLogin() {
+    document.getElementById("loginModal").style.display = "block";
 }
 
-// Toggle Password
-function togglePassword() {
-  const pwd = document.getElementById("password");
-  pwd.type = pwd.type === "password" ? "text" : "password";
+function closeLogin() {
+    document.getElementById("loginModal").style.display = "none";
 }
 
-// Login Function
-function loginUser(e) {
-  e.preventDefault();
-
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const errorMsg = document.getElementById("errorMsg");
-
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-
-  const user = users.find(u => u.email === email && u.password === password);
-
-  if (user) {
-    // Save session
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-
-    // Redirect
-    if (email === "admin@gmail.com") {
-      window.location.href = "/kbm-website/pages/admin.html";
-    } else {
-      window.location.href = "/kbm-website/index.html";
+window.onclick = function(e) {
+    const modal = document.getElementById("loginModal");
+    if (e.target === modal) {
+        modal.style.display = "none";
     }
+}
 
-  } else {
-    errorMsg.textContent = "Invalid email or password!";
-  }
+function togglePassword() {
+    const p = document.getElementById("password");
+    p.type = p.type === "password" ? "text" : "password";
+}
+
+function loginUser(e) {
+    e.preventDefault();
+    alert("Login working!");
 }
 </script>
 
