@@ -258,60 +258,110 @@ nav a:hover::after {
 .login-btn::after {
     display: none !important;
     }
-/* MODAL */
+    
+/* ==========POPUP LOGIN PAGE MODAL BACKGROUND========================= */
 .modal {
     display: none;
     position: fixed;
-    z-index: 99999; /* increase */
+    z-index: 99999;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.6);
-    }
+}
 
+/* MODAL BOX */
 .modal-content {
-    background: white;
-    width: 350px;
-    margin: 8% auto;
-    padding: 25px;
+    background: #fff;
+    width: 400px;
+    padding: 25px 30px;
     border-radius: 12px;
+    margin: 8% auto;
+    position: relative;
     animation: popup 0.3s ease;
-    }
+}
 
-@keyframes popup {
-    from {transform: scale(0.8); opacity:0;}
-    to {transform: scale(1); opacity:1;}
-    }
+/* TITLE */
+.title {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
+/* CLOSE BUTTON */
 .close {
-    float: right;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 20px;
     cursor: pointer;
-    }
+}
 
-/* FORM */
-input {
+/* LINE */
+.modal-content hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0 20px;
+}
+
+/* LABEL */
+.modal-content label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* INPUT */
+.modal-content input {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
-    }
+    margin: 6px 0 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
 
-button {
+/* PASSWORD BOX */
+.password-box {
+    position: relative;
+}
+
+.password-box span {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+/* BUTTON */
+.login-submit {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: #1e73be;
     color: white;
     border: none;
-    }
+    border-radius: 6px;
+    font-weight: 600;
+    margin-top: 10px;
+}
 
-.password-box {
+/* LINKS */
+.links {
     display: flex;
-    }
+    justify-content: space-between;
+    margin-top: 15px;
+}
 
-.password-box span {
-    margin-left: -30px;
-    cursor: pointer;
-    }
+.links a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #1e73be;
+}
+
+/* ANIMATION */
+@keyframes popup {
+    from {transform: scale(0.8); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+}
+/* ==========POPUP LOGIN PAGE MODAL BACKGROUND========================= */
 /*============ ✅ LOGIN BUTTON=========== */
 
 /*==== MOBILE version view=============*/
@@ -438,20 +488,30 @@ button {
 <div id="loginModal" class="modal">
   <div class="modal-content">
 
-    <span class="close" onclick="closeLogin()">❌</span>
+    <span class="close" onclick="closeLogin()">✕</span>
 
-    <h2>Login</h2>
+    <h2 class="title">👤 Login</h2>
+    <hr>
 
     <form onsubmit="loginUser(event)">
-      <input type="email" id="email" placeholder="Email" required>
+      
+      <label>Email ID</label>
+      <input type="email" id="email" placeholder="Your email" required>
 
+      <label>Password</label>
       <div class="password-box">
-        <input type="password" id="password" placeholder="Password" required>
+        <input type="password" id="password" placeholder="Your Password" required>
         <span onclick="togglePassword()">👁</span>
       </div>
 
-      <button type="submit">Login</button>
+      <button type="submit" class="login-submit">Login</button>
+
     </form>
+
+    <div class="links">
+      <a href="#">Forgot Password?</a>
+      <a href="pages/register.html">Register</a>
+    </div>
 
   </div>
 </div>
