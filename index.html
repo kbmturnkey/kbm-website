@@ -642,7 +642,7 @@ nav a:hover::after {
 function toggleMenu() {
     document.getElementById("nav").classList.toggle("show");
 }
-
+<!-- LOGIN PAGE FUNCTIONS -->
 function openLogin() {
     const modal = document.getElementById("loginModal");
     modal.style.display = "block";
@@ -661,7 +661,7 @@ window.onclick = function(e) {
         modal.style.display = "none";
     }
 }
-
+<!-- EYE PASSWORD LINK FUNCTIONS -->
 function togglePassword() {
     const password = document.getElementById("password");
     const icon = document.getElementById("eyeIcon");
@@ -683,7 +683,7 @@ function loginUser(e) {
     e.preventDefault();
     alert("Login working!");
 }
-
+<!-- FORGOT PASSWORD LINK FUNCTIONS -->
 function openForgot() {
     document.getElementById("loginModal").style.display = "none";
     document.getElementById("forgotModal").style.display = "block";
@@ -697,6 +697,26 @@ function backToLogin() {
     document.getElementById("forgotModal").style.display = "none";
     document.getElementById("loginModal").style.display = "block";
 }
+
+<!-- REGISTRATION LINK FUNCTIONS -->
+function openRegister() {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("registerModal").style.display = "block";
+    }
+
+function closeRegister() {
+    document.getElementById("registerModal").style.display = "none";
+    }
+
+function backToLoginFromRegister() {
+    document.getElementById("registerModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "block";
+    }
+
+function registerUser(e) {
+    e.preventDefault();
+    alert("Registered successfully!");
+    }
 </script>
 
 </body>
