@@ -522,7 +522,7 @@ nav a:hover::after {
       <div class="password-box">
         <input type="password" id="password" placeholder="Your Password" required>
         <span class="eye-icon" onclick="togglePassword()">
-          <i id="eyeIcon" class="fa-solid fa-eye"></i>
+          <i id="eyeIcon" class="fa-solid fa-eye-slash"></i>
         </span>
       </div>
 
@@ -601,13 +601,13 @@ function togglePassword() {
     if (password.type === "password") {
         // SHOW password
         password.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
     } else {
         // HIDE password
         password.type = "password";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
     }
 }
 
