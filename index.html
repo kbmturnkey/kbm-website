@@ -257,7 +257,59 @@ nav a:hover::after {
     }
 .login-btn::after {
     display: none !important;
-}
+    }
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    }
+
+.modal-content {
+    background: white;
+    width: 350px;
+    margin: 8% auto;
+    padding: 25px;
+    border-radius: 12px;
+    animation: popup 0.3s ease;
+    }
+
+@keyframes popup {
+    from {transform: scale(0.8); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+    }
+
+.close {
+    float: right;
+    cursor: pointer;
+    }
+
+/* FORM */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    }
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #1e73be;
+    color: white;
+    border: none;
+    }
+
+.password-box {
+    display: flex;
+    }
+
+.password-box span {
+    margin-left: -30px;
+    cursor: pointer;
+    }
 /*============ ✅ LOGIN BUTTON=========== */
 
 /*==== MOBILE version view=============*/
@@ -315,7 +367,7 @@ nav a:hover::after {
         <!--<a href="#">Projects</a>  -->
         <a href="#">About</a>
         <!--<a href="pages/contact.html" class="contact-btn">Contact</a> --->
-        <a href="pages/login.html" class="login-btn">👤 Login</a>
+        <a href="#" class="login-btn" onclick="openLogin()">👤 Login</a>
     </nav>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -380,6 +432,28 @@ nav a:hover::after {
     </div>
 </section>
 
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeLogin()">❌</span>
+
+    <h2>Login</h2>
+
+    <form onsubmit="loginUser(event)">
+      <input type="email" id="email" placeholder="Email" required>
+
+      <div class="password-box">
+        <input type="password" id="password" placeholder="Password" required>
+        <span onclick="togglePassword()">👁</span>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section class="contact">
     <div class="contact-box">
@@ -415,6 +489,30 @@ nav a:hover::after {
 <script>
 function toggleMenu() {
     document.getElementById("nav").classList.toggle("show");
+    }
+function openLogin() {
+    document.getElementById("loginModal").style.display = "block";
+}
+
+function closeLogin() {
+    document.getElementById("loginModal").style.display = "none";
+}
+
+window.onclick = function(e) {
+    const modal = document.getElementById("loginModal");
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+function togglePassword() {
+    const p = document.getElementById("password");
+    p.type = p.type === "password" ? "text" : "password";
+}
+
+function loginUser(e) {
+    e.preventDefault();
+    alert("Login working!");
 }
 </script>
 
