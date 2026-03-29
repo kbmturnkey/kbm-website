@@ -274,20 +274,32 @@ nav a:hover::after {
         flex-direction: column;
         text-align: center;
     }
-    .login-btn {
-    background: #6c8f2e;
-    color: white !important;
-    padding: 8px 18px;
-    border-radius: 25px;
+    /* Premium Login Button */
+.login-btn {
+    background: linear-gradient(135deg, #1e73be, #155a96);
+    color: #fff !important;
+    padding: 10px 20px;
+    border-radius: 12px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: 0.3s;
-}
+    gap: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    }
 
+/* Icon */
+.login-btn .icon {
+    font-size: 16px;
+    }
+
+/* Hover effect */
 .login-btn:hover {
-    background: #155a96;
-}
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #155a96, #0f3e6b);
+    }
 }
 </style>
 </head>
