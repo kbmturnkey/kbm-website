@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KBM Turnkey Projects</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 body {
@@ -565,19 +566,19 @@ nav a:hover::after {
 <script>
 function toggleMenu() {
     document.getElementById("nav").classList.toggle("show");
-    }
-    
+}
+
 function openLogin() {
     const modal = document.getElementById("loginModal");
     modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // prevent scroll
-    }
+    document.body.style.overflow = "hidden";
+}
 
 function closeLogin() {
     const modal = document.getElementById("loginModal");
     modal.style.display = "none";
     document.body.style.overflow = "auto";
-    }
+}
 
 window.onclick = function(e) {
     const modal = document.getElementById("loginModal");
@@ -599,12 +600,12 @@ function togglePassword() {
         icon.classList.remove("fa-eye-slash");
         icon.classList.add("fa-eye");
     }
+}
 
 function loginUser(e) {
     e.preventDefault();
     alert("Login working!");
-    }
-
+}
 </script>
 
 </body>
