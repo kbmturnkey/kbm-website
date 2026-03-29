@@ -532,7 +532,7 @@ nav a:hover::after {
 
     <div class="links">
       <a href="#" onclick="openForgot(); return false;">Forgot Password?</a>
-      <a href="pages/register.html">Register</a>
+      <a href="#" onclick="openRegister(); return false;">Register</a>
     </div>
 
   </div>
@@ -557,6 +557,51 @@ nav a:hover::after {
 
       <button style="background:#6c8f2e; border-radius:6px; padding:10px 20px;">Submit</button>
     </div>
+
+  </div>
+</div>
+
+<!----------REGISTRATION PAGE LINK------------------>
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeRegister()">✕</span>
+
+    <h2 class="title">👤 Register</h2>
+    <hr>
+
+    <form onsubmit="registerUser(event)">
+
+      <label>Company Name</label>
+      <input type="text" placeholder="Company Name" required>
+
+      <label>Name</label>
+      <input type="text" placeholder="Name" required>
+
+      <label>Mobile No.</label>
+      <input type="text" placeholder="Mobile Number" required>
+
+      <label>Email ID</label>
+      <input type="email" placeholder="Email" required>
+
+      <label>Password</label>
+      <input type="password" placeholder="Password" required>
+
+      <hr>
+
+      <div style="display:flex; justify-content: space-between; margin-top:15px;">
+        <button type="button" onclick="backToLoginFromRegister()" 
+                style="background:#6c8f2e; border-radius:20px; padding:10px 20px;">
+          Back
+        </button>
+
+        <button type="submit" 
+                style="background:#6c8f2e; padding:10px 25px;">
+          Register
+        </button>
+      </div>
+
+    </form>
 
   </div>
 </div>
