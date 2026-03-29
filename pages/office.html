@@ -348,7 +348,7 @@ let data=[];
 const cartKey="officecart";
 
 /* LOAD */
-fetch('../office.json')
+fetch('../json/office.json')
 .then(res => {
     if (!res.ok) throw new Error("JSON not found");
     return res.json();
