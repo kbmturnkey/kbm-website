@@ -31,8 +31,9 @@ body {
     width: auto;
     object-fit: contain;
 }
+/* ===== HEADER ===== */
 
-/* NAV */
+/*========= NAV BAR=============== */
 nav {
     display: flex;
     align-items: center;
@@ -62,24 +63,13 @@ nav a:hover::after {
     width: 100%;
 }
 
-/* Contact Button */
-.contact-btn {
-    background: #6c8f2e;
-    color: white !important;
-    padding: 8px 18px;
-    border-radius: 25px;
-}
-
-.contact-btn:hover {
-    background: #56751f;
-}
-
 /* MOBILE MENU */
 .menu-toggle {
     display: none;
     font-size: 26px;
     cursor: pointer;
 }
+/*========= NAV BAR=============== */
 
 /* ===== HERO VIDEO ===== */
 .hero {
@@ -129,6 +119,7 @@ nav a:hover::after {
     border-radius: 25px;
     text-decoration: none;
 }
+/* ===== HERO VIDEO ===== */
 
 /* ===== SERVICES ===== */
 .services {
@@ -167,6 +158,7 @@ nav a:hover::after {
 .card-content {
     padding: 15px;
 }
+/* ===== SERVICES ===== */
 
 /* ===== PREMIUM CONTACT ===== */
 .contact {
@@ -226,8 +218,10 @@ nav a:hover::after {
 
 .call-btn { background: #0b3d91; }
 .whatsapp-btn { background: #25D366; }
+    
+/* ===== PREMIUM CONTACT ===== */
 
-/* FLOAT BUTTONS */
+/* =====FLOAT BUTTONS =====(Whatsapp&Call*/
 .whatsapp, .call {
     position: fixed;
     right: 20px;
@@ -238,8 +232,32 @@ nav a:hover::after {
 }
 .whatsapp { bottom: 20px; background: #25D366; }
 .call { bottom: 80px; background: #0b3d91; }
+/* =====FLOAT BUTTONS =====(Whatsapp&Call*/
 
-/* MOBILE */
+
+/* ==========✅ LOGIN BUTTON================= */
+.login-btn {
+    background: linear-gradient(135deg, #1e73be, #155a96);
+    color: #fff !important;
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    }
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, #155a96, #0f3e6b);
+    }
+/*============ ✅ LOGIN BUTTON=========== */
+
+/*==== MOBILE version view=============*/
 @media(max-width:768px) {
 
     nav {
@@ -274,52 +292,8 @@ nav a:hover::after {
         flex-direction: column;
         text-align: center;
     }
-    /* Premium Login Button */
-.login-btn {
-    background: linear-gradient(135deg, #1e73be, #155a96);
-    color: #fff !important;
-    padding: 10px 20px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    }
+/*==== MOBILE version view=============*/
 
-/* Icon */
-.login-btn .icon {
-    font-size: 16px;
-    }
-
-/* Hover effect */
-.login-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    background: linear-gradient(135deg, #155a96, #0f3e6b);
-    }
-    nav .login-btn {
-    background: linear-gradient(135deg, #1e73be, #155a96) !important;
-    color: #fff !important;
-    padding: 10px 22px !important;
-    border-radius: 12px !important;
-    display: inline-flex !important;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    text-decoration: none !important;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    }
-
-/* HOVER */
-nav .login-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
-    background: linear-gradient(135deg, #155a96, #0f3e6b) !important;
-    }
 }
 </style>
 </head>
