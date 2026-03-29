@@ -274,6 +274,20 @@ nav a:hover::after {
         flex-direction: column;
         text-align: center;
     }
+    .login-btn {
+    background: #1e73be;
+    color: white !important;
+    padding: 8px 18px;
+    border-radius: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #155a96;
+}
 }
 </style>
 </head>
@@ -289,9 +303,10 @@ nav a:hover::after {
     <nav id="nav">
         <a href=="index.html">Home</a>
         <a href="#services">Services</a>
-        <a href="#">Projects</a>
+        <!--<a href="#">Projects</a>  -->
         <a href="#">About</a>
         <a href="pages/contact.html" class="contact-btn">Contact</a>
+        <a href="pages/login.html" class="login-btn">👤 Login</a>
     </nav>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
