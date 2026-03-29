@@ -531,8 +531,31 @@ nav a:hover::after {
     </form>
 
     <div class="links">
-      <a href="#">Forgot Password?</a>
+      <a href="#" onclick="openForgot(); return false;">Forgot Password?</a>
       <a href="pages/register.html">Register</a>
+    </div>
+
+  </div>
+</div>
+
+<!----FORGET PASSWORD--->
+<div id="forgotModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeForgot()">✕</span>
+
+    <h2 class="title">👤 Forgot Password</h2>
+    <hr>
+
+    <label>Email ID</label>
+    <input type="email" placeholder="Your email" required>
+
+    <hr>
+
+    <div style="display:flex; justify-content: space-between; margin-top:20px;">
+      <button onclick="backToLogin()" style="background:#1e73be; border-radius:20px; padding:10px 20px;">Back</button>
+
+      <button style="background:#1e73be; border-radius:6px; padding:10px 20px;">Submit</button>
     </div>
 
   </div>
@@ -614,6 +637,20 @@ function togglePassword() {
 function loginUser(e) {
     e.preventDefault();
     alert("Login working!");
+}
+
+function openForgot() {
+    document.getElementById("loginModal").style.display = "none";
+    document.getElementById("forgotModal").style.display = "block";
+}
+
+function closeForgot() {
+    document.getElementById("forgotModal").style.display = "none";
+}
+
+function backToLogin() {
+    document.getElementById("forgotModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "block";
 }
 </script>
 
