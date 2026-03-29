@@ -330,12 +330,24 @@ nav a:hover::after {
     top: 10px;
     cursor: pointer;
 }
+    
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    cursor: pointer;
+    color: #555;
+    }
+.password-box input {
+    width: 100%;
+    padding-right: 40px;
+}
 
 /* BUTTON */
 .login-submit {
     width: 100%;
     padding: 12px;
-    background: #1e73be;
+    background: #6c8f2e;
     color: white;
     border: none;
     border-radius: 6px;
@@ -353,7 +365,7 @@ nav a:hover::after {
 .links a {
     font-size: 14px;
     text-decoration: none;
-    color: #1e73be;
+    color: #6c8f2e;
 }
 
 /* ANIMATION */
@@ -501,7 +513,9 @@ nav a:hover::after {
       <label>Password</label>
       <div class="password-box">
         <input type="password" id="password" placeholder="Your Password" required>
-        <span onclick="togglePassword()">👁</span>
+        <span class="eye-icon" onclick="togglePassword()">
+          <i id="eyeIcon" class="fa-solid fa-eye"></i>
+        </span>
       </div>
 
       <button type="submit" class="login-submit">Login</button>
@@ -573,14 +587,24 @@ window.onclick = function(e) {
 }
 
 function togglePassword() {
-    const p = document.getElementById("password");
-    p.type = p.type === "password" ? "text" : "password";
-}
+    const password = document.getElementById("password");
+    const icon = document.getElementById("eyeIcon");
+
+    if (password.type === "password") {
+        password.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        password.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
 
 function loginUser(e) {
     e.preventDefault();
     alert("Login working!");
-}
+    }
+
 </script>
 
 </body>
