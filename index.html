@@ -323,15 +323,19 @@ nav a:hover::after {
 /* PASSWORD BOX */
 .password-box {
     position: relative;
-}
+    width: 100%;
+    }
 
-.password-box span {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-}
+/* FIX INPUT */
+.password-box input {
+    width: 100%;
+    padding: 10px 45px 10px 10px; /* space for icon */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* VERY IMPORTANT */
+    }
     
+/* FIX ICON */
 .eye-icon {
     position: absolute;
     right: 12px;
@@ -340,12 +344,10 @@ nav a:hover::after {
     cursor: pointer;
     color: #555;
     }
-    
-.password-box input {
-    width: 100%;
-    padding: 10px 40px 10px 10px; /* space for icon */
-    border-radius: 6px;
-    border: 1px solid #ccc;
+
+/* REMOVE ANY OLD STYLES */
+.password-box span {
+    margin: 0 !important;
     }
 
 /* BUTTON */
