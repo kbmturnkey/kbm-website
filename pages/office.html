@@ -348,13 +348,20 @@ let data=[];
 const cartKey="officecart";
 
 /* LOAD */
-fetch(../office.json)
-.then(res=>res.json())
-.then(json=>{
-data=json;
-loadCategories();
-renderItems();
-updateCartCount();
+fetch('../office.json')
+.then(res => {
+    if (!res.ok) throw new Error("JSON not found");
+    return res.json();
+})
+.then(json => {
+    data = json;
+    loadCategories();
+    renderItems();
+    updateCartCount();
+})
+.catch(err => {
+    console.error(err);
+    document.getElementById("grid").innerHTML = "Failed to load data";
 });
 
 /* CATEGORY */
