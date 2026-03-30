@@ -29,21 +29,23 @@ sql.connect(config)
 
 app.post("/register", async (req, res) => {
     console.log("📥 Incoming:", req.body);
+
     const { company_name, name, mobile, email, password } = req.body;
 
     try {
         const pool = await sql.connect(config);
 
-        // Check existing user
         const check = await pool.request()
             .input("email", sql.VarChar, email)
             .query("SELECT * FROM users WHERE email = @email");
 
         if (check.recordset.length > 0) {
-            return res.json({ success: false, message: "Email already exists ❌" });
+            return res.status(200).json({
+                success: false,
+                message: "Email already exists ❌"
+            });
         }
 
-        // Insert user
         await pool.request()
             .input("company_name", sql.VarChar, company_name)
             .input("name", sql.VarChar, name)
@@ -55,11 +57,18 @@ app.post("/register", async (req, res) => {
                 VALUES (@company_name, @name, @mobile, @email, @password)
             `);
 
-        res.json({ success: true, message: "Registered Successfully ✅" });
+        return res.status(200).json({
+            success: true,
+            message: "Registered Successfully ✅"
+        });
 
     } catch (err) {
-        console.error(err);
-        res.status(500).send(err);
+        console.error("❌ ERROR:", err);
+
+        return res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
     }
 });
 
