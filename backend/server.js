@@ -27,9 +27,6 @@ sql.connect(config)
 
 // ✅ REGISTER API
 
-app.get("/register", (req, res) => {
-    res.send("Register API is working ✅");
-});
 app.post("/register", async (req, res) => {
     console.log("📥 Incoming:", req.body);
     const { company_name, name, mobile, email, password } = req.body;
