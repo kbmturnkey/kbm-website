@@ -573,19 +573,19 @@ nav a:hover::after {
     <form onsubmit="event.preventDefault(); registerUser();">
 
       <label>Company Name</label>
-      <input type="text" id="company_name" placeholder="Company Name" required>
+      <input type="text" id="reg_company_name" placeholder="Company Name" required>
 
       <label>Name</label>
-      <input type="text" id="name" placeholder="Name" required>
+      <input type="text" id="reg_name" placeholder="Name" required>
 
       <label>Mobile No.</label>
-      <input type="text" id="mobile" placeholder="Mobile Number" required>
+      <input type="text" id="reg_mobile" placeholder="Mobile Number" required>
 
       <label>Email ID</label>
-      <input type="email" id="email" placeholder="Email" required>
+      <input type="email" id="reg_email" placeholder="Email" required>
 
       <label>Password</label>
-      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="reg_password" placeholder="Password" required>
 
       <hr>
 
@@ -715,11 +715,11 @@ function backToLoginFromRegister() {
 
 function registerUser() {
     const data = {
-        company_name: document.getElementById("company_name").value,
-        name: document.getElementById("name").value,
-        mobile: document.getElementById("mobile").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
+        company_name: document.getElementById("reg_company_name").value,
+        name: document.getElementById("reg_name").value,
+        mobile: document.getElementById("reg_mobile").value,
+        email: document.getElementById("reg_email").value,
+        password: document.getElementById("reg_password").value
     };
 
     console.log("🚀 Sending:", data);
@@ -745,7 +745,7 @@ function registerUser() {
         console.error("❌ Error:", err);
         alert("Server error");
     });
-    }
+}
 </script>
 
 </body>
