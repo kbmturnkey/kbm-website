@@ -10,7 +10,7 @@ app.use(express.json());
 const config = {
     user: "kbm_user",
     password: "12345",
-    server: "127.0.0.1",   // 🔥 better than localhost
+    server: "localhost",   // ✅ correct
     database: "kbm_db",
     port: 1433,
     options: {
