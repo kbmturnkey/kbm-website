@@ -714,6 +714,7 @@ function backToLoginFromRegister() {
     }
 
 function registerUser() {
+    event.preventDefault();
     const data = {
         company_name: document.getElementById("reg_company_name").value,
         name: document.getElementById("reg_name").value,
