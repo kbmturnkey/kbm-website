@@ -532,7 +532,7 @@ nav a:hover::after {
 
     <div class="links">
       <a href="#" onclick="openForgot(); return false;">Forgot Password?</a>
-      <a href="#" onclick="openRegister(); return false;">Register</a>
+      <button type="button" onclick="registerUser()">Register</button>
     </div>
 
   </div>
@@ -713,10 +713,33 @@ function backToLoginFromRegister() {
     document.getElementById("loginModal").style.display = "block";
     }
 
-function registerUser(e) {
-    e.preventDefault();
-    alert("Registered successfully!");
-    }
+function registerUser() {
+    const data = {
+        company: document.getElementById("company").value,
+        name: document.getElementById("name").value,
+        mobile: document.getElementById("mobile").value,
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+    };
+
+    console.log("Sending data:", data); // ✅ DEBUG
+
+    fetch("http://localhost:5001/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+        alert(res.message);
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error connecting to server");
+    });
+}
 </script>
 
 </body>
