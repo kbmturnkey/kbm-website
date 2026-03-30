@@ -8,9 +8,9 @@ app.use(express.json());
 
 // SQL SERVER CONFIG
 const config = {
-    user: "your_username",
-    password: "your_password",
-    server: "localhost", // or server name
+    user: "kbm_user",
+    password: "12345",
+    server: "localhost",
     database: "kbm_db",
     options: {
         encrypt: false,
