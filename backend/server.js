@@ -10,7 +10,7 @@ app.use(express.json());
 const config = {
     user: "kbm_user",
     password: "12345",
-    server: "localhost",
+    server: "localhost\\SQLEXPRESS",
     database: "kbm_db",
     options: {
         encrypt: false,
@@ -86,6 +86,6 @@ app.post("/login", async (req, res) => {
 });
 
 
-app.listen(5000, () => {
-    console.log("Server running on http://localhost:5000 🚀");
-});
+app.listen(5001, () => {
+    console.log("Server running on http://localhost:5001");
+});;
