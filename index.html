@@ -570,7 +570,7 @@ nav a:hover::after {
     <h2 class="title">👤 Register</h2>
     <hr>
 
-    <form onsubmit="registerUser(event)">
+    <form onsubmit="event.preventDefault(); registerUser();">
 
       <label>Company Name</label>
       <input type="text" placeholder="Company Name" required>
@@ -715,14 +715,14 @@ function backToLoginFromRegister() {
 
 function registerUser() {
     const data = {
-        company: document.getElementById("company").value,
+        company_name: document.getElementById("company").value,
         name: document.getElementById("name").value,
         mobile: document.getElementById("mobile").value,
         email: document.getElementById("email").value,
         password: document.getElementById("password").value
     };
 
-    console.log("Sending data:", data); // ✅ DEBUG
+    console.log("🚀 Sending:", data);
 
     fetch("http://localhost:5001/register", {
         method: "POST",
@@ -733,13 +733,19 @@ function registerUser() {
     })
     .then(res => res.json())
     .then(res => {
-        alert(res.message);
+        console.log("✅ Response:", res);
+
+        if (res.success) {
+            alert("Registered Successfully ✅");
+        } else {
+            alert(res.message);
+        }
     })
     .catch(err => {
-        console.error(err);
-        alert("Error connecting to server");
+        console.error("❌ Error:", err);
+        alert("Server error");
     });
-}
+    }
 </script>
 
 </body>
