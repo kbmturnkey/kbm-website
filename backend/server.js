@@ -10,8 +10,9 @@ app.use(express.json());
 const config = {
     user: "kbm_user",
     password: "12345",
-    server: "localhost\\SQLEXPRESS", // 🔥 direct instance
+    server: "127.0.0.1",   // 🔥 better than localhost
     database: "kbm_db",
+    port: 1433,
     options: {
         encrypt: false,
         trustServerCertificate: true
