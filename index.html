@@ -725,26 +725,24 @@ function registerUser() {
     console.log("🚀 Sending:", data);
 
     fetch("http://localhost:5001/register", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(res => {
-        console.log("✅ Response:", res);
-
-        if (res.success) {
-            alert("Registered Successfully ✅");
-        } else {
-            alert(res.message);
-        }
-    })
-    .catch(err => {
-        console.error("❌ Error:", err);
-        alert("Server error");
-    });
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+})
+.then(res => {
+    console.log("RAW RESPONSE:", res);
+    return res.json();
+})
+.then(res => {
+    console.log("FINAL RESPONSE:", res);
+    alert(res.message || "No message received");
+})
+.catch(err => {
+    console.error("❌ FULL ERROR:", err);
+    alert("Backend not reachable");
+});
 }
 </script>
 
