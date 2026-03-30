@@ -713,8 +713,9 @@ function backToLoginFromRegister() {
     document.getElementById("loginModal").style.display = "block";
     }
 
-function registerUser() {
+function registerUser(event) {
     event.preventDefault();
+
     const data = {
         company_name: document.getElementById("reg_company_name").value,
         name: document.getElementById("reg_name").value,
@@ -726,24 +727,27 @@ function registerUser() {
     console.log("🚀 Sending:", data);
 
     fetch("http://localhost:5001/register", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-})
-.then(res => {
-    console.log("RAW RESPONSE:", res);
-    return res.json();
-})
-.then(res => {
-    console.log("FINAL RESPONSE:", res);
-    alert(res.message || "No message received");
-})
-.catch(err => {
-    console.error("❌ FULL ERROR:", err);
-    alert("Backend not reachable");
-});
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(async res => {
+        if (!res.ok) {
+            throw new Error("Server error");
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log("✅ Response:", data);
+
+        alert(data.message);
+    })
+    .catch(err => {
+        console.error("❌ Error:", err);
+        alert("Backend not responding");
+    });
 }
 </script>
 
